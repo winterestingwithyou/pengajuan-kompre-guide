@@ -1,7 +1,15 @@
 import type { Config } from "@react-router/dev/config";
 
 export default {
-  // Config options...
-  // Server-side render by default, to enable SPA mode set this to `false`
   ssr: true,
+  prerender: {
+    paths: [
+      "/",
+      "/panduan",
+      "/checklist",
+      "/generator/surat-pernyataan-bebas-plagiat",
+      "/generator/surat-pernyataan-pemutakhiran-data",
+    ],
+    concurrency: 2,
+  },
 } satisfies Config;
