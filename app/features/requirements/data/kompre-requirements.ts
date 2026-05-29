@@ -339,7 +339,7 @@ export const kompreRequirements: KompreRequirement[] = [
       "Jika dokumen masih berbentuk fisik, lakukan capture atau scan dokumen tersebut.",
       "Ubah hasil capture atau scan menjadi file PDF.",
       "Jika belum memiliki sertifikat atau surat keterangan KP, hubungi perusahaan atau instansi tempat kamu melakukan KP.",
-      "Sampaikan bahwa dokumen tersebut dibutuhkan untuk keperluan pengajuan kompre.",
+      "Sampaikan bahwa dokumen tersebut dibutuhkan untuk keperluan pengajuan kompre D3 Manajemen Informatika Universitas Sriwijaya.",
       "Setelah dokumen diberikan, pastikan dokumen jelas terbaca dan memuat informasi yang diperlukan.",
       "Simpan dokumen akhir dalam format PDF.",
       "Pastikan ukuran file tidak lebih dari 1 MB.",

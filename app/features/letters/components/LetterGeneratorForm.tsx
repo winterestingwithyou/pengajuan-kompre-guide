@@ -52,7 +52,7 @@ export function LetterGeneratorForm({
     defaultValues: {
       nama: "",
       nim: "",
-      programStudi: "Manajemen Informatika",
+      programStudi: "D3 Manajemen Informatika Universitas Sriwijaya",
       judulTugasAkhir: "",
       tempatTanggal: "",
     },

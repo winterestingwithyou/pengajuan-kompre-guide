@@ -26,18 +26,18 @@ import { kompreRequirements } from "~/features/requirements/data/kompre-requirem
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Panduan Pengajuan Kompre" },
+    { title: "Panduan Kompre D3 Manajemen Informatika Unsri" },
     {
       name: "description",
       content:
-        "Panduan, checklist, dan generator surat untuk persiapan pengajuan kompre.",
+        "Panduan, checklist, dan generator surat untuk persiapan pengajuan kompre mahasiswa D3 Manajemen Informatika Universitas Sriwijaya.",
     },
   ];
 }
 
 const flows = [
   "Pahami alur dan daftar dokumen yang diminta.",
-  "Siapkan dokumen dari akademik, perpustakaan, laboratorium, dan unit terkait.",
+  "Siapkan dokumen dari akademik, perpustakaan, laboratorium, dan unit terkait di lingkungan Fasilkom Unsri.",
   "Tandai kesiapan dokumen dan simpan link file di checklist lokal.",
   "Generate surat yang bisa dibuat mandiri jika diperlukan.",
   "Lanjutkan pengisian ke Google Form resmi.",
@@ -47,7 +47,7 @@ const faqs = [
   {
     question: "Apakah aplikasi ini menggantikan Google Form?",
     answer:
-      "Tidak. Aplikasi ini hanya membantu persiapan sebelum mahasiswa mengisi Google Form resmi.",
+      "Tidak. Aplikasi ini hanya membantu mahasiswa D3 Manajemen Informatika Universitas Sriwijaya mempersiapkan dokumen sebelum mengisi Google Form resmi.",
   },
   {
     question: "Apakah file dokumen diupload ke aplikasi?",
@@ -66,7 +66,7 @@ const featureCards = [
     icon: FolderCheck,
     title: "Daftar dokumen lengkap",
     description:
-      "Lihat seluruh dokumen berdasarkan field upload pada Google Form.",
+      "Lihat seluruh dokumen berdasarkan field upload pada Google Form pengajuan kompre D3 Manajemen Informatika Unsri.",
   },
   {
     icon: ListChecks,
@@ -94,17 +94,18 @@ export default function Index() {
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:py-20">
           <div className="space-y-8">
             <Badge className="eyebrow-badge" variant="outline">
-              Persiapan sebelum Google Form
+              Untuk D3 Manajemen Informatika Unsri
             </Badge>
             <div className="space-y-5">
               <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-balance sm:text-6xl">
-                Panduan Pengajuan Kompre
+                Panduan Kompre D3 Manajemen Informatika Unsri
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
-                Siapkan seluruh dokumen pengajuan kompre dengan lebih terarah.
-                Gunakan checklist untuk menandai dokumen yang sudah tersedia,
-                simpan link file dokumen, dan generate surat yang dapat dibuat
-                mandiri sebelum melanjutkan ke Google Form resmi.
+                Siapkan seluruh dokumen pengajuan kompre khusus mahasiswa D3
+                Manajemen Informatika Universitas Sriwijaya dengan lebih
+                terarah. Gunakan checklist untuk menandai dokumen yang sudah
+                tersedia, simpan link file dokumen, dan generate surat yang
+                dapat dibuat mandiri sebelum melanjutkan ke Google Form resmi.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -139,7 +140,7 @@ export default function Index() {
                 <div>
                   <p className="text-sm font-medium">Ringkasan Persiapan</p>
                   <p className="text-xs text-muted-foreground">
-                    Dokumen, checklist, generator.
+                    D3 MI Unsri, checklist, generator.
                   </p>
                 </div>
                 <ClipboardList className="size-5 text-muted-foreground" />
@@ -192,7 +193,7 @@ export default function Index() {
         className="section-band"
         eyebrow="Ringkasan"
         title="Dokumen yang Perlu Disiapkan"
-        description="Dokumen dikelompokkan dari identitas, akademik, tugas akhir, perpustakaan, laboratorium, hingga data akademik."
+        description="Dokumen dikelompokkan dari identitas, akademik, tugas akhir, perpustakaan, laboratorium, hingga data akademik sesuai kebutuhan pengajuan kompre D3 Manajemen Informatika Unsri."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {featureCards.map((item) => (

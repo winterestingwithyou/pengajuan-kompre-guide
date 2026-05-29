@@ -7,8 +7,8 @@ export function AppFooter() {
     <footer className="border-t border-border/70 bg-neutral-200/40 dark:bg-neutral-950/30">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-muted-foreground sm:px-6 md:flex-row md:items-center md:justify-between">
         <p>
-          Panduan ini membantu persiapan dokumen. Pengajuan resmi tetap melalui
-          Google Form.
+          Panduan ini dikhususkan untuk mahasiswa D3 Manajemen Informatika
+          Universitas Sriwijaya. Pengajuan resmi tetap melalui Google Form.
         </p>
         <div className="flex flex-wrap gap-4">
           <Link className="hover:text-foreground" to="/panduan">

@@ -10,14 +10,14 @@ export const letterTemplates: LetterTemplate[] = [
     id: "surat-pernyataan-bebas-plagiat",
     title: "Surat Pernyataan Bebas Plagiat",
     description:
-      "Generator surat pernyataan bebas plagiat yang dapat digunakan sebagai salah satu dokumen pengajuan kompre.",
+      "Generator surat pernyataan bebas plagiat yang dapat digunakan sebagai salah satu dokumen pengajuan kompre D3 Manajemen Informatika Unsri.",
     outputFileName: "surat-pernyataan-bebas-plagiat.docx",
   },
   {
     id: "surat-pernyataan-pemutakhiran-data",
     title: "Surat Pernyataan Pemutakhiran Data",
     description:
-      "Generator surat pernyataan telah melakukan pemutakhiran data.",
+      "Generator surat pernyataan telah melakukan pemutakhiran data untuk kebutuhan kompre D3 Manajemen Informatika Unsri.",
     outputFileName: "surat-pernyataan-pemutakhiran-data.docx",
   },
 ];

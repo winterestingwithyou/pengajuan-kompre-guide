@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router";
-import { ClipboardCheck, ExternalLink, Menu } from "lucide-react";
+import { ExternalLink, Menu } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import {
@@ -46,10 +46,12 @@ export function AppHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link className="flex min-w-0 items-center gap-2 font-semibold" to="/">
-          <span className="grid size-9 shrink-0 place-items-center rounded-md bg-gradient-to-b from-neutral-700 to-neutral-950 text-primary-foreground shadow-sm">
-            <ClipboardCheck className="size-4" />
-          </span>
-          <span className="truncate tracking-tight">Panduan Kompre</span>
+          <img
+            alt="Logo Kompre MI Unsri"
+            className="size-9 shrink-0 rounded-md shadow-sm"
+            src="/app-logo.png"
+          />
+          <span className="truncate tracking-tight">Kompre MI Unsri</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -79,7 +81,7 @@ export function AppHeader() {
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader>
-              <SheetTitle>Panduan Kompre</SheetTitle>
+              <SheetTitle>Kompre MI Unsri</SheetTitle>
             </SheetHeader>
             <div className="mt-6 flex flex-col gap-2">
               <NavItems />

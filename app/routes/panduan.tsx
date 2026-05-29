@@ -15,10 +15,11 @@ import {
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Panduan Dokumen | Panduan Pengajuan Kompre" },
+    { title: "Panduan Dokumen | Kompre D3 Manajemen Informatika Unsri" },
     {
       name: "description",
-      content: "Daftar dokumen dan panduan persiapan pengajuan kompre.",
+      content:
+        "Daftar dokumen dan panduan persiapan pengajuan kompre mahasiswa D3 Manajemen Informatika Universitas Sriwijaya.",
     },
   ];
 }
@@ -49,9 +50,9 @@ export default function Panduan() {
   return (
     <main className="page-gradient">
       <Section
-        description="Cari dokumen, lihat status, baca catatan penting, dan buka generator untuk dokumen yang bisa dibuat mandiri."
+        description="Cari dokumen, lihat status, baca catatan penting, dan buka generator untuk dokumen yang bisa dibuat mandiri oleh mahasiswa D3 Manajemen Informatika Universitas Sriwijaya."
         eyebrow="Panduan"
-        title="Panduan Dokumen Pengajuan Kompre"
+        title="Panduan Dokumen Kompre D3 Manajemen Informatika Unsri"
       >
         <div className="space-y-6">
           <div className="soft-panel rounded-lg p-4 sm:p-5">

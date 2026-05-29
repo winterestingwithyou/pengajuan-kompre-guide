@@ -23,8 +23,8 @@ export function meta({ params }: Route.MetaArgs) {
   return [
     {
       title: template
-        ? `${template.title} | Panduan Pengajuan Kompre`
-        : "Generator Surat | Panduan Pengajuan Kompre",
+        ? `${template.title} | Kompre D3 Manajemen Informatika Unsri`
+        : "Generator Surat | Kompre D3 Manajemen Informatika Unsri",
     },
   ];
 }
@@ -36,7 +36,7 @@ export default function Generator({ params }: Route.ComponentProps) {
     return (
       <main className="page-gradient">
         <Section
-          description="Template yang diminta belum tersedia. Pilih salah satu generator surat awal berikut."
+          description="Template yang diminta belum tersedia. Pilih salah satu generator surat awal untuk kebutuhan kompre mahasiswa D3 Manajemen Informatika Universitas Sriwijaya."
           eyebrow="Generator"
           title="Template Tidak Ditemukan"
         >
@@ -62,8 +62,8 @@ export default function Generator({ params }: Route.ComponentProps) {
             <CardHeader>
               <CardTitle>Isi Data Surat</CardTitle>
               <CardDescription>
-                Dokumen akan dibuat langsung di browser dan diunduh sebagai
-                DOCX.
+                Dokumen untuk kebutuhan kompre D3 Manajemen Informatika Unsri
+                akan dibuat langsung di browser dan diunduh sebagai DOCX.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -79,7 +79,8 @@ export default function Generator({ params }: Route.ComponentProps) {
               <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
                 <p>
                   Generator ini belum menggantikan format resmi apabila program
-                  studi memiliki template final.
+                  studi D3 Manajemen Informatika Universitas Sriwijaya memiliki
+                  template final.
                 </p>
                 <p>
                   Setelah mengunduh, periksa kembali isi surat sebelum dipakai.

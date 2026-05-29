@@ -25,7 +25,7 @@ export async function generateSuratPernyataanBebasPlagiat(
           new Paragraph({
             children: [
               new TextRun(
-                "Saya yang bertanda tangan di bawah ini menyatakan bahwa dokumen Tugas Akhir yang saya ajukan untuk ujian komprehensif merupakan karya saya sendiri dan bebas dari tindakan plagiarisme."
+                "Saya yang bertanda tangan di bawah ini menyatakan bahwa dokumen Tugas Akhir yang saya ajukan untuk ujian komprehensif D3 Manajemen Informatika Universitas Sriwijaya merupakan karya saya sendiri dan bebas dari tindakan plagiarisme."
               ),
             ],
           }),
