@@ -29,7 +29,7 @@ export function RequirementDetailDialog({
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="max-h-[min(88vh,720px)] overflow-y-auto rounded-lg border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 sm:max-w-2xl">
+      <DialogContent className="max-h-[min(88vh,720px)] overflow-y-auto scrollbar-hide rounded-lg border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>{requirement.title}</DialogTitle>
           <DialogDescription>{requirement.description}</DialogDescription>

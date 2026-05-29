@@ -173,4 +173,13 @@ body {
   .section-band {
     @apply border-y border-border/70 bg-neutral-200/30 dark:bg-neutral-900/35;
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
