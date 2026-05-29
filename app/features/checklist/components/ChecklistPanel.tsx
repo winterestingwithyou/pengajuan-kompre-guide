@@ -20,7 +20,7 @@ export function ChecklistPanel() {
 
   return (
     <div className="space-y-6">
-      <Card className="rounded-lg">
+      <Card className="soft-panel rounded-lg">
         <CardContent className="space-y-5">
           <ChecklistProgress
             checkedCount={checkedCount}
@@ -31,7 +31,12 @@ export function ChecklistPanel() {
               Checklist dan link file disimpan di IndexedDB browser perangkat
               ini.
             </p>
-            <Button onClick={resetChecklist} type="button" variant="outline">
+            <Button
+              className="glass-button"
+              onClick={resetChecklist}
+              type="button"
+              variant="outline"
+            >
               <RotateCcw className="size-4" />
               Reset Checklist
             </Button>

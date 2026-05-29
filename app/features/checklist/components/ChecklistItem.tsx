@@ -12,7 +12,6 @@ import {
 import { Checkbox } from "~/components/ui/checkbox";
 import {
   Field,
-  FieldContent,
   FieldDescription,
   FieldLabel,
 } from "~/components/ui/field";
@@ -42,7 +41,10 @@ export function ChecklistItem({
   const note = item?.note ?? "";
 
   return (
-    <Card className="rounded-lg" size="sm">
+    <Card
+      className="soft-panel rounded-lg transition-shadow hover:shadow-[0_18px_60px_-48px_oklch(0_0_0)]"
+      size="sm"
+    >
       <CardHeader className="gap-4 sm:grid-cols-[auto_1fr_auto]">
         <Checkbox
           aria-label={`Tandai ${requirement.title} sudah ada`}

@@ -23,11 +23,11 @@ export function RequirementCard({
   requirement: KompreRequirement;
 }) {
   return (
-    <Card className="rounded-lg" size="sm">
+    <Card className="soft-panel rounded-lg transition-transform hover:-translate-y-0.5" size="sm">
       <CardHeader>
-        <CardTitle className="pr-2">{requirement.title}</CardTitle>
+        <CardTitle className="pr-2 leading-snug">{requirement.title}</CardTitle>
         <CardAction>
-          <span className="text-xs text-muted-foreground">
+          <span className="rounded-md bg-neutral-100 px-2 py-1 text-xs text-muted-foreground ring-1 ring-border dark:bg-neutral-800">
             {requirementCategoryLabels[requirement.category]}
           </span>
         </CardAction>
@@ -40,7 +40,7 @@ export function RequirementCard({
       </CardContent>
       <CardFooter className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
         <RequirementDetailDialog requirement={requirement}>
-          <Button className="w-full sm:w-auto" variant="outline">
+          <Button className="glass-button w-full sm:w-auto" variant="outline">
             Lihat Detail
           </Button>
         </RequirementDetailDialog>

@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import { AppFooter } from "./components/layout/AppFooter";
 import { AppHeader } from "./components/layout/AppHeader";
+import { ThemeProvider } from "./components/theme/ThemeProvider";
 import { Toaster } from "./components/ui/sonner";
 import "./app.css";
 
@@ -28,7 +29,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -37,7 +38,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <Toaster />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -47,11 +47,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <AppHeader />
-      <Outlet />
-      <AppFooter />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-background text-foreground">
+        <AppHeader />
+        <Outlet />
+        <AppFooter />
+        <Toaster />
+      </div>
+    </ThemeProvider>
   );
 }
 

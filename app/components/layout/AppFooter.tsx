@@ -4,7 +4,7 @@ import { GOOGLE_FORM_URL } from "~/lib/constants";
 
 export function AppFooter() {
   return (
-    <footer className="border-t bg-muted/30">
+    <footer className="border-t border-border/70 bg-neutral-200/40 dark:bg-neutral-950/30">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-muted-foreground sm:px-6 md:flex-row md:items-center md:justify-between">
         <p>
           Panduan ini membantu persiapan dokumen. Pengajuan resmi tetap melalui

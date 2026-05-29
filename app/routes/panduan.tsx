@@ -47,18 +47,25 @@ export default function Panduan() {
   }, [category, query]);
 
   return (
-    <main>
+    <main className="page-gradient">
       <Section
         description="Cari dokumen, lihat status, baca catatan penting, dan buka generator untuk dokumen yang bisa dibuat mandiri."
+        eyebrow="Panduan"
         title="Panduan Dokumen Pengajuan Kompre"
       >
-        <div className="space-y-5">
-          <RequirementSearch onChange={setQuery} value={query} />
-          <RequirementCategoryTabs onChange={setCategory} value={category} />
-          <p className="text-sm text-muted-foreground">
-            Menampilkan {filteredRequirements.length} dari{" "}
-            {kompreRequirements.length} dokumen.
-          </p>
+        <div className="space-y-6">
+          <div className="soft-panel rounded-lg p-4 sm:p-5">
+            <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
+              <RequirementSearch onChange={setQuery} value={query} />
+              <p className="text-sm text-muted-foreground">
+                {filteredRequirements.length} / {kompreRequirements.length}{" "}
+                dokumen
+              </p>
+            </div>
+            <div className="mt-4">
+              <RequirementCategoryTabs onChange={setCategory} value={category} />
+            </div>
+          </div>
           <div className="grid gap-4 md:grid-cols-2">
             {filteredRequirements.map((requirement) => (
               <RequirementCard

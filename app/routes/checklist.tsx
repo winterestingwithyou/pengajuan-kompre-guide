@@ -18,13 +18,14 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Checklist() {
   return (
-    <main>
+    <main className="page-gradient">
       <Section
         description="Tandai dokumen yang sudah tersedia, simpan link lokasi file, dan pantau progress kelengkapan sebelum melanjutkan ke form resmi."
+        eyebrow="Checklist"
         title="Checklist Dokumen"
       >
         <div className="mb-2">
-          <Button asChild variant="outline">
+          <Button asChild className="glass-button" variant="outline">
             <a href={GOOGLE_FORM_URL} rel="noreferrer" target="_blank">
               Buka Google Form Resmi
               <ExternalLink className="size-4" />

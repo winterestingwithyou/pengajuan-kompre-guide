@@ -13,7 +13,7 @@ import type { LetterTemplate } from "~/features/letters/data/letter-templates";
 
 export function LetterTemplateCard({ template }: { template: LetterTemplate }) {
   return (
-    <Card className="rounded-lg" size="sm">
+    <Card className="soft-panel rounded-lg" size="sm">
       <CardHeader>
         <CardTitle>{template.title}</CardTitle>
       </CardHeader>

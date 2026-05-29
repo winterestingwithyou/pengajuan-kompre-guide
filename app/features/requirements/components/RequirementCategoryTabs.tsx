@@ -28,7 +28,7 @@ export function RequirementCategoryTabs({
           onValueChange={(nextValue) => onChange(nextValue as CategoryFilter)}
           value={value}
         >
-          <SelectTrigger className="h-11 w-full">
+          <SelectTrigger className="h-11 w-full bg-white/80 dark:bg-neutral-900/70">
             <SelectValue placeholder="Pilih kategori" />
           </SelectTrigger>
           <SelectContent>
@@ -47,7 +47,10 @@ export function RequirementCategoryTabs({
         onValueChange={(nextValue) => onChange(nextValue as CategoryFilter)}
         value={value}
       >
-        <TabsList className="h-auto flex-wrap justify-start" variant="default">
+        <TabsList
+          className="h-auto flex-wrap justify-start bg-neutral-200/70 dark:bg-neutral-900/80"
+          variant="default"
+        >
           <TabsTrigger value="semua">Semua</TabsTrigger>
           {requirementCategories.map((category) => (
             <TabsTrigger key={category} value={category}>

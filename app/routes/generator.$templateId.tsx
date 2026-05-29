@@ -34,9 +34,10 @@ export default function Generator({ params }: Route.ComponentProps) {
 
   if (!template) {
     return (
-      <main>
+      <main className="page-gradient">
         <Section
           description="Template yang diminta belum tersedia. Pilih salah satu generator surat awal berikut."
+          eyebrow="Generator"
           title="Template Tidak Ditemukan"
         >
           <div className="grid gap-4 md:grid-cols-2">
@@ -50,13 +51,14 @@ export default function Generator({ params }: Route.ComponentProps) {
   }
 
   return (
-    <main>
+    <main className="page-gradient">
       <Section
         description={template.description}
+        eyebrow="Generator"
         title={template.title}
       >
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-          <Card className="rounded-lg">
+          <Card className="soft-panel rounded-lg">
             <CardHeader>
               <CardTitle>Isi Data Surat</CardTitle>
               <CardDescription>
@@ -70,7 +72,7 @@ export default function Generator({ params }: Route.ComponentProps) {
           </Card>
 
           <aside className="space-y-4">
-            <Card className="rounded-lg" size="sm">
+            <Card className="soft-panel rounded-lg" size="sm">
               <CardHeader>
                 <CardTitle>Catatan</CardTitle>
               </CardHeader>
@@ -82,7 +84,7 @@ export default function Generator({ params }: Route.ComponentProps) {
                 <p>
                   Setelah mengunduh, periksa kembali isi surat sebelum dipakai.
                 </p>
-                <Button asChild variant="outline">
+                <Button asChild className="glass-button" variant="outline">
                   <Link to="/panduan">Kembali ke Panduan</Link>
                 </Button>
               </CardContent>

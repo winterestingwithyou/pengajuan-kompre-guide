@@ -40,7 +40,7 @@ export function ChecklistFileLinkInput({
           value={value}
         />
         {value && !invalid && (
-          <Button asChild className="sm:w-auto" variant="outline">
+          <Button asChild className="glass-button sm:w-auto" variant="outline">
             <a href={value} rel="noreferrer" target="_blank">
               Buka File
               <ExternalLink className="size-4" />

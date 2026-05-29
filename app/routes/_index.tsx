@@ -21,8 +21,8 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { GOOGLE_FORM_URL } from "~/lib/constants";
-import { kompreRequirements } from "~/features/requirements/data/kompre-requirements";
 import { letterTemplates } from "~/features/letters/data/letter-templates";
+import { kompreRequirements } from "~/features/requirements/data/kompre-requirements";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -61,19 +61,43 @@ const faqs = [
   },
 ];
 
+const featureCards = [
+  {
+    icon: FolderCheck,
+    title: "Daftar dokumen lengkap",
+    description:
+      "Lihat seluruh dokumen berdasarkan field upload pada Google Form.",
+  },
+  {
+    icon: ListChecks,
+    title: "Checklist dokumen",
+    description:
+      "Tandai dokumen yang sudah tersedia dan pantau progress kelengkapan.",
+  },
+  {
+    icon: FileText,
+    title: "Generator surat",
+    description:
+      "Buat dokumen awal untuk surat yang bisa disiapkan mandiri.",
+  },
+];
+
 export default function Index() {
   const generatedCount = kompreRequirements.filter(
     (requirement) => requirement.canGenerate
   ).length;
 
   return (
-    <main>
-      <section className="border-b bg-muted/30">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-7">
-            <Badge variant="outline">Persiapan sebelum Google Form</Badge>
-            <div className="space-y-4">
-              <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">
+    <main className="overflow-hidden">
+      <section className="hero-gradient relative border-b border-border/70">
+        <div className="absolute inset-x-0 top-0 h-px bg-white/80 dark:bg-white/10" />
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:py-20">
+          <div className="space-y-8">
+            <Badge className="eyebrow-badge" variant="outline">
+              Persiapan sebelum Google Form
+            </Badge>
+            <div className="space-y-5">
+              <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-balance sm:text-6xl">
                 Panduan Pengajuan Kompre
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-muted-foreground">
@@ -84,16 +108,16 @@ export default function Index() {
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg">
+              <Button asChild className="shadow-sm" size="lg">
                 <Link to="/checklist">
                   Mulai Checklist
                   <ArrowRight className="size-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild className="glass-button" size="lg" variant="outline">
                 <Link to="/panduan">Lihat Panduan</Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
+              <Button asChild className="glass-button" size="lg" variant="outline">
                 <a href={GOOGLE_FORM_URL} rel="noreferrer" target="_blank">
                   Buka Google Form
                   <ExternalLink className="size-4" />
@@ -102,40 +126,37 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="rounded-lg border bg-background p-5 shadow-xs">
-            <div className="space-y-4">
+          <div className="relative">
+            <div className="soft-panel overflow-hidden rounded-lg p-2">
+              <img
+                alt="Meja kerja abu-abu dengan dokumen dan checklist digital"
+                className="aspect-[4/3] w-full rounded-md object-cover dark:brightness-75 dark:contrast-110"
+                src="/kompre-hero-gray.png"
+              />
+            </div>
+            <div className="soft-panel absolute -bottom-5 left-5 right-5 rounded-lg p-4 sm:left-auto sm:w-72">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm font-medium">Ringkasan Persiapan</p>
-                  <p className="text-sm text-muted-foreground">
-                    Dokumen, checklist, dan generator surat.
+                  <p className="text-xs text-muted-foreground">
+                    Dokumen, checklist, generator.
                   </p>
                 </div>
                 <ClipboardList className="size-5 text-muted-foreground" />
               </div>
-              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                <div className="rounded-md border p-4">
-                  <p className="text-2xl font-semibold">
-                    {kompreRequirements.length}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Dokumen dalam panduan
-                  </p>
-                </div>
-                <div className="rounded-md border p-4">
-                  <p className="text-2xl font-semibold">{generatedCount}</p>
-                  <p className="text-sm text-muted-foreground">
-                    Surat bisa digenerate
-                  </p>
-                </div>
-                <div className="rounded-md border p-4">
-                  <p className="text-2xl font-semibold">
-                    {letterTemplates.length}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Template generator awal
-                  </p>
-                </div>
+              <div className="mt-4 grid grid-cols-3 gap-2">
+                {[
+                  ["Dokumen", kompreRequirements.length],
+                  ["Generate", generatedCount],
+                  ["Template", letterTemplates.length],
+                ].map(([label, value]) => (
+                  <div className="hairline-panel rounded-md p-3" key={label}>
+                    <p className="text-xl font-semibold">{value}</p>
+                    <p className="text-[11px] text-muted-foreground">
+                      {label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -143,14 +164,19 @@ export default function Index() {
       </section>
 
       <Section
+        eyebrow="Alur"
         title="Alur Pengajuan Kompre"
         description="Ikuti alur ini sebagai panduan ringan sebelum masuk ke form resmi."
       >
-        <div className="grid gap-4 md:grid-cols-5">
+        <div className="grid gap-3 md:grid-cols-5">
           {flows.map((flow, index) => (
-            <Card className="rounded-lg" key={flow} size="sm">
+            <Card
+              className="soft-panel rounded-lg border-neutral-300/70 bg-gradient-to-b from-white to-neutral-100/70 dark:border-neutral-700/70 dark:from-neutral-900 dark:to-neutral-800/70"
+              key={flow}
+              size="sm"
+            >
               <CardHeader>
-                <div className="grid size-9 place-items-center rounded-md bg-muted text-sm font-semibold">
+                <div className="grid size-10 place-items-center rounded-md bg-neutral-900 text-sm font-semibold text-white shadow-sm dark:bg-neutral-100 dark:text-neutral-950">
                   {index + 1}
                 </div>
               </CardHeader>
@@ -163,34 +189,18 @@ export default function Index() {
       </Section>
 
       <Section
-        className="border-y bg-muted/30"
-        title="Ringkasan Dokumen yang Perlu Disiapkan"
-        description="Dokumen dikelompokkan dari identitas, akademik, tugas akhir, hingga data akademik."
+        className="section-band"
+        eyebrow="Ringkasan"
+        title="Dokumen yang Perlu Disiapkan"
+        description="Dokumen dikelompokkan dari identitas, akademik, tugas akhir, perpustakaan, laboratorium, hingga data akademik."
       >
         <div className="grid gap-4 md:grid-cols-3">
-          {[
-            {
-              icon: FolderCheck,
-              title: "Daftar dokumen lengkap",
-              description:
-                "Lihat seluruh dokumen berdasarkan field upload pada Google Form.",
-            },
-            {
-              icon: ListChecks,
-              title: "Checklist dokumen",
-              description:
-                "Tandai dokumen yang sudah tersedia dan pantau progress kelengkapan.",
-            },
-            {
-              icon: FileText,
-              title: "Generator surat",
-              description:
-                "Buat dokumen awal untuk surat yang bisa disiapkan mandiri.",
-            },
-          ].map((item) => (
-            <Card className="rounded-lg" key={item.title}>
+          {featureCards.map((item) => (
+            <Card className="soft-panel rounded-lg" key={item.title}>
               <CardHeader>
-                <item.icon className="size-5 text-muted-foreground" />
+                <div className="soft-icon grid size-11 place-items-center rounded-md">
+                  <item.icon className="size-5" />
+                </div>
                 <CardTitle>{item.title}</CardTitle>
               </CardHeader>
               <CardContent>
@@ -203,11 +213,13 @@ export default function Index() {
         </div>
       </Section>
 
-      <Section title="Fitur Checklist Dokumen">
+      <Section eyebrow="Checklist" title="Fitur Checklist Dokumen">
         <div className="grid gap-4 md:grid-cols-2">
-          <Card className="rounded-lg">
+          <Card className="soft-panel rounded-lg">
             <CardHeader>
-              <CheckCircle2 className="size-5 text-muted-foreground" />
+              <div className="soft-icon grid size-11 place-items-center rounded-md">
+                <CheckCircle2 className="size-5" />
+              </div>
               <CardTitle>Status dan progress</CardTitle>
             </CardHeader>
             <CardContent>
@@ -217,9 +229,11 @@ export default function Index() {
               </p>
             </CardContent>
           </Card>
-          <Card className="rounded-lg">
+          <Card className="soft-panel rounded-lg">
             <CardHeader>
-              <ClipboardList className="size-5 text-muted-foreground" />
+              <div className="soft-icon grid size-11 place-items-center rounded-md">
+                <ClipboardList className="size-5" />
+              </div>
               <CardTitle>Link lokasi file</CardTitle>
             </CardHeader>
             <CardContent>
@@ -233,13 +247,14 @@ export default function Index() {
       </Section>
 
       <Section
-        className="border-y bg-muted/30"
-        title="Fitur Generator Surat"
+        className="section-band"
+        eyebrow="Generator"
+        title="Generator Surat"
         description="Generator awal berjalan di browser dan menghasilkan file DOCX untuk diperiksa ulang."
       >
         <div className="grid gap-4 md:grid-cols-2">
           {letterTemplates.map((template) => (
-            <Card className="rounded-lg" key={template.id} size="sm">
+            <Card className="soft-panel rounded-lg" key={template.id} size="sm">
               <CardHeader>
                 <CardTitle>{template.title}</CardTitle>
               </CardHeader>
@@ -247,8 +262,11 @@ export default function Index() {
                 <p className="leading-6 text-muted-foreground">
                   {template.description}
                 </p>
-                <Button asChild variant="outline">
-                  <Link to={`/generator/${template.id}`}>Buka Generator</Link>
+                <Button asChild className="glass-button" variant="outline">
+                  <Link to={`/generator/${template.id}`}>
+                    Buka Generator
+                    <ArrowRight className="size-4" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -256,12 +274,14 @@ export default function Index() {
         </div>
       </Section>
 
-      <Section title="FAQ Singkat">
+      <Section eyebrow="FAQ" title="FAQ Singkat">
         <div className="grid gap-4 md:grid-cols-3">
           {faqs.map((faq) => (
-            <Card className="rounded-lg" key={faq.question} size="sm">
+            <Card className="soft-panel rounded-lg" key={faq.question} size="sm">
               <CardHeader>
-                <HelpCircle className="size-5 text-muted-foreground" />
+                <div className="soft-icon grid size-10 place-items-center rounded-md">
+                  <HelpCircle className="size-5" />
+                </div>
                 <CardTitle>{faq.question}</CardTitle>
               </CardHeader>
               <CardContent>

@@ -15,17 +15,17 @@ export function Section({
   ...props
 }: SectionProps) {
   return (
-    <section className={cn("py-12 sm:py-16", className)} {...props}>
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6">
+    <section className={cn("py-14 sm:py-20", className)} {...props}>
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-9 px-4 sm:px-6">
         {(eyebrow || title || description) && (
-          <div className="max-w-3xl space-y-3">
+          <div className="max-w-3xl space-y-4">
             {eyebrow && (
-              <p className="text-sm font-medium text-muted-foreground">
+              <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 {eyebrow}
               </p>
             )}
             {title && (
-              <h2 className="text-2xl font-semibold tracking-normal sm:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-normal text-balance sm:text-3xl">
                 {title}
               </h2>
             )}
