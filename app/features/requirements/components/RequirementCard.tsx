@@ -1,0 +1,58 @@
+import { FileText } from "lucide-react";
+import { Link } from "react-router";
+
+import { Button } from "~/components/ui/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import {
+  requirementCategoryLabels,
+  type KompreRequirement,
+} from "~/features/requirements/data/kompre-requirements";
+import { RequirementBadges } from "~/features/requirements/components/RequirementBadges";
+import { RequirementDetailDialog } from "~/features/requirements/components/RequirementDetailDialog";
+
+export function RequirementCard({
+  requirement,
+}: {
+  requirement: KompreRequirement;
+}) {
+  return (
+    <Card className="rounded-lg" size="sm">
+      <CardHeader>
+        <CardTitle className="pr-2">{requirement.title}</CardTitle>
+        <CardAction>
+          <span className="text-xs text-muted-foreground">
+            {requirementCategoryLabels[requirement.category]}
+          </span>
+        </CardAction>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <p className="leading-6 text-muted-foreground">
+          {requirement.description}
+        </p>
+        <RequirementBadges requirement={requirement} />
+      </CardContent>
+      <CardFooter className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+        <RequirementDetailDialog requirement={requirement}>
+          <Button className="w-full sm:w-auto" variant="outline">
+            Lihat Detail
+          </Button>
+        </RequirementDetailDialog>
+        {requirement.canGenerate && requirement.templateId && (
+          <Button asChild className="w-full sm:w-auto">
+            <Link to={`/generator/${requirement.templateId}`}>
+              <FileText className="size-4" />
+              Generate Surat
+            </Link>
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
+  );
+}
