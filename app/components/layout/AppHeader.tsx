@@ -12,6 +12,8 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
+  SheetTitle,
   SheetTrigger,
 } from "~/components/ui/sheet";
 import { GOOGLE_FORM_URL } from "~/lib/constants";
@@ -103,6 +105,11 @@ export function AppHeader() {
             className="w-[min(88vw,390px)] gap-0 overflow-y-auto p-0"
             side="right"
           >
+            <SheetTitle className="sr-only">Menu navigasi Kompre MI Unsri</SheetTitle>
+            <SheetDescription className="sr-only">
+              Navigasi utama untuk panduan kompre D3 Manajemen Informatika
+              Universitas Sriwijaya.
+            </SheetDescription>
             <div className="border-b border-border/70 px-5 pb-5 pt-6">
               <div className="flex items-center gap-3 pr-10">
                 <img
