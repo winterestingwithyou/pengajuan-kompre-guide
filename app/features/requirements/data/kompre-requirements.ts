@@ -27,6 +27,7 @@ export type KompreRequirement = {
   canGenerate: boolean;
   templateId?: string;
   externalLink?: string;
+  externalLinkLabel?: string;
   guideStatus: GuideStatus;
   howToGet: string[];
   notes?: string[];
@@ -72,6 +73,7 @@ export const kompreRequirements: KompreRequirement[] = [
     isRequired: false,
     canGenerate: false,
     externalLink: "https://www.iloveimg.com/compress-image/compress-jpg",
+    externalLinkLabel: "Kompres Foto di iLoveIMG",
     guideStatus: "ready",
     howToGet: [
       "Siapkan KPM fisik milik Anda.",
@@ -102,6 +104,7 @@ export const kompreRequirements: KompreRequirement[] = [
     isRequired: false,
     canGenerate: false,
     externalLink: "https://akademik.unsri.ac.id/mahasiswa/perkuliahan/krs",
+    externalLinkLabel: "Buka Halaman KRS SIMAK UNSRI",
     guideStatus: "ready",
     howToGet: [
       "Buka sistem akademik UNSRI melalui https://akademik.unsri.ac.id.",
@@ -138,6 +141,7 @@ export const kompreRequirements: KompreRequirement[] = [
     canGenerate: false,
     externalLink:
       "https://docs.google.com/spreadsheets/d/1XulVzq8kPr_V5OXYLgs-vV2bxDe2alukgSpubOLYgUs/edit?usp=drive_link",
+    externalLinkLabel: "Buka Spreadsheet Pengajuan DKN",
     guideStatus: "ready",
     howToGet: [
       "Buka spreadsheet pengajuan Cetak DKN untuk Kompre.",

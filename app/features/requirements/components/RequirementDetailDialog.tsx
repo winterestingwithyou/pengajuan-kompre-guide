@@ -2,6 +2,7 @@ import { ExternalLink, FileText } from "lucide-react";
 import { Link } from "react-router";
 
 import { Button } from "~/components/ui/button";
+import { LinkifiedText } from "~/components/LinkifiedText";
 import {
   Dialog,
   DialogContent,
@@ -76,7 +77,9 @@ export function RequirementDetailDialog({
             <h3 className="font-medium">Cara mendapatkan dokumen</h3>
             <ol className="list-decimal space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
               {requirement.howToGet.map((step) => (
-                <li key={step}>{step}</li>
+                <li key={step}>
+                  <LinkifiedText text={step} />
+                </li>
               ))}
             </ol>
           </div>
@@ -86,7 +89,9 @@ export function RequirementDetailDialog({
               <h3 className="font-medium">Catatan penting</h3>
               <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
                 {requirement.notes.map((note) => (
-                  <li key={note}>{note}</li>
+                  <li key={note}>
+                    <LinkifiedText text={note} />
+                  </li>
                 ))}
               </ul>
             </div>
@@ -101,7 +106,7 @@ export function RequirementDetailDialog({
                 rel="noreferrer"
                 target="_blank"
               >
-                Buka Referensi
+                {requirement.externalLinkLabel ?? "Buka Link Terkait"}
                 <ExternalLink className="size-4" />
               </a>
             </Button>
