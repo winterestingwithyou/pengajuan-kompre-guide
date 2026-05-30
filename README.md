@@ -2,6 +2,8 @@
 
 Web app panduan pengajuan komprehensif untuk mahasiswa D3 Manajemen Informatika Universitas Sriwijaya.
 
+A project by [@winterestingwithyou](https://github.com/winterestingwithyou).
+
 Aplikasi ini membantu mahasiswa memahami dokumen yang dibutuhkan, mengecek kesiapan dokumen, menyimpan link lokasi file secara lokal, dan membuat beberapa surat yang dapat digenerate mandiri sebelum melanjutkan ke Google Form resmi pengajuan kompre.
 
 > Aplikasi ini bukan pengganti Google Form resmi. Data checklist tersimpan lokal di browser pengguna dan tidak dikirim ke server.
@@ -127,3 +129,9 @@ Setiap dokumen memiliki status panduan:
 - `ready`: panduan cukup siap digunakan.
 
 Jika kamu belum yakin dengan sebuah informasi, gunakan status `draft` dan jelaskan bagian yang belum pasti di `notes`.
+
+## Lisensi
+
+Project ini dirilis dengan lisensi [MIT](LICENSE).
+
+Copyright (c) 2026 [winterestingwithyou](https://github.com/winterestingwithyou).

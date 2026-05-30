@@ -1,6 +1,11 @@
 {
   "name": "pengajuan-kompre-guide",
   "private": true,
+  "author": {
+    "name": "winterestingwithyou",
+    "url": "https://github.com/winterestingwithyou"
+  },
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "build": "react-router build",
