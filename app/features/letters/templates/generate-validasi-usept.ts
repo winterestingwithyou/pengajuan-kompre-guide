@@ -2,14 +2,15 @@ import {
   AlignmentType,
   BorderStyle,
   Document,
-  HeadingLevel,
   ImageRun,
   Packer,
   Paragraph,
   Table,
   TableCell,
+  TableLayoutType,
   TableRow,
   TextRun,
+  UnderlineType,
   WidthType,
 } from "docx";
 
@@ -31,12 +32,52 @@ const noBorder = {
   right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
 };
 
-function dataRow(label: string, value: string) {
-  return new Paragraph({
-    spacing: { after: 120 },
+const documentText = {
+  size: 20,
+  color: "000000",
+};
+
+const pageContentWidthPx = 698;
+
+function borderlessCell(text: string, width: number, bold = false) {
+  return new TableCell({
+    borders: noBorder,
+    width: { size: width, type: WidthType.DXA },
+    margins: {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
     children: [
-      new TextRun({ text: label, bold: true }),
-      new TextRun({ text: ` : ${value}` }),
+      new Paragraph({
+        spacing: { after: 0 },
+        children: [new TextRun({ text, bold, ...documentText })],
+      }),
+    ],
+  });
+}
+
+function dataRow(label: string, value: string) {
+  return new TableRow({
+    children: [
+      borderlessCell(label, 1300),
+      borderlessCell(":", 180),
+      borderlessCell(value, 5200),
+    ],
+  });
+}
+
+function dataTable(values: ValidasiUseptGenerateValues) {
+  return new Table({
+    borders: noBorder,
+    layout: TableLayoutType.FIXED,
+    width: { size: 6680, type: WidthType.DXA },
+    rows: [
+      dataRow("Nama", values.nama),
+      dataRow("NIM", values.nim),
+      dataRow("Fakultas", "Ilmu Komputer"),
+      dataRow("Program Studi", "Manajemen Informatika"),
     ],
   });
 }
@@ -45,26 +86,50 @@ function signatureCell(role: string, name: string, nip: string) {
   return new TableCell({
     borders: noBorder,
     width: { size: 50, type: WidthType.PERCENTAGE },
+    margins: {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
     children: [
-      new Paragraph({ alignment: AlignmentType.CENTER, text: role }),
-      new Paragraph({ alignment: AlignmentType.CENTER, text: "Manajemen Informatika" }),
+      new Paragraph({
+        alignment: AlignmentType.LEFT,
+        children: [new TextRun({ text: role, ...documentText })],
+      }),
+      new Paragraph({
+        alignment: AlignmentType.LEFT,
+        children: [new TextRun({ text: "Manajemen Informatika", ...documentText })],
+      }),
+      new Paragraph({ text: "" }),
+      new Paragraph({ text: "" }),
+      new Paragraph({ text: "" }),
       new Paragraph({ text: "" }),
       new Paragraph({ text: "" }),
       new Paragraph({
-        alignment: AlignmentType.CENTER,
-        children: [new TextRun({ text: name, bold: true })],
+        alignment: AlignmentType.LEFT,
+        children: [
+          new TextRun({
+            text: name,
+            bold: true,
+            underline: { type: UnderlineType.SINGLE },
+            ...documentText,
+          }),
+        ],
       }),
-      new Paragraph({ alignment: AlignmentType.CENTER, text: `NIP ${nip}` }),
+      new Paragraph({
+        alignment: AlignmentType.LEFT,
+        children: [new TextRun({ text: `NIP ${nip}`, bold: true, ...documentText })],
+      }),
     ],
   });
 }
 
 export async function generateValidasiUsept(values: ValidasiUseptGenerateValues) {
-  const maxWidth = 430;
-  const maxHeight = 260;
-  const scale = Math.min(maxWidth / values.screenshot.width, maxHeight / values.screenshot.height, 1);
-  const imageWidth = Math.round(values.screenshot.width * scale);
-  const imageHeight = Math.round(values.screenshot.height * scale);
+  const imageWidth = pageContentWidthPx;
+  const imageHeight = Math.round(
+    (values.screenshot.height / values.screenshot.width) * imageWidth
+  );
 
   const doc = new Document({
     sections: [
@@ -82,17 +147,20 @@ export async function generateValidasiUsept(values: ValidasiUseptGenerateValues)
         children: [
           new Paragraph({
             alignment: AlignmentType.CENTER,
-            heading: HeadingLevel.HEADING_1,
             spacing: { after: 360 },
-            children: [new TextRun("VALIDASI USEPT")],
+            children: [
+              new TextRun({
+                text: "VALIDASI USEPT",
+                bold: true,
+                color: "000000",
+                size: 24,
+              }),
+            ],
           }),
-          dataRow("Nama", values.nama),
-          dataRow("NIM", values.nim),
-          dataRow("Fakultas", "Ilmu Komputer"),
-          dataRow("Program Studi", "Manajemen Informatika"),
+          dataTable(values),
           new Paragraph({ text: "" }),
           new Paragraph({
-            alignment: AlignmentType.CENTER,
+            alignment: AlignmentType.LEFT,
             children: [
               new ImageRun({
                 type: values.screenshot.type,
@@ -111,8 +179,13 @@ export async function generateValidasiUsept(values: ValidasiUseptGenerateValues)
           }),
           new Paragraph({ text: "" }),
           new Paragraph({ text: "" }),
+          new Paragraph({ text: "" }),
+          new Paragraph({ text: "" }),
           new Table({
+            borders: noBorder,
+            layout: TableLayoutType.FIXED,
             width: { size: 100, type: WidthType.PERCENTAGE },
+            columnWidths: [5233, 5233],
             rows: [
               new TableRow({
                 children: [
