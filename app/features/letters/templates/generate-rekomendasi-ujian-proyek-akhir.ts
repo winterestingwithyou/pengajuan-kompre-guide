@@ -154,7 +154,7 @@ function recommendationPage(
     dataTable(values),
     new Paragraph({
       spacing: { before: 120, after: 120 },
-      children: [new TextRun({ text: ".", ...docText })],
+      children: [new TextRun({ text: "", ...docText })],
     }),
     new Paragraph({
       spacing: { after: 360 },
