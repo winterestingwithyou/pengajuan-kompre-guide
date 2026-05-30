@@ -16,6 +16,7 @@ import {
 } from "docx";
 
 import type { KartuKonsultasiTugasAkhirValues } from "~/features/letters/schemas/kartu-konsultasi-tugas-akhir.schema";
+import { toCapitalizedTitle } from "~/features/letters/utils/format-title";
 
 type Screenshot = {
   data: ArrayBuffer;
@@ -80,7 +81,7 @@ function dataTable(
       dataRow("NIM", values.nim),
       dataRow("Program Studi", "Manajemen Informatika"),
       dataRow("Jenjang", "D3"),
-      dataRow("Judul Tugas Akhir", values.judulTugasAkhir),
+      dataRow("Judul Tugas Akhir", toCapitalizedTitle(values.judulTugasAkhir)),
       dataRow(pembimbingLabel, pembimbingName),
     ],
   });

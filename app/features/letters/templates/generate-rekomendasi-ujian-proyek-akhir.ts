@@ -15,6 +15,7 @@ import {
 } from "docx";
 
 import type { RekomendasiUjianProyekAkhirValues } from "~/features/letters/schemas/rekomendasi-ujian-proyek-akhir.schema";
+import { toCapitalizedTitle } from "~/features/letters/utils/format-title";
 
 const noBorder = {
   top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
@@ -59,7 +60,7 @@ function dataTable(values: RekomendasiUjianProyekAkhirValues) {
       dataRow("Fakultas", "Ilmu Komputer"),
       dataRow("Program Studi", "Manajemen Informatika"),
       dataRow("Jenjang", "D3"),
-      dataRow("Judul Tugas Akhir", values.judulTugasAkhir),
+      dataRow("Judul Tugas Akhir", toCapitalizedTitle(values.judulTugasAkhir)),
     ],
   });
 }

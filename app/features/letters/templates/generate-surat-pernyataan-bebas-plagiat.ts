@@ -8,6 +8,7 @@ import {
 } from "docx";
 
 import type { SuratPernyataanBebasPlagiatValues } from "~/features/letters/schemas/surat-pernyataan-bebas-plagiat.schema";
+import { toCapitalizedTitle } from "~/features/letters/utils/format-title";
 
 export async function generateSuratPernyataanBebasPlagiat(
   values: SuratPernyataanBebasPlagiatValues
@@ -33,7 +34,9 @@ export async function generateSuratPernyataanBebasPlagiat(
           new Paragraph({ text: `Nama: ${values.nama}` }),
           new Paragraph({ text: `NIM: ${values.nim}` }),
           new Paragraph({ text: `Program Studi: ${values.programStudi}` }),
-          new Paragraph({ text: `Judul Tugas Akhir: ${values.judulTugasAkhir}` }),
+          new Paragraph({
+            text: `Judul Tugas Akhir: ${toCapitalizedTitle(values.judulTugasAkhir)}`,
+          }),
           new Paragraph({ text: "" }),
           new Paragraph({
             children: [
