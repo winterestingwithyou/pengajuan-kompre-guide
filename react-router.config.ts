@@ -10,6 +10,7 @@ export default {
       "/",
       "/panduan",
       "/checklist",
+      "/generator/kartu-konsultasi-tugas-akhir",
       "/generator/rekomendasi-ujian-proyek-akhir",
       "/generator/validasi-usept",
       "/generator/surat-pernyataan-bebas-plagiat",

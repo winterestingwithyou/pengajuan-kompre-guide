@@ -15,10 +15,12 @@ import {
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import type { LetterTemplate } from "~/features/letters/data/letter-templates";
+import { kartuKonsultasiTugasAkhirSchema } from "~/features/letters/schemas/kartu-konsultasi-tugas-akhir.schema";
 import { rekomendasiUjianProyekAkhirSchema } from "~/features/letters/schemas/rekomendasi-ujian-proyek-akhir.schema";
 import { suratPernyataanBebasPlagiatSchema } from "~/features/letters/schemas/surat-pernyataan-bebas-plagiat.schema";
 import { suratPemutakhiranDataSchema } from "~/features/letters/schemas/surat-pemutakhiran-data.schema";
 import { validasiUseptSchema } from "~/features/letters/schemas/validasi-usept.schema";
+import { generateKartuKonsultasiTugasAkhir } from "~/features/letters/templates/generate-kartu-konsultasi-tugas-akhir";
 import { generateRekomendasiUjianProyekAkhir } from "~/features/letters/templates/generate-rekomendasi-ujian-proyek-akhir";
 import { generateSuratPernyataanBebasPlagiat } from "~/features/letters/templates/generate-surat-pernyataan-bebas-plagiat";
 import { generateSuratPemutakhiranData } from "~/features/letters/templates/generate-surat-pemutakhiran-data";
@@ -31,6 +33,8 @@ type GeneratorValues = {
   judulTugasAkhir: string;
   tempatTanggal: string;
   screenshotUsept?: File;
+  screenshotKonsultasi1?: File;
+  screenshotKonsultasi2?: File;
   namaPembimbing1: string;
   nipPembimbing1: string;
   namaPembimbing2: string;
@@ -83,8 +87,12 @@ export function LetterGeneratorForm({
   const isUseptLetter = template.id === "validasi-usept";
   const isRecommendationLetter =
     template.id === "rekomendasi-ujian-proyek-akhir";
+  const isConsultationCard = template.id === "kartu-konsultasi-tugas-akhir";
+  const usesAdvisorFields = isRecommendationLetter || isConsultationCard;
   const schema = isPlagiarismLetter
     ? suratPernyataanBebasPlagiatSchema
+    : isConsultationCard
+      ? kartuKonsultasiTugasAkhirSchema
     : isRecommendationLetter
       ? rekomendasiUjianProyekAkhirSchema
     : isUseptLetter
@@ -99,6 +107,8 @@ export function LetterGeneratorForm({
       judulTugasAkhir: "",
       tempatTanggal: "",
       screenshotUsept: undefined,
+      screenshotKonsultasi1: undefined,
+      screenshotKonsultasi2: undefined,
       namaPembimbing1: "",
       nipPembimbing1: "",
       namaPembimbing2: "",
@@ -129,6 +139,52 @@ export function LetterGeneratorForm({
           width: imageSize.width,
           height: imageSize.height,
         },
+      });
+
+      downloadBlob(blob, template.outputFileName);
+      toast.success("File surat berhasil dibuat.");
+      return;
+    }
+
+    if (isConsultationCard) {
+      if (!values.screenshotKonsultasi1 || !values.screenshotKonsultasi2) {
+        return;
+      }
+
+      const [
+        screenshotData1,
+        screenshotSize1,
+        screenshotData2,
+        screenshotSize2,
+      ] = await Promise.all([
+        values.screenshotKonsultasi1.arrayBuffer(),
+        getImageSize(values.screenshotKonsultasi1),
+        values.screenshotKonsultasi2.arrayBuffer(),
+        getImageSize(values.screenshotKonsultasi2),
+      ]);
+      const blob = await generateKartuKonsultasiTugasAkhir({
+        nama: values.nama,
+        nim: values.nim,
+        judulTugasAkhir: values.judulTugasAkhir,
+        namaPembimbing1: values.namaPembimbing1,
+        nipPembimbing1: values.nipPembimbing1,
+        screenshotKonsultasi1: {
+          data: screenshotData1,
+          type: getImageType(values.screenshotKonsultasi1),
+          width: screenshotSize1.width,
+          height: screenshotSize1.height,
+        },
+        namaPembimbing2: values.namaPembimbing2,
+        nipPembimbing2: values.nipPembimbing2,
+        screenshotKonsultasi2: {
+          data: screenshotData2,
+          type: getImageType(values.screenshotKonsultasi2),
+          width: screenshotSize2.width,
+          height: screenshotSize2.height,
+        },
+        hariTanggal: values.hariTanggal,
+        bulan: values.bulan,
+        tahun: values.tahun,
       });
 
       downloadBlob(blob, template.outputFileName);
@@ -169,6 +225,8 @@ export function LetterGeneratorForm({
         <AlertTitle>
           {isUseptLetter
             ? "Generator Surat Validasi USEPT"
+            : isConsultationCard
+              ? "Generator Kartu Konsultasi Tugas Akhir"
             : isRecommendationLetter
               ? "Generator Surat Rekomendasi Ujian Proyek Akhir"
               : "Generator awal"}
@@ -176,6 +234,8 @@ export function LetterGeneratorForm({
         <AlertDescription>
           {isUseptLetter
             ? "Screenshot USEPT hanya dibaca di browser untuk dimasukkan ke DOCX. Setelah diunduh, cetak surat dan minta validasi admin program studi serta koordinator program studi."
+            : isConsultationCard
+              ? "Generator ini membuat dua halaman kartu konsultasi untuk Pembimbing I dan Pembimbing II. Screenshot asistensi hanya dibaca di browser untuk dimasukkan ke DOCX."
             : isRecommendationLetter
               ? "Generator ini membuat dua halaman surat untuk Pembimbing I dan Pembimbing II. Pastikan nama dosen pembimbing sudah menyertakan gelar."
             : "Format dokumen ini masih placeholder. Periksa ulang isi, tanda tangan, materai, dan ketentuan final sebelum digunakan untuk pengajuan."}
@@ -224,7 +284,7 @@ export function LetterGeneratorForm({
           )}
         />
 
-        {!isUseptLetter && !isRecommendationLetter && (
+        {!isUseptLetter && !usesAdvisorFields && (
           <Controller
             control={form.control}
             name="programStudi"
@@ -268,7 +328,7 @@ export function LetterGeneratorForm({
           />
         )}
 
-        {isRecommendationLetter && (
+        {usesAdvisorFields && (
           <>
             <Controller
               control={form.control}
@@ -330,6 +390,40 @@ export function LetterGeneratorForm({
               )}
             />
 
+            {isConsultationCard && (
+              <Controller
+                control={form.control}
+                name="screenshotKonsultasi1"
+                render={({
+                  field: { name, onBlur, onChange, ref },
+                  fieldState,
+                }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor={name}>
+                      Screenshot Asistensi Pembimbing I
+                    </FieldLabel>
+                    <Input
+                      accept="image/png,image/jpeg"
+                      aria-invalid={fieldState.invalid}
+                      id={name}
+                      name={name}
+                      onBlur={onBlur}
+                      onChange={(event) => onChange(event.target.files?.[0])}
+                      ref={ref}
+                      type="file"
+                    />
+                    <FieldDescription>
+                      Gunakan screenshot daftar asistensi SIMAK khusus
+                      Pembimbing I yang sudah disetujui.
+                    </FieldDescription>
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            )}
+
             <Controller
               control={form.control}
               name="namaPembimbing2"
@@ -370,6 +464,40 @@ export function LetterGeneratorForm({
                 </Field>
               )}
             />
+
+            {isConsultationCard && (
+              <Controller
+                control={form.control}
+                name="screenshotKonsultasi2"
+                render={({
+                  field: { name, onBlur, onChange, ref },
+                  fieldState,
+                }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor={name}>
+                      Screenshot Asistensi Pembimbing II
+                    </FieldLabel>
+                    <Input
+                      accept="image/png,image/jpeg"
+                      aria-invalid={fieldState.invalid}
+                      id={name}
+                      name={name}
+                      onBlur={onBlur}
+                      onChange={(event) => onChange(event.target.files?.[0])}
+                      ref={ref}
+                      type="file"
+                    />
+                    <FieldDescription>
+                      Gunakan screenshot daftar asistensi SIMAK khusus
+                      Pembimbing II yang sudah disetujui.
+                    </FieldDescription>
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            )}
 
             <div className="grid gap-4 sm:grid-cols-3">
               <Controller
@@ -462,7 +590,7 @@ export function LetterGeneratorForm({
               </Field>
             )}
           />
-        ) : !isRecommendationLetter ? (
+        ) : !usesAdvisorFields ? (
           <Controller
             control={form.control}
             name="tempatTanggal"

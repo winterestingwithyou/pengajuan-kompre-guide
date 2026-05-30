@@ -7,6 +7,13 @@ export type LetterTemplate = {
 
 export const letterTemplates: LetterTemplate[] = [
   {
+    id: "kartu-konsultasi-tugas-akhir",
+    title: "Kartu Konsultasi Tugas Akhir",
+    description:
+      "Generator dua halaman kartu konsultasi Pembimbing I dan Pembimbing II berdasarkan screenshot asistensi SIMAK.",
+    outputFileName: "kartu-konsultasi-tugas-akhir.docx",
+  },
+  {
     id: "rekomendasi-ujian-proyek-akhir",
     title: "Surat Rekomendasi Ujian Proyek Akhir",
     description:
