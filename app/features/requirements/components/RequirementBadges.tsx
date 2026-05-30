@@ -19,7 +19,10 @@ export function RequirementBadges({
         <Badge variant="outline">Image</Badge>
       )}
       {requirement.guideStatus === "todo" && (
-        <Badge variant="outline">Panduan Belum Lengkap</Badge>
+        <Badge variant="outline">Panduan Belum Tersedia</Badge>
+      )}
+      {requirement.guideStatus === "draft" && (
+        <Badge variant="outline">Panduan Draft</Badge>
       )}
       {requirement.guideStatus === "ready" && (
         <Badge variant="secondary">Panduan Tersedia</Badge>
