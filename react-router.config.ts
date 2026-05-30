@@ -10,6 +10,7 @@ export default {
       "/",
       "/panduan",
       "/checklist",
+      "/generator/validasi-usept",
       "/generator/surat-pernyataan-bebas-plagiat",
       "/generator/surat-pernyataan-pemutakhiran-data",
     ],

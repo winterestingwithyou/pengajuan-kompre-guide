@@ -7,6 +7,13 @@ export type LetterTemplate = {
 
 export const letterTemplates: LetterTemplate[] = [
   {
+    id: "validasi-usept",
+    title: "Surat Validasi USEPT",
+    description:
+      "Generator surat validasi USEPT untuk kebutuhan kompre D3 Manajemen Informatika Unsri.",
+    outputFileName: "validasi-usept.docx",
+  },
+  {
     id: "surat-pernyataan-bebas-plagiat",
     title: "Surat Pernyataan Bebas Plagiat",
     description:
