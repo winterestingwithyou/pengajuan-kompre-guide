@@ -7,6 +7,13 @@ export type LetterTemplate = {
 
 export const letterTemplates: LetterTemplate[] = [
   {
+    id: "rekomendasi-ujian-proyek-akhir",
+    title: "Surat Rekomendasi Ujian Proyek Akhir",
+    description:
+      "Generator dua halaman surat rekomendasi Pembimbing I dan Pembimbing II untuk kebutuhan kompre D3 Manajemen Informatika Unsri.",
+    outputFileName: "surat-rekomendasi-ujian-proyek-akhir.docx",
+  },
+  {
     id: "validasi-usept",
     title: "Surat Validasi USEPT",
     description:

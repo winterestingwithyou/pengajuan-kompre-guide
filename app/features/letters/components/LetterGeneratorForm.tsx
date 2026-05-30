@@ -15,9 +15,11 @@ import {
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import type { LetterTemplate } from "~/features/letters/data/letter-templates";
+import { rekomendasiUjianProyekAkhirSchema } from "~/features/letters/schemas/rekomendasi-ujian-proyek-akhir.schema";
 import { suratPernyataanBebasPlagiatSchema } from "~/features/letters/schemas/surat-pernyataan-bebas-plagiat.schema";
 import { suratPemutakhiranDataSchema } from "~/features/letters/schemas/surat-pemutakhiran-data.schema";
 import { validasiUseptSchema } from "~/features/letters/schemas/validasi-usept.schema";
+import { generateRekomendasiUjianProyekAkhir } from "~/features/letters/templates/generate-rekomendasi-ujian-proyek-akhir";
 import { generateSuratPernyataanBebasPlagiat } from "~/features/letters/templates/generate-surat-pernyataan-bebas-plagiat";
 import { generateSuratPemutakhiranData } from "~/features/letters/templates/generate-surat-pemutakhiran-data";
 import { generateValidasiUsept } from "~/features/letters/templates/generate-validasi-usept";
@@ -29,6 +31,13 @@ type GeneratorValues = {
   judulTugasAkhir: string;
   tempatTanggal: string;
   screenshotUsept?: File;
+  namaPembimbing1: string;
+  nipPembimbing1: string;
+  namaPembimbing2: string;
+  nipPembimbing2: string;
+  hariTanggal: string;
+  bulan: string;
+  tahun: string;
 };
 
 function downloadBlob(blob: Blob, fileName: string) {
@@ -72,8 +81,12 @@ export function LetterGeneratorForm({
   const isPlagiarismLetter =
     template.id === "surat-pernyataan-bebas-plagiat";
   const isUseptLetter = template.id === "validasi-usept";
+  const isRecommendationLetter =
+    template.id === "rekomendasi-ujian-proyek-akhir";
   const schema = isPlagiarismLetter
     ? suratPernyataanBebasPlagiatSchema
+    : isRecommendationLetter
+      ? rekomendasiUjianProyekAkhirSchema
     : isUseptLetter
       ? validasiUseptSchema
     : suratPemutakhiranDataSchema;
@@ -86,6 +99,13 @@ export function LetterGeneratorForm({
       judulTugasAkhir: "",
       tempatTanggal: "",
       screenshotUsept: undefined,
+      namaPembimbing1: "",
+      nipPembimbing1: "",
+      namaPembimbing2: "",
+      nipPembimbing2: "",
+      hariTanggal: "",
+      bulan: "",
+      tahun: new Date().getFullYear().toString(),
     },
     resolver: zodResolver(schema) as unknown as Resolver<GeneratorValues>,
   });
@@ -116,6 +136,25 @@ export function LetterGeneratorForm({
       return;
     }
 
+    if (isRecommendationLetter) {
+      const blob = await generateRekomendasiUjianProyekAkhir({
+        nama: values.nama,
+        nim: values.nim,
+        judulTugasAkhir: values.judulTugasAkhir,
+        namaPembimbing1: values.namaPembimbing1,
+        nipPembimbing1: values.nipPembimbing1,
+        namaPembimbing2: values.namaPembimbing2,
+        nipPembimbing2: values.nipPembimbing2,
+        hariTanggal: values.hariTanggal,
+        bulan: values.bulan,
+        tahun: values.tahun,
+      });
+
+      downloadBlob(blob, template.outputFileName);
+      toast.success("File surat berhasil dibuat.");
+      return;
+    }
+
     const blob = isPlagiarismLetter
       ? await generateSuratPernyataanBebasPlagiat(values)
       : await generateSuratPemutakhiranData(values);
@@ -128,11 +167,17 @@ export function LetterGeneratorForm({
     <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
       <Alert>
         <AlertTitle>
-          {isUseptLetter ? "Generator Surat Validasi USEPT" : "Generator awal"}
+          {isUseptLetter
+            ? "Generator Surat Validasi USEPT"
+            : isRecommendationLetter
+              ? "Generator Surat Rekomendasi Ujian Proyek Akhir"
+              : "Generator awal"}
         </AlertTitle>
         <AlertDescription>
           {isUseptLetter
             ? "Screenshot USEPT hanya dibaca di browser untuk dimasukkan ke DOCX. Setelah diunduh, cetak surat dan minta validasi admin program studi serta koordinator program studi."
+            : isRecommendationLetter
+              ? "Generator ini membuat dua halaman surat untuk Pembimbing I dan Pembimbing II. Pastikan nama dosen pembimbing sudah menyertakan gelar."
             : "Format dokumen ini masih placeholder. Periksa ulang isi, tanda tangan, materai, dan ketentuan final sebelum digunakan untuk pengajuan."}
         </AlertDescription>
       </Alert>
@@ -179,7 +224,7 @@ export function LetterGeneratorForm({
           )}
         />
 
-        {!isUseptLetter && (
+        {!isUseptLetter && !isRecommendationLetter && (
           <Controller
             control={form.control}
             name="programStudi"
@@ -223,6 +268,173 @@ export function LetterGeneratorForm({
           />
         )}
 
+        {isRecommendationLetter && (
+          <>
+            <Controller
+              control={form.control}
+              name="judulTugasAkhir"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Judul Tugas Akhir</FieldLabel>
+                  <Textarea
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="Masukkan judul tugas akhir"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="namaPembimbing1"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Nama Pembimbing I</FieldLabel>
+                  <Input
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="Contoh: Nama Dosen Pembimbing, M.Kom."
+                  />
+                  <FieldDescription>
+                    Wajib menyertakan gelar dosen pembimbing.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="nipPembimbing1"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>NIP Pembimbing I</FieldLabel>
+                  <Input
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="Masukkan NIP pembimbing I"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="namaPembimbing2"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Nama Pembimbing II</FieldLabel>
+                  <Input
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="Contoh: Nama Dosen Pembimbing, M.Kom."
+                  />
+                  <FieldDescription>
+                    Wajib menyertakan gelar dosen pembimbing.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="nipPembimbing2"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>NIP Pembimbing II</FieldLabel>
+                  <Input
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="Masukkan NIP pembimbing II"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              <Controller
+                control={form.control}
+                name="hariTanggal"
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor={field.name}>Hari/Tanggal</FieldLabel>
+                    <Input
+                      {...field}
+                      aria-invalid={fieldState.invalid}
+                      id={field.name}
+                      placeholder="Opsional"
+                    />
+                    <FieldDescription>
+                      Boleh dikosongkan untuk diisi manual.
+                    </FieldDescription>
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+
+              <Controller
+                control={form.control}
+                name="bulan"
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor={field.name}>Bulan</FieldLabel>
+                    <Input
+                      {...field}
+                      aria-invalid={fieldState.invalid}
+                      id={field.name}
+                      placeholder="Mei"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+
+              <Controller
+                control={form.control}
+                name="tahun"
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor={field.name}>Tahun</FieldLabel>
+                    <Input
+                      {...field}
+                      aria-invalid={fieldState.invalid}
+                      id={field.name}
+                      placeholder="2026"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            </div>
+          </>
+        )}
+
         {isUseptLetter ? (
           <Controller
             control={form.control}
@@ -250,7 +462,7 @@ export function LetterGeneratorForm({
               </Field>
             )}
           />
-        ) : (
+        ) : !isRecommendationLetter ? (
           <Controller
             control={form.control}
             name="tempatTanggal"
@@ -269,7 +481,7 @@ export function LetterGeneratorForm({
               </Field>
             )}
           />
-        )}
+        ) : null}
       </FieldGroup>
 
       <Button disabled={form.formState.isSubmitting} type="submit">
