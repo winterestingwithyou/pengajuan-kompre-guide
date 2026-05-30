@@ -1,87 +1,129 @@
-# Welcome to React Router!
+# Panduan Pengajuan Kompre
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Web app panduan pengajuan komprehensif untuk mahasiswa D3 Manajemen Informatika Universitas Sriwijaya.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+Aplikasi ini membantu mahasiswa memahami dokumen yang dibutuhkan, mengecek kesiapan dokumen, menyimpan link lokasi file secara lokal, dan membuat beberapa surat yang dapat digenerate mandiri sebelum melanjutkan ke Google Form resmi pengajuan kompre.
 
-## Features
+> Aplikasi ini bukan pengganti Google Form resmi. Data checklist tersimpan lokal di browser pengguna dan tidak dikirim ke server.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+## Fitur
 
-## Getting Started
+- Panduan dokumen pengajuan kompre berdasarkan kategori.
+- Pencarian dan filter dokumen.
+- Checklist kesiapan dokumen dengan progress.
+- Penyimpanan link file dokumen di IndexedDB browser.
+- Generator DOCX client-side untuk dokumen tertentu.
+- Link menuju Google Form resmi dan referensi dokumen.
+- UI responsive dengan dukungan dark mode.
+- Beberapa halaman diprerender untuk membantu SEO.
 
-### Installation
+## Tech Stack
 
-Install the dependencies:
+- React Router v7 Framework Mode
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- React Hook Form
+- Zod
+- Dexie dan dexie-react-hooks
+- docx
+- lucide-react
+- Bun sebagai package manager
 
-```bash
-npm install
-```
+## Mulai Development
 
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
+Pastikan Bun sudah terpasang:
 
 ```bash
-npm run build
+bun --version
 ```
 
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
+Install dependencies:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+bun install
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+Jalankan development server:
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+```bash
+bun run dev
 ```
 
-## Styling
+Aplikasi akan tersedia di:
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+```txt
+http://localhost:5173
+```
 
----
+## Script
 
-Built with ❤️ using React Router.
+```bash
+bun run dev
+bun run typecheck
+bun run build
+bun run start
+```
+
+Gunakan `bun run typecheck` sebelum mengirim perubahan. Untuk perubahan yang menyentuh routing, generator, atau konfigurasi build, jalankan juga `bun run build`.
+
+## Struktur Project
+
+```txt
+app/
+  components/
+    layout/
+    ui/
+  features/
+    checklist/
+    letters/
+    requirements/
+  lib/
+  routes/
+
+content/
+  documents/
+
+public/
+```
+
+Bagian penting:
+
+- `app/features/requirements/data/kompre-requirements.ts`: data utama semua kebutuhan dokumen kompre.
+- `content/documents/`: sumber catatan panduan berbentuk markdown.
+- `app/features/letters/`: schema, data template, form, dan generator surat DOCX.
+- `app/lib/db.ts`: konfigurasi IndexedDB untuk checklist lokal.
+- `react-router.config.ts`: konfigurasi React Router dan prerender route.
+
+## Kontribusi
+
+Project ini dibuat open source agar mahasiswa lain bisa membantu memperbaiki panduan, melengkapi informasi, dan meningkatkan pengalaman penggunaan.
+
+Baca panduan kontribusi lengkap di [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Kontribusi yang sangat membantu:
+
+- Memperbaiki langkah panduan dokumen yang masih `draft`.
+- Menambahkan link referensi resmi atau lokasi form yang valid.
+- Memperbaiki typo, bahasa, atau istilah yang membingungkan.
+- Menguji generator surat dan membandingkan hasil DOCX dengan format resmi.
+- Memperbaiki bug UI, aksesibilitas, mobile layout, atau dark mode.
+
+## Prinsip Data dan Privasi
+
+- Tidak ada login.
+- Tidak ada database eksternal.
+- Tidak ada upload file ke aplikasi.
+- Checklist dan link file dokumen hanya disimpan di browser pengguna memakai IndexedDB.
+- Generator surat berjalan di browser dan hasilnya langsung diunduh oleh pengguna.
+
+## Status Panduan
+
+Setiap dokumen memiliki status panduan:
+
+- `todo`: panduan belum tersedia.
+- `draft`: panduan sudah ada, tetapi masih perlu dikonfirmasi atau dilengkapi.
+- `ready`: panduan cukup siap digunakan.
+
+Jika kamu belum yakin dengan sebuah informasi, gunakan status `draft` dan jelaskan bagian yang belum pasti di `notes`.
