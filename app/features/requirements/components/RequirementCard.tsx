@@ -23,17 +23,22 @@ export function RequirementCard({
   requirement: KompreRequirement;
 }) {
   return (
-    <Card className="soft-panel rounded-lg transition-transform hover:-translate-y-0.5" size="sm">
-      <CardHeader>
-        <CardTitle className="pr-2 leading-snug">{requirement.title}</CardTitle>
+    <Card
+      className="soft-panel rounded-lg transition-transform hover:-translate-y-0.5"
+      size="sm"
+    >
+      <CardHeader className="gap-3">
+        <CardTitle className="pr-2 leading-snug">
+          {requirement.title}
+        </CardTitle>
         <CardAction>
-          <span className="rounded-md bg-neutral-100 px-2 py-1 text-xs text-muted-foreground ring-1 ring-border dark:bg-neutral-800">
+          <span className="block max-w-32 truncate rounded-md bg-neutral-100 px-2 py-1 text-xs text-muted-foreground ring-1 ring-border dark:bg-neutral-800 sm:max-w-none">
             {requirementCategoryLabels[requirement.category]}
           </span>
         </CardAction>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="leading-6 text-muted-foreground">
+        <p className="break-words leading-6 text-muted-foreground">
           {requirement.description}
         </p>
         <RequirementBadges requirement={requirement} />

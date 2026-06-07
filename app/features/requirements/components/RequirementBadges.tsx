@@ -7,7 +7,7 @@ export function RequirementBadges({
   requirement: KompreRequirement;
 }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex min-w-0 flex-wrap gap-2">
       {requirement.isRequired && <Badge>Wajib</Badge>}
       {requirement.canGenerate && (
         <Badge variant="secondary">Bisa Generate</Badge>
@@ -19,13 +19,19 @@ export function RequirementBadges({
         <Badge variant="outline">Image</Badge>
       )}
       {requirement.guideStatus === "todo" && (
-        <Badge variant="outline">Panduan Belum Tersedia</Badge>
+        <Badge className="max-w-full truncate" variant="outline">
+          Panduan Belum Tersedia
+        </Badge>
       )}
       {requirement.guideStatus === "draft" && (
-        <Badge variant="outline">Panduan Draft</Badge>
+        <Badge className="max-w-full truncate" variant="outline">
+          Panduan Draft
+        </Badge>
       )}
       {requirement.guideStatus === "ready" && (
-        <Badge variant="secondary">Panduan Tersedia</Badge>
+        <Badge className="max-w-full truncate" variant="secondary">
+          Panduan Tersedia
+        </Badge>
       )}
     </div>
   );

@@ -12,7 +12,7 @@ export function LinkifiedText({ text }: { text: string }) {
 
         return (
           <a
-            className="font-medium text-foreground underline underline-offset-4 hover:text-muted-foreground"
+            className="break-all font-medium text-foreground underline underline-offset-4 hover:text-muted-foreground"
             href={part}
             key={`${part}-${index}`}
             rel="noreferrer"

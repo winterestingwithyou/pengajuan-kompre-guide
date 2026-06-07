@@ -30,41 +30,45 @@ export function RequirementDetailDialog({
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-h-[min(88vh,720px)] overflow-y-auto scrollbar-hide rounded-lg border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 sm:max-w-2xl">
-        <DialogHeader>
-          <DialogTitle>{requirement.title}</DialogTitle>
-          <DialogDescription>{requirement.description}</DialogDescription>
+        <DialogHeader className="pr-10">
+          <DialogTitle className="leading-snug">
+            {requirement.title}
+          </DialogTitle>
+          <DialogDescription className="leading-6">
+            {requirement.description}
+          </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
           <RequirementBadges requirement={requirement} />
 
           <div className="grid gap-3 text-sm sm:grid-cols-2">
-            <div>
+            <div className="min-w-0">
               <p className="font-medium">Kategori</p>
-              <p className="text-muted-foreground">
+              <p className="break-words text-muted-foreground">
                 {requirementCategoryLabels[requirement.category]}
               </p>
             </div>
             {requirement.sourceLabel && (
-              <div>
+              <div className="min-w-0">
                 <p className="font-medium">Sumber dokumen</p>
-                <p className="text-muted-foreground">
+                <p className="break-words text-muted-foreground">
                   {requirement.sourceLabel}
                 </p>
               </div>
             )}
             {requirement.maxFileSizeMb && (
-              <div>
+              <div className="min-w-0">
                 <p className="font-medium">Maksimal ukuran</p>
-                <p className="text-muted-foreground">
+                <p className="break-words text-muted-foreground">
                   {requirement.maxFileSizeMb} MB
                 </p>
               </div>
             )}
             {requirement.maxFileCount && (
-              <div>
+              <div className="min-w-0">
                 <p className="font-medium">Jumlah file</p>
-                <p className="text-muted-foreground">
+                <p className="break-words text-muted-foreground">
                   Maksimal {requirement.maxFileCount} file
                 </p>
               </div>
@@ -77,7 +81,7 @@ export function RequirementDetailDialog({
             <h3 className="font-medium">Cara mendapatkan dokumen</h3>
             <ol className="list-decimal space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
               {requirement.howToGet.map((step) => (
-                <li key={step}>
+                <li className="min-w-0 break-words" key={step}>
                   <LinkifiedText text={step} />
                 </li>
               ))}
@@ -89,7 +93,7 @@ export function RequirementDetailDialog({
               <h3 className="font-medium">Catatan penting</h3>
               <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
                 {requirement.notes.map((note) => (
-                  <li key={note}>
+                  <li className="min-w-0 break-words" key={note}>
                     <LinkifiedText text={note} />
                   </li>
                 ))}
@@ -100,19 +104,22 @@ export function RequirementDetailDialog({
 
         <DialogFooter>
           {requirement.externalLink && (
-            <Button asChild variant="outline">
+            <Button asChild className="w-full sm:w-auto" variant="outline">
               <a
+                className="min-w-0"
                 href={requirement.externalLink}
                 rel="noreferrer"
                 target="_blank"
               >
-                {requirement.externalLinkLabel ?? "Buka Link Terkait"}
+                <span className="truncate">
+                  {requirement.externalLinkLabel ?? "Buka Link Terkait"}
+                </span>
                 <ExternalLink className="size-4" />
               </a>
             </Button>
           )}
           {requirement.canGenerate && requirement.templateId && (
-            <Button asChild>
+            <Button asChild className="w-full sm:w-auto">
               <Link to={`/generator/${requirement.templateId}`}>
                 <FileText className="size-4" />
                 Generate Surat
