@@ -20,6 +20,12 @@ export type RequirementExternalLink = {
   description?: string;
 };
 
+export type RequirementDownloadableAsset = {
+  label: string;
+  url: string;
+  fileName?: string;
+};
+
 export type KompreRequirement = {
   id: string;
   title: string;
@@ -33,6 +39,11 @@ export type KompreRequirement = {
   canGenerate: boolean;
   templateId?: string;
   externalLinks?: RequirementExternalLink[];
+  downloadableAssets?: RequirementDownloadableAsset[];
+  copyablePrompt?: {
+    label: string;
+    text: string;
+  };
   guideStatus: GuideStatus;
   howToGet: string[];
   notes?: string[];
@@ -182,35 +193,110 @@ export const kompreRequirements: KompreRequirement[] = [
     title: "SK Pembimbing TA",
     category: "tugas-akhir",
     description:
-      "Dokumen pendukung yang menunjukkan mahasiswa telah memiliki dosen pembimbing Tugas Akhir dan sudah memiliki cap dari admin atau program studi.",
-    sourceLabel: "Program Studi / Kaprodi / Admin Program Studi / Pembimbing TA",
+      "Surat Keputusan Pembimbing Tugas Akhir yang berisi daftar mahasiswa beserta dosen pembimbingnya dan sudah dicap.",
+    sourceLabel: "Surat Keputusan Pembimbing TA / Program Studi",
     acceptedFileType: "pdf",
     maxFileSizeMb: 1,
     maxFileCount: 1,
     isRequired: false,
     canGenerate: false,
-    guideStatus: "draft",
+    externalLinks: [
+      {
+        label: "Edit Highlight di ChatGPT",
+        url: "https://chatgpt.com",
+        description:
+          "Gunakan ChatGPT untuk memberi efek stabilo pada baris nama mahasiswa.",
+      },
+      {
+        label: "Gabung JPG ke PDF di iLovePDF",
+        url: "https://www.ilovepdf.com/jpg_to_pdf",
+        description:
+          "Gabungkan seluruh gambar halaman SK menjadi satu file PDF.",
+      },
+    ],
+    downloadableAssets: [
+      {
+        label: "Halaman 1",
+        url: "/sk-pembimbing-ta/SK%20Pembimbing%20TA_1.jpg",
+        fileName: "SK Pembimbing TA_1.jpg",
+      },
+      {
+        label: "Halaman 2",
+        url: "/sk-pembimbing-ta/SK%20Pembimbing%20TA_2.jpg",
+        fileName: "SK Pembimbing TA_2.jpg",
+      },
+      {
+        label: "Halaman 3",
+        url: "/sk-pembimbing-ta/SK%20Pembimbing%20TA_3.jpg",
+        fileName: "SK Pembimbing TA_3.jpg",
+      },
+      {
+        label: "Halaman 4",
+        url: "/sk-pembimbing-ta/SK%20Pembimbing%20TA_4.jpg",
+        fileName: "SK Pembimbing TA_4.jpg",
+      },
+      {
+        label: "Halaman 5",
+        url: "/sk-pembimbing-ta/SK%20Pembimbing%20TA_5.jpg",
+        fileName: "SK Pembimbing TA_5.jpg",
+      },
+      {
+        label: "Halaman 6",
+        url: "/sk-pembimbing-ta/SK%20Pembimbing%20TA_6.jpg",
+        fileName: "SK Pembimbing TA_6.jpg",
+      },
+    ],
+    copyablePrompt: {
+      label: "Copy Prompt Highlight Baris Nama",
+      text: `Edit gambar dokumen/tabel yang saya unggah.
+
+Tolong tingkatkan kualitas gambar agar lebih jelas/HD:
+- tajamkan teks dan garis tabel,
+- kurangi blur/noise,
+- rapikan pencahayaan,
+- tetap pertahankan bentuk dokumen asli secara natural.
+
+Lalu beri efek stabilo/highlighter transparan pada tepat satu baris saja, yaitu baris dengan data berikut:
+
+Nomor baris: [ISI NOMOR BARIS]
+NIM/ID: [ISI NIM/ID]
+Nama: [ISI NAMA]
+
+Ketentuan stabilo:
+- Stabilo harus pas di baris tersebut saja.
+- Jangan mengenai baris di atas atau di bawahnya.
+- Stabilo satu baris penuh dari kolom paling kiri sampai kolom paling kanan.
+- Gunakan warna stabilo [kuning/hijau/biru/pink] yang transparan.
+- Teks dan garis tabel tetap harus terbaca jelas.
+- Jangan mengubah isi teks, nama, angka, atau struktur tabel lainnya.
+- Jangan membuat ulang dokumen dari nol; cukup edit gambar asli.`,
+    },
+    guideStatus: "ready",
     howToGet: [
-      "Konfirmasi terlebih dahulu kepada admin program studi apakah dokumen yang dimaksud adalah Surat Keputusan Pembimbing TA atau Surat Kesediaan Pembimbing TA.",
-      "Jika yang dimaksud adalah Surat Keputusan Pembimbing TA, cek grup WhatsApp MI 2023 atau grup resmi program studi yang digunakan untuk membagikan informasi akademik.",
-      "Cari file Surat Keputusan Pembimbing TA yang pernah dikirimkan oleh Koordinator Program Studi atau Kaprodi.",
-      "Pastikan nama kamu tercantum pada dokumen tersebut.",
-      "Pastikan dokumen menampilkan informasi nama mahasiswa, NIM jika tersedia, nama Pembimbing I, dan nama Pembimbing II.",
-      "Jika dokumen masih belum memiliki cap, temui admin program studi untuk meminta cap pada dokumen tersebut.",
-      "Jika yang dimaksud adalah Surat Kesediaan Pembimbing TA, cari kembali dokumen yang digunakan saat pengajuan proposal Tugas Akhir.",
-      "Pastikan Surat Kesediaan Pembimbing TA sudah ditandatangani oleh Pembimbing I dan Pembimbing II.",
-      "Jika tanda tangan belum lengkap, temui pembimbing terkait untuk melengkapi tanda tangan.",
-      "Setelah tanda tangan lengkap, temui admin program studi untuk meminta cap pada dokumen tersebut.",
-      "Jika dokumen berbentuk fisik, lakukan capture atau scan dokumen.",
-      "Ubah hasil capture atau scan menjadi file PDF.",
+      "Download seluruh gambar halaman SK Pembimbing TA yang tersedia pada panduan ini.",
+      "SK terdiri dari 6 halaman. Halaman 3 sampai 6 berisi tabel daftar mahasiswa beserta dosen pembimbingnya.",
+      "Cari nama kamu pada tabel di halaman 3 sampai 6.",
+      "Buka halaman gambar yang memuat nama kamu.",
+      "Buka https://chatgpt.com.",
+      "Upload gambar halaman yang memuat nama kamu ke ChatGPT.",
+      "Copy prompt highlight dari panduan ini.",
+      "Ganti bagian [ISI NOMOR BARIS], [ISI NIM/ID], dan [ISI NAMA] sesuai baris data kamu.",
+      "Kirim prompt tersebut agar ChatGPT meningkatkan kualitas gambar dan memberi efek stabilo transparan pada tepat satu baris nama kamu.",
+      "Download hasil edit gambar dari ChatGPT.",
+      "Ganti gambar halaman asli yang memuat nama kamu dengan gambar hasil edit yang sudah diberi stabilo.",
+      "Pastikan 6 gambar halaman SK tetap lengkap dan urut dari halaman 1 sampai halaman 6.",
+      "Buka https://www.ilovepdf.com/jpg_to_pdf.",
+      "Upload seluruh gambar halaman SK yang sudah final ke iLovePDF.",
+      "Gabungkan seluruh gambar menjadi 1 file PDF.",
       "Pastikan file akhir berformat PDF dan ukuran file tidak lebih dari 1 MB.",
     ],
     notes: [
-      "Panduan ini masih berstatus draft karena keterangan pada form pengajuan kompre masih ambigu.",
-      "Dokumen tertulis sebagai SK Pembimbing TA, tetapi belum dapat dipastikan apakah yang dimaksud adalah Surat Keputusan Pembimbing TA atau Surat Kesediaan Pembimbing TA.",
-      "Dokumen harus menunjukkan informasi pembimbing Tugas Akhir mahasiswa.",
-      "Dokumen harus sudah memiliki cap dari admin atau pihak program studi.",
-      "Jika memungkinkan, siapkan kedua dokumen sebagai antisipasi.",
+      "Syarat yang benar adalah Surat Keputusan Pembimbing TA, bukan Surat Kesediaan Pembimbing TA.",
+      "File gambar SK yang tersedia pada panduan ini sudah dicap, sehingga mahasiswa tidak perlu mencetak ulang PDF asli untuk meminta cap admin.",
+      "Mahasiswa hanya perlu memberi efek stabilo pada baris namanya di halaman tabel yang sesuai.",
+      "Halaman yang tidak memuat nama mahasiswa tidak perlu diedit.",
+      "Saat menggabungkan ke PDF, gunakan semua halaman SK. Hanya ganti halaman yang memuat nama kamu dengan versi yang sudah diberi stabilo.",
+      "Pastikan teks, angka, nama, dan struktur tabel tidak berubah setelah diedit.",
     ],
   },
   {

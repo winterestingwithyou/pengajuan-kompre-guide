@@ -323,6 +323,15 @@ export type KompreRequirement = {
     url: string;
     description?: string;
   }[];
+  downloadableAssets?: {
+    label: string;
+    url: string;
+    fileName?: string;
+  }[];
+  copyablePrompt?: {
+    label: string;
+    text: string;
+  };
   guideStatus: GuideStatus;
   howToGet: string[];
   notes?: string[];

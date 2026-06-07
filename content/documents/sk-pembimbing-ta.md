@@ -3,12 +3,16 @@ id: sk-pembimbing-ta
 title: SK Pembimbing TA
 category: Tugas Akhir
 required: false
-status: draft
-sourceLabel: Program Studi / Kaprodi / Admin Program Studi / Pembimbing TA
-sourceUrl: ""
+status: ready
+sourceLabel: Surat Keputusan Pembimbing TA / Program Studi
 acceptedFileType: pdf
 maxFileSizeMb: 1
 maxFileCount: 1
+externalLinks:
+  - label: Edit Highlight di ChatGPT
+    url: "https://chatgpt.com"
+  - label: Gabung JPG ke PDF di iLovePDF
+    url: "https://www.ilovepdf.com/jpg_to_pdf"
 ---
 
 # SK Pembimbing TA
@@ -17,89 +21,114 @@ maxFileCount: 1
 
 SK Pembimbing TA digunakan sebagai dokumen pendukung yang menunjukkan bahwa mahasiswa telah memiliki dosen pembimbing Tugas Akhir.
 
-Pada form pengajuan kompre, dokumen ini tertulis sebagai **SK Pembimbing TA (sudah dicap)**. Namun, detail dokumen yang dimaksud masih perlu dikonfirmasi karena terdapat dua kemungkinan penafsiran, yaitu:
+Dokumen yang benar untuk syarat ini adalah **Surat Keputusan Pembimbing TA**, bukan Surat Kesediaan Pembimbing TA.
 
-1. **Surat Keputusan Pembimbing TA**
-2. **Surat Kesediaan Pembimbing TA**
-
-Karena informasi ini masih belum sepenuhnya jelas, panduan ini masih berstatus **draft**.
+Surat Keputusan ini terdiri dari **6 halaman**. Halaman 3 sampai halaman 6 berisi tabel daftar nama mahasiswa beserta dosen pembimbingnya.
 
 ## Cara Mendapatkan
 
-Terdapat dua kemungkinan dokumen yang dimaksud sebagai SK Pembimbing TA.
+Pada sistem panduan ini sudah tersedia gambar seluruh halaman SK Pembimbing TA yang sudah dicap.
 
-### Opsi 1: Surat Keputusan Pembimbing TA
-
-Jika yang dimaksud adalah **Surat Keputusan Pembimbing TA**, dokumen ini biasanya berisi daftar nama mahasiswa beserta dosen Pembimbing I dan Pembimbing II.
+Mahasiswa tidak perlu mencetak PDF asli lalu meminta cap ulang kepada admin, karena file yang dikumpulkan pada akhirnya berbentuk soft file atau hasil capture. Menggunakan gambar SK yang sudah dicap dari sistem ini akan menghasilkan bentuk dokumen yang sama untuk kebutuhan upload.
 
 Langkah-langkah:
 
-1. Cek grup WhatsApp **MI 2023** atau grup resmi program studi yang digunakan untuk membagikan informasi akademik.
+1. Download seluruh gambar halaman SK Pembimbing TA yang tersedia pada detail panduan.
 
-2. Cari file Surat Keputusan Pembimbing TA yang pernah dikirimkan oleh Koordinator Program Studi atau Kaprodi.
+2. Pastikan semua halaman lengkap, yaitu halaman 1 sampai halaman 6.
 
-3. Pastikan nama kamu tercantum pada dokumen tersebut.
+3. Cari nama kamu pada tabel di halaman 3 sampai halaman 6.
 
-4. Pastikan dokumen menampilkan informasi:
-   - Nama mahasiswa
-   - NIM jika tersedia
-   - Nama Pembimbing I
-   - Nama Pembimbing II
+4. Setelah menemukan baris nama kamu, catat:
+   - Nomor baris
+   - NIM atau ID
+   - Nama
 
-5. Jika dokumen masih belum memiliki cap, temui admin program studi untuk meminta cap pada dokumen tersebut.
+5. Buka halaman gambar yang memuat nama kamu.
 
-6. Setelah dokumen sudah dicap, lakukan capture atau scan jika dokumen berbentuk fisik.
+6. Buka ChatGPT melalui link berikut:  
+   [https://chatgpt.com](https://chatgpt.com)
 
-7. Ubah hasil capture atau scan menjadi file **PDF**.
+7. Upload gambar halaman yang memuat nama kamu ke ChatGPT.
 
-8. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
+8. Copy prompt highlight yang tersedia pada detail panduan.
 
-### Opsi 2: Surat Kesediaan Pembimbing TA
+9. Ganti bagian placeholder pada prompt:
+   - `[ISI NOMOR BARIS]`
+   - `[ISI NIM/ID]`
+   - `[ISI NAMA]`
 
-Jika yang dimaksud adalah **Surat Kesediaan Pembimbing TA**, dokumen ini merupakan surat yang dibuat mahasiswa saat pengajuan proposal Tugas Akhir.
+10. Kirim prompt tersebut agar ChatGPT meningkatkan kualitas gambar dan memberi efek stabilo transparan pada tepat satu baris nama kamu.
 
-Surat ini berisi pernyataan kesediaan dari dosen Pembimbing I dan Pembimbing II untuk membimbing Tugas Akhir mahasiswa.
+11. Download hasil edit gambar dari ChatGPT.
 
-Langkah-langkah:
+12. Ganti gambar halaman asli yang memuat nama kamu dengan gambar hasil edit yang sudah diberi efek stabilo.
 
-1. Cari kembali dokumen Surat Kesediaan Pembimbing TA yang digunakan saat pengajuan proposal Tugas Akhir.
+13. Pastikan halaman lain tetap memakai gambar asli yang sudah tersedia.
 
-2. Pastikan dokumen tersebut sudah ditandatangani oleh:
-   - Pembimbing I
-   - Pembimbing II
+14. Buka iLovePDF JPG to PDF melalui link berikut:  
+    [https://www.ilovepdf.com/jpg_to_pdf](https://www.ilovepdf.com/jpg_to_pdf)
 
-3. Jika dokumen belum ditandatangani oleh salah satu pembimbing, temui pembimbing terkait untuk melengkapi tanda tangan.
+15. Upload seluruh gambar halaman SK yang sudah final.
 
-4. Setelah tanda tangan pembimbing lengkap, temui admin program studi untuk meminta cap pada dokumen tersebut.
+16. Pastikan urutan halaman tetap benar dari halaman 1 sampai halaman 6.
 
-5. Pastikan cap dari admin program studi sudah tersedia pada dokumen.
+17. Gabungkan seluruh gambar menjadi **1 file PDF**.
 
-6. Setelah dokumen lengkap ditandatangani dan dicap, lakukan capture atau scan jika dokumen berbentuk fisik.
+18. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
 
-7. Ubah hasil capture atau scan menjadi file **PDF**.
+## Prompt Highlight
 
-8. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
+Gunakan prompt berikut ketika mengedit halaman yang memuat nama kamu:
+
+```txt
+Edit gambar dokumen/tabel yang saya unggah.
+
+Tolong tingkatkan kualitas gambar agar lebih jelas/HD:
+- tajamkan teks dan garis tabel,
+- kurangi blur/noise,
+- rapikan pencahayaan,
+- tetap pertahankan bentuk dokumen asli secara natural.
+
+Lalu beri efek stabilo/highlighter transparan pada tepat satu baris saja, yaitu baris dengan data berikut:
+
+Nomor baris: [ISI NOMOR BARIS]
+NIM/ID: [ISI NIM/ID]
+Nama: [ISI NAMA]
+
+Ketentuan stabilo:
+- Stabilo harus pas di baris tersebut saja.
+- Jangan mengenai baris di atas atau di bawahnya.
+- Stabilo satu baris penuh dari kolom paling kiri sampai kolom paling kanan.
+- Gunakan warna stabilo [kuning/hijau/biru/pink] yang transparan.
+- Teks dan garis tabel tetap harus terbaca jelas.
+- Jangan mengubah isi teks, nama, angka, atau struktur tabel lainnya.
+- Jangan membuat ulang dokumen dari nol; cukup edit gambar asli.
+```
 
 ## Link Terkait
 
-Belum ada link khusus yang dapat dicantumkan untuk dokumen ini.
+- ChatGPT:  
+  [https://chatgpt.com](https://chatgpt.com)
 
-Jika dokumen yang dimaksud adalah Surat Keputusan Pembimbing TA, file kemungkinan dapat ditemukan melalui grup WhatsApp **MI 2023** atau grup resmi program studi.
+- iLovePDF JPG to PDF:  
+  [https://www.ilovepdf.com/jpg_to_pdf](https://www.ilovepdf.com/jpg_to_pdf)
 
 ## Ketentuan File
 
 - Format file akhir: **PDF**
 - Maksimal ukuran file: **1 MB**
 - Jumlah file: **1 file**
-- Dokumen harus menunjukkan informasi pembimbing Tugas Akhir mahasiswa.
-- Dokumen harus sudah memiliki cap dari admin atau pihak program studi.
-- Jika dokumen berbentuk fisik, lakukan capture atau scan terlebih dahulu.
-- Hasil capture atau scan harus terlihat jelas dan mudah dibaca.
+- Dokumen terdiri dari 6 halaman SK Pembimbing TA.
+- Halaman 3 sampai 6 berisi tabel nama mahasiswa dan dosen pembimbing.
+- Baris nama mahasiswa perlu diberi efek stabilo transparan.
+- Halaman SK yang tersedia pada sistem sudah dicap, sehingga tidak perlu meminta cap ulang ke admin.
+- Semua halaman harus digabung menjadi satu PDF.
 
 ## Catatan
 
-Panduan ini masih berstatus **draft** karena keterangan pada form pengajuan kompre masih ambigu. Dokumen tertulis sebagai **SK Pembimbing TA**, tetapi belum dapat dipastikan apakah yang dimaksud adalah **Surat Keputusan Pembimbing TA** atau **Surat Kesediaan Pembimbing TA**.
+Syarat ini menggunakan Surat Keputusan Pembimbing TA yang sudah tersedia dan sudah dicap.
 
-Sebelum mengumpulkan dokumen ini, sebaiknya konfirmasi terlebih dahulu kepada admin program studi mengenai dokumen mana yang benar-benar dimaksud.
+Mahasiswa hanya perlu mencari halaman yang memuat namanya, memberi efek stabilo pada baris tersebut, lalu menggabungkan seluruh halaman menjadi satu PDF.
 
-Jika memungkinkan, siapkan kedua dokumen sebagai antisipasi, terutama jika keduanya sudah tersedia dan dapat dicap oleh admin program studi.
+Jangan mengubah isi teks, nama, angka, atau struktur tabel pada dokumen. Efek stabilo hanya digunakan untuk menandai baris nama mahasiswa agar lebih mudah ditemukan.
