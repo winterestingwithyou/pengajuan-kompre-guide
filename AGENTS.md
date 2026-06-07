@@ -318,7 +318,11 @@ export type KompreRequirement = {
   isRequired: boolean;
   canGenerate: boolean;
   templateId?: string;
-  externalLink?: string;
+  externalLinks?: {
+    label: string;
+    url: string;
+    description?: string;
+  }[];
   guideStatus: GuideStatus;
   howToGet: string[];
   notes?: string[];

@@ -8,7 +8,9 @@ sourceLabel: Mahasiswa
 acceptedFileType: image
 maxFileSizeMb: 1
 maxFileCount: 1
-externalLink: "https://www.iloveimg.com/compress-image/compress-jpg"
+externalLinks:
+  - label: Kompres Foto di iLoveIMG
+    url: "https://www.iloveimg.com/compress-image/compress-jpg"
 order: 1
 ---
 
@@ -95,7 +97,12 @@ Contoh update pada `kompreRequirements`:
   isRequired: false,
   canGenerate: false,
   guideStatus: "ready",
-  externalLink: "https://www.iloveimg.com/compress-image/compress-jpg",
+  externalLinks: [
+    {
+      label: "Kompres Foto di iLoveIMG",
+      url: "https://www.iloveimg.com/compress-image/compress-jpg",
+    },
+  ],
   howToGet: [
     "Siapkan KPM fisik milik Anda.",
     "Foto bagian depan KPM dengan jelas menggunakan kamera ponsel.",
@@ -120,7 +127,7 @@ Saat mengerjakan enhancement KPM, lakukan hanya perubahan berikut:
 1. Tambahkan file ini sebagai `content/documents/kpm.md` atau lokasi markdown dokumen yang digunakan project.
 2. Perbarui data requirement `kpm` pada `kompreRequirements`.
 3. Ubah `guideStatus` dari `todo` menjadi `ready`.
-4. Tambahkan link kompres gambar ke `externalLink` atau field link terkait yang tersedia.
+4. Tambahkan link kompres gambar ke `externalLinks`.
 5. Pastikan modal/detail panduan dapat menampilkan langkah, link, dan catatan KPM.
 6. Jangan mengubah dokumen persyaratan lain.
 

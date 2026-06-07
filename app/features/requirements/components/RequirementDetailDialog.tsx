@@ -26,6 +26,8 @@ export function RequirementDetailDialog({
   requirement: KompreRequirement;
   children: React.ReactNode;
 }) {
+  const externalLinks = requirement.externalLinks ?? [];
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -102,22 +104,26 @@ export function RequirementDetailDialog({
           ) : null}
         </div>
 
-        <DialogFooter>
-          {requirement.externalLink && (
-            <Button asChild className="w-full sm:w-auto" variant="outline">
+        <DialogFooter className="sm:flex-wrap">
+          {externalLinks.map((link) => (
+            <Button
+              asChild
+              className="w-full sm:w-auto"
+              key={`${link.label}-${link.url}`}
+              title={link.description ?? link.label}
+              variant="outline"
+            >
               <a
                 className="min-w-0"
-                href={requirement.externalLink}
+                href={link.url}
                 rel="noreferrer"
                 target="_blank"
               >
-                <span className="truncate">
-                  {requirement.externalLinkLabel ?? "Buka Link Terkait"}
-                </span>
+                <span className="truncate">{link.label}</span>
                 <ExternalLink className="size-4" />
               </a>
             </Button>
-          )}
+          ))}
           {requirement.canGenerate && requirement.templateId && (
             <Button asChild className="w-full sm:w-auto">
               <Link to={`/generator/${requirement.templateId}`}>

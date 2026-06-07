@@ -14,6 +14,12 @@ export type RequirementFileType = "pdf" | "image" | "text" | "other";
 
 export type GuideStatus = "todo" | "draft" | "ready";
 
+export type RequirementExternalLink = {
+  label: string;
+  url: string;
+  description?: string;
+};
+
 export type KompreRequirement = {
   id: string;
   title: string;
@@ -26,8 +32,7 @@ export type KompreRequirement = {
   isRequired: boolean;
   canGenerate: boolean;
   templateId?: string;
-  externalLink?: string;
-  externalLinkLabel?: string;
+  externalLinks?: RequirementExternalLink[];
   guideStatus: GuideStatus;
   howToGet: string[];
   notes?: string[];
@@ -72,8 +77,12 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 1,
     isRequired: false,
     canGenerate: false,
-    externalLink: "https://www.iloveimg.com/compress-image/compress-jpg",
-    externalLinkLabel: "Kompres Foto di iLoveIMG",
+    externalLinks: [
+      {
+        label: "Kompres Foto di iLoveIMG",
+        url: "https://www.iloveimg.com/compress-image/compress-jpg",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Siapkan KPM fisik milik Anda.",
@@ -103,8 +112,16 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 1,
     isRequired: false,
     canGenerate: false,
-    externalLink: "https://akademik.unsri.ac.id/mahasiswa/perkuliahan/krs",
-    externalLinkLabel: "Buka Halaman KRS SIMAK UNSRI",
+    externalLinks: [
+      {
+        label: "Login SIMAK UNSRI",
+        url: "https://akademik.unsri.ac.id/login",
+      },
+      {
+        label: "Buka Halaman KRS SIMAK UNSRI",
+        url: "https://akademik.unsri.ac.id/mahasiswa/perkuliahan/krs",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Buka sistem akademik UNSRI melalui https://akademik.unsri.ac.id.",
@@ -132,9 +149,12 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 1,
     isRequired: true,
     canGenerate: false,
-    externalLink:
-      "https://docs.google.com/spreadsheets/d/1XulVzq8kPr_V5OXYLgs-vV2bxDe2alukgSpubOLYgUs/edit?usp=drive_link",
-    externalLinkLabel: "Buka Spreadsheet Pengajuan DKN",
+    externalLinks: [
+      {
+        label: "Buka Spreadsheet Pengajuan DKN",
+        url: "https://docs.google.com/spreadsheets/d/1XulVzq8kPr_V5OXYLgs-vV2bxDe2alukgSpubOLYgUs/edit?usp=drive_link",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Buka spreadsheet pengajuan Cetak DKN untuk Kompre.",
@@ -206,8 +226,16 @@ export const kompreRequirements: KompreRequirement[] = [
     isRequired: true,
     canGenerate: true,
     templateId: "validasi-usept",
-    externalLink: "https://akademik.unsri.ac.id/mahasiswa/perkuliahan/nilai-usept",
-    externalLinkLabel: "Buka Halaman Nilai USEPT SIMAK UNSRI",
+    externalLinks: [
+      {
+        label: "Login SIMAK UNSRI",
+        url: "https://akademik.unsri.ac.id/login",
+      },
+      {
+        label: "Buka Halaman Nilai USEPT SIMAK UNSRI",
+        url: "https://akademik.unsri.ac.id/mahasiswa/perkuliahan/nilai-usept",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Pastikan kamu telah mengikuti dan lulus tes USEPT dengan skor minimal 400.",
@@ -284,7 +312,20 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 1,
     isRequired: false,
     canGenerate: false,
-    externalLink: "https://ols.ilkom.unsri.ac.id",
+    externalLinks: [
+      {
+        label: "Buka OLS Fasilkom UNSRI",
+        url: "https://ols.ilkom.unsri.ac.id",
+      },
+      {
+        label: "Login OLS Fasilkom UNSRI",
+        url: "https://ols.ilkom.unsri.ac.id/login",
+      },
+      {
+        label: "Registrasi OLS Fasilkom UNSRI",
+        url: "https://ols.ilkom.unsri.ac.id/umum/register",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Pastikan laporan Tugas Akhir sudah disetujui oleh Pembimbing I dan Pembimbing II.",
@@ -399,7 +440,20 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 1,
     isRequired: false,
     canGenerate: false,
-    externalLink: "https://ols.ilkom.unsri.ac.id",
+    externalLinks: [
+      {
+        label: "Buka OLS Fasilkom UNSRI",
+        url: "https://ols.ilkom.unsri.ac.id",
+      },
+      {
+        label: "Login OLS Fasilkom UNSRI",
+        url: "https://ols.ilkom.unsri.ac.id/login",
+      },
+      {
+        label: "Registrasi OLS Fasilkom UNSRI",
+        url: "https://ols.ilkom.unsri.ac.id/umum/register",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Buka website OLS Fasilkom UNSRI melalui https://ols.ilkom.unsri.ac.id.",
@@ -440,8 +494,12 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 1,
     isRequired: false,
     canGenerate: false,
-    externalLink:
-      "https://drive.google.com/drive/folders/1h7Bkp2UCqIRnu8ZObW3v4-N89qS5p8L4?usp=sharing",
+    externalLinks: [
+      {
+        label: "Buka Folder SK KIPK",
+        url: "https://drive.google.com/drive/folders/1h7Bkp2UCqIRnu8ZObW3v4-N89qS5p8L4?usp=sharing",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Kumpulkan seluruh bukti atau slip pembayaran UKT dari semester 1 sampai semester terakhir.",
@@ -480,7 +538,16 @@ export const kompreRequirements: KompreRequirement[] = [
     isRequired: false,
     canGenerate: true,
     templateId: "kartu-konsultasi-tugas-akhir",
-    externalLink: "https://akademik.unsri.ac.id/mahasiswa/bimbingan-tugas-akhir",
+    externalLinks: [
+      {
+        label: "Login SIMAK UNSRI",
+        url: "https://akademik.unsri.ac.id/login",
+      },
+      {
+        label: "Buka Bimbingan Tugas Akhir SIMAK",
+        url: "https://akademik.unsri.ac.id/mahasiswa/bimbingan-tugas-akhir",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Login ke SIMAK UNSRI melalui https://akademik.unsri.ac.id/login.",
@@ -553,8 +620,12 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 1,
     isRequired: false,
     canGenerate: false,
-    externalLink:
-      "https://drive.google.com/file/d/1RFvFtm_bSxIBltPxzyFUflnfJgGUKE_Z/view",
+    externalLinks: [
+      {
+        label: "Buka Panduan Kerja Praktik",
+        url: "https://drive.google.com/file/d/1RFvFtm_bSxIBltPxzyFUflnfJgGUKE_Z/view",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Buka panduan Kerja Praktik melalui https://drive.google.com/file/d/1RFvFtm_bSxIBltPxzyFUflnfJgGUKE_Z/view.",
@@ -590,9 +661,12 @@ export const kompreRequirements: KompreRequirement[] = [
     maxFileCount: 5,
     isRequired: false,
     canGenerate: false,
-    externalLink:
-      "https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform",
-    externalLinkLabel: "Buka Form Pengecekan Turnitin Perpustakaan",
+    externalLinks: [
+      {
+        label: "Buka Form Pengecekan Turnitin Perpustakaan",
+        url: "https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform",
+      },
+    ],
     guideStatus: "draft",
     howToGet: [
       "Siapkan surat pernyataan bebas dari plagiat.",

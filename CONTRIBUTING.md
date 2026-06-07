@@ -86,6 +86,22 @@ Saat memperbarui dokumen, pastikan:
 - `howToGet` berisi langkah yang praktis dan berurutan.
 - `notes` berisi peringatan, ketidakpastian, atau hal penting yang mudah terlewat.
 - Link ditulis lengkap dengan `https://` agar bisa dibuat clickable oleh UI.
+- Gunakan `externalLinks` jika dokumen punya link referensi, form, spreadsheet, folder, atau halaman sistem yang perlu tampil sebagai tombol.
+
+Contoh `externalLinks`:
+
+```ts
+externalLinks: [
+  {
+    label: "Login OLS Fasilkom UNSRI",
+    url: "https://ols.ilkom.unsri.ac.id/login",
+  },
+  {
+    label: "Registrasi OLS Fasilkom UNSRI",
+    url: "https://ols.ilkom.unsri.ac.id/umum/register",
+  },
+],
+```
 
 ## Status Panduan
 
