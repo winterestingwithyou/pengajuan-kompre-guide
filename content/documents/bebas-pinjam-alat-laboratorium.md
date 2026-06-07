@@ -4,11 +4,17 @@ title: Surat Keterangan Bebas Pinjam alat laboratorium komputer
 category: Laboratorium
 required: false
 status: draft
-sourceLabel: Laboratorium Fasilkom / Form QR ruang peminjaman kunci lab
-sourceUrl: ""
+sourceLabel: SIMLAB Fasilkom UNSRI
 acceptedFileType: pdf
 maxFileSizeMb: 10
 maxFileCount: 1
+externalLinks:
+  - label: Registrasi SIMLAB
+    url: "https://simlab.ilkom.unsri.ac.id/register"
+  - label: Login SIMLAB
+    url: "https://simlab.ilkom.unsri.ac.id/login"
+  - label: Menu Surat Bebas SIMLAB
+    url: "https://simlab.ilkom.unsri.ac.id/clearance-requests"
 ---
 
 # Surat Keterangan Bebas Pinjam Alat Laboratorium Komputer
@@ -21,51 +27,71 @@ Dokumen ini diperlukan sebagai salah satu syarat pendukung dalam pengajuan kompr
 
 ## Cara Mendapatkan
 
-Surat ini didapatkan melalui form yang dapat diakses dari QR code yang tersedia di depan ruang peminjaman kunci laboratorium.
+Surat ini diajukan melalui **SIMLAB Fasilkom UNSRI**.
 
 Langkah-langkah:
 
-1. Datang ke area depan ruang peminjaman kunci laboratorium.
+1. Jika belum memiliki akun SIMLAB, daftar terlebih dahulu sebagai mahasiswa melalui link berikut:  
+   [https://simlab.ilkom.unsri.ac.id/register](https://simlab.ilkom.unsri.ac.id/register)
 
-2. Cari QR code form pengajuan Surat Keterangan Bebas Pinjam Alat Laboratorium Komputer.
+2. Jika sudah terdaftar, login melalui link berikut:  
+   [https://simlab.ilkom.unsri.ac.id/login](https://simlab.ilkom.unsri.ac.id/login)
 
-3. Scan QR code tersebut menggunakan kamera HP atau aplikasi scanner QR.
+3. Setelah berhasil login, kamu akan diarahkan ke dashboard SIMLAB.
 
-4. Buka link form yang muncul dari hasil scan QR code.
+4. Pada dashboard, pilih menu **Surat Bebas**.
 
-5. Isi form sesuai data yang diminta.
+5. Kamu juga dapat langsung membuka menu Surat Bebas melalui link berikut:  
+   [https://simlab.ilkom.unsri.ac.id/clearance-requests](https://simlab.ilkom.unsri.ac.id/clearance-requests)
 
-6. Pastikan data yang diisi sudah benar sebelum mengirim form.
+6. Mulai pengajuan **Surat Bebas Peminjaman Laboratorium**.
 
-7. Setelah form dikirim, ikuti instruksi lanjutan yang tersedia pada form atau dari pihak laboratorium.
+7. Isi **Judul Tugas Akhir** pada field yang tersedia.
 
-8. Surat Keterangan Bebas Pinjam Alat Laboratorium Komputer akan didapatkan melalui proses dari form tersebut.
+8. Siapkan dan upload dokumen persyaratan berikut:
+   - File KPM dalam format PDF, maksimal **500 KB**.
+   - File Cover Depan Skripsi dalam format PDF, maksimal **500 KB**.
+   - File Form Perbaikan/Konsultasi dalam format PDF, maksimal **500 KB**.
+   - File Form Penyerahan TA.1 atau Form Surat Rekomendasi Ujian Kompre dalam format PDF, maksimal **500 KB**.
 
-9. Jika surat sudah diterima, pastikan dokumen tersedia dalam format **PDF**.
+9. Pastikan seluruh file yang diupload sudah benar, jelas terbaca, dan sesuai field masing-masing.
 
-10. Jika surat diberikan dalam bentuk fisik, lakukan capture atau scan dokumen tersebut.
+10. Klik **Ajukan Surat Bebas** untuk mengirim pengajuan.
 
-11. Ubah hasil capture atau scan menjadi file **PDF**.
+11. Tunggu proses dari pihak laboratorium atau ikuti instruksi lanjutan yang muncul pada SIMLAB.
 
-12. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **10 MB**.
+12. Jika surat sudah selesai dan dapat diunduh, simpan hasilnya untuk kebutuhan pengajuan kompre.
+
+13. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **10 MB**.
 
 ## Link Terkait
 
-Belum ada link khusus yang dapat dicantumkan untuk dokumen ini.
+- Registrasi SIMLAB:  
+  [https://simlab.ilkom.unsri.ac.id/register](https://simlab.ilkom.unsri.ac.id/register)
 
-Form pengajuan dapat diakses melalui QR code yang tersedia di depan ruang peminjaman kunci laboratorium.
+- Login SIMLAB:  
+  [https://simlab.ilkom.unsri.ac.id/login](https://simlab.ilkom.unsri.ac.id/login)
+
+- Menu Surat Bebas SIMLAB:  
+  [https://simlab.ilkom.unsri.ac.id/clearance-requests](https://simlab.ilkom.unsri.ac.id/clearance-requests)
 
 ## Ketentuan File
 
 - Format file akhir: **PDF**
-- Maksimal ukuran file: **10 MB**
-- Jumlah file: **1 file**
-- Dokumen harus berupa Surat Keterangan Bebas Pinjam Alat Laboratorium Komputer.
-- Jika dokumen berbentuk fisik, lakukan capture atau scan terlebih dahulu lalu ubah menjadi PDF.
-- Hasil capture atau scan harus terlihat jelas dan mudah dibaca.
+- Maksimal ukuran file akhir untuk form kompre: **10 MB**
+- Jumlah file akhir: **1 file**
+- File upload pada SIMLAB harus berbentuk **PDF**.
+- Masing-masing file upload pada SIMLAB memiliki ukuran maksimal **500 KB**.
+- Dokumen pendukung yang dibutuhkan pada SIMLAB:
+  - KPM
+  - Cover Depan Skripsi
+  - Form Perbaikan/Konsultasi
+  - Form Penyerahan TA.1 atau Form Surat Rekomendasi Ujian Kompre
 
 ## Catatan
 
-Panduan ini masih berstatus **draft** karena langkah detail setelah pengisian form belum diketahui secara lengkap.
+Panduan ini masih berstatus **draft** karena bentuk surat hasil keluaran dari SIMLAB belum diketahui secara pasti.
 
-Jika ada kendala saat menemukan QR code atau mengisi form, silakan tanyakan langsung kepada pihak laboratorium atau petugas yang menangani peminjaman kunci laboratorium.
+Belum diketahui apakah hasil akhir dari SIMLAB langsung berbentuk PDF atau perlu langkah tambahan setelah pengajuan disetujui.
+
+Jika hasil surat dari SIMLAB diberikan dalam format selain PDF, ikuti instruksi lanjutan dari pihak laboratorium atau ubah hasilnya ke PDF sebelum diunggah ke form kompre.
