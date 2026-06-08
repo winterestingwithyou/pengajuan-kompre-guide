@@ -89,6 +89,8 @@ export function LetterGeneratorForm({
     template.id === "rekomendasi-ujian-proyek-akhir";
   const isConsultationCard = template.id === "kartu-konsultasi-tugas-akhir";
   const usesAdvisorFields = isRecommendationLetter || isConsultationCard;
+  const usesSplitDateFields =
+    isRecommendationLetter || isConsultationCard || isPlagiarismLetter;
   const schema = isPlagiarismLetter
     ? suratPernyataanBebasPlagiatSchema
     : isConsultationCard
@@ -212,7 +214,13 @@ export function LetterGeneratorForm({
     }
 
     const blob = isPlagiarismLetter
-      ? await generateSuratPernyataanBebasPlagiat(values)
+      ? await generateSuratPernyataanBebasPlagiat({
+          nama: values.nama,
+          nim: values.nim,
+          hariTanggal: values.hariTanggal,
+          bulan: values.bulan,
+          tahun: values.tahun,
+        })
       : await generateSuratPemutakhiranData(values);
 
     downloadBlob(blob, template.outputFileName);
@@ -229,6 +237,8 @@ export function LetterGeneratorForm({
               ? "Generator Kartu Konsultasi Tugas Akhir"
             : isRecommendationLetter
               ? "Generator Surat Rekomendasi Ujian Proyek Akhir"
+            : isPlagiarismLetter
+              ? "Generator Surat Pernyataan Bebas Plagiat"
               : "Generator awal"}
         </AlertTitle>
         <AlertDescription>
@@ -238,6 +248,8 @@ export function LetterGeneratorForm({
               ? "Generator ini membuat dua halaman kartu konsultasi untuk Pembimbing I dan Pembimbing II. Screenshot asistensi hanya dibaca di browser untuk dimasukkan ke DOCX."
             : isRecommendationLetter
               ? "Generator ini membuat dua halaman surat untuk Pembimbing I dan Pembimbing II. Pastikan nama dosen pembimbing sudah menyertakan gelar."
+            : isPlagiarismLetter
+              ? "Program studi otomatis Manajemen Informatika dan tempat surat otomatis Palembang. Setelah diunduh, cetak surat, beri materai 10.000, tanda tangan, dan tempel pasfoto warna 4x6."
             : "Format dokumen ini masih placeholder. Periksa ulang isi, tanda tangan, materai, dan ketentuan final sebelum digunakan untuk pengajuan."}
         </AlertDescription>
       </Alert>
@@ -284,7 +296,7 @@ export function LetterGeneratorForm({
           )}
         />
 
-        {!isUseptLetter && !usesAdvisorFields && (
+        {!isUseptLetter && !usesAdvisorFields && !isPlagiarismLetter && (
           <Controller
             control={form.control}
             name="programStudi"
@@ -296,29 +308,6 @@ export function LetterGeneratorForm({
                   aria-invalid={fieldState.invalid}
                   id={field.name}
                   placeholder="Masukkan program studi"
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
-        )}
-
-        {isPlagiarismLetter && (
-          <Controller
-            control={form.control}
-            name="judulTugasAkhir"
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>
-                  Judul Tugas Akhir
-                </FieldLabel>
-                <Textarea
-                  {...field}
-                  aria-invalid={fieldState.invalid}
-                  id={field.name}
-                  placeholder="Masukkan judul tugas akhir"
                 />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
@@ -499,68 +488,71 @@ export function LetterGeneratorForm({
               />
             )}
 
-            <div className="grid gap-4 sm:grid-cols-3">
-              <Controller
-                control={form.control}
-                name="hariTanggal"
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor={field.name}>Hari/Tanggal</FieldLabel>
-                    <Input
-                      {...field}
-                      aria-invalid={fieldState.invalid}
-                      id={field.name}
-                      placeholder="Opsional"
-                    />
-                    <FieldDescription>
-                      Boleh dikosongkan untuk diisi manual.
-                    </FieldDescription>
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
-                  </Field>
-                )}
-              />
-
-              <Controller
-                control={form.control}
-                name="bulan"
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor={field.name}>Bulan</FieldLabel>
-                    <Input
-                      {...field}
-                      aria-invalid={fieldState.invalid}
-                      id={field.name}
-                      placeholder="Mei"
-                    />
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
-                  </Field>
-                )}
-              />
-
-              <Controller
-                control={form.control}
-                name="tahun"
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor={field.name}>Tahun</FieldLabel>
-                    <Input
-                      {...field}
-                      aria-invalid={fieldState.invalid}
-                      id={field.name}
-                      placeholder="2026"
-                    />
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
-                  </Field>
-                )}
-              />
-            </div>
           </>
+        )}
+
+        {usesSplitDateFields && (
+          <div className="grid gap-4 sm:grid-cols-3">
+            <Controller
+              control={form.control}
+              name="hariTanggal"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Hari/Tanggal</FieldLabel>
+                  <Input
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="Opsional"
+                  />
+                  <FieldDescription>
+                    Boleh dikosongkan untuk diisi manual.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="bulan"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Bulan</FieldLabel>
+                  <Input
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="Mei"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="tahun"
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>Tahun</FieldLabel>
+                  <Input
+                    {...field}
+                    aria-invalid={fieldState.invalid}
+                    id={field.name}
+                    placeholder="2026"
+                  />
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </div>
         )}
 
         {isUseptLetter ? (
@@ -590,7 +582,7 @@ export function LetterGeneratorForm({
               </Field>
             )}
           />
-        ) : !usesAdvisorFields ? (
+        ) : !usesSplitDateFields ? (
           <Controller
             control={form.control}
             name="tempatTanggal"

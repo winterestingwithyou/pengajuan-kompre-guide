@@ -5,12 +5,14 @@ category: Plagiarisme
 required: false
 status: draft
 sourceLabel: Mahasiswa / Admin Program Studi / Kaprodi KA / Perpustakaan
-sourceUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform"
 acceptedFileType: pdf
 maxFileSizeMb: 10
 maxFileCount: 5
 canGenerate: true
 templateId: surat-pernyataan-bebas-plagiat
+externalLinks:
+  - label: Form Pengecekan Turnitin Perpustakaan
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform"
 ---
 
 # Dokumen Bebas Plagiat dan Hasil Pengecekan Plagiat
@@ -27,35 +29,40 @@ Berdasarkan arahan admin, dokumen ini terdiri dari beberapa berkas yang perlu di
 
 ## Cara Mendapatkan
 
-Dokumen ini terdiri dari tiga bagian. Setiap bagian perlu disiapkan sesuai ketentuan masing-masing.
+Dokumen ini terdiri dari beberapa bagian. Panduan ini baru memperbarui bagian **Surat Pernyataan Bebas Plagiat** dan **Hasil Pengecekan Plagiarisme dari Perpustakaan**.
 
 ### 1. Surat Pernyataan Bebas dari Plagiat
 
-Surat pernyataan bebas dari plagiat merupakan surat pernyataan bahwa mahasiswa tidak melakukan plagiarisme pada laporan Tugas Akhir.
+Surat pernyataan bebas dari plagiat dapat dibuat melalui generator surat pada sistem panduan ini.
 
 Langkah-langkah:
 
-1. Siapkan template **Surat Pernyataan Bebas dari Plagiat**.
+1. Buka generator **Surat Pernyataan Bebas Plagiat** pada sistem panduan.
 
-2. Isi data diri mahasiswa sesuai data akademik.
+2. Isi data yang diminta:
+   - Nama
+   - NIM
+   - Hari/tanggal surat (opsional, boleh dikosongkan untuk diisi manual)
+   - Bulan
+   - Tahun
 
-3. Isi informasi laporan Tugas Akhir yang diminta pada surat.
+   Program studi otomatis menggunakan **Manajemen Informatika** dan tempat surat otomatis menggunakan **Palembang**.
 
-4. Cantumkan persentase hasil pengecekan plagiarisme atau Turnitin pada surat.
+3. Generate dan download surat dalam format **DOCX**.
+
+4. Periksa kembali isi surat sebelum dicetak.
 
 5. Cetak atau print surat pernyataan tersebut.
 
-6. Siapkan materai **10.000**.
+6. Tempelkan materai **10.000** pada area tanda tangan bermaterai yang sudah disediakan.
 
-7. Tempelkan materai pada bagian tanda tangan.
+7. Tanda tangani surat di atas materai.
 
-8. Tanda tangani surat di atas materai.
+8. Tempelkan pasfoto warna ukuran **4x6** pada kotak placeholder foto yang tersedia di sisi kiri area tanda tangan.
 
-9. Siapkan pasfoto warna ukuran **4x6** sesuai ketentuan.
+9. Jika surat, materai, tanda tangan, dan pasfoto sudah siap, lakukan capture atau scan jika diperlukan.
 
-10. Jika surat dan pasfoto sudah siap, lakukan capture atau scan jika diperlukan.
-
-11. Ubah dokumen menjadi file **PDF**.
+10. Ubah dokumen menjadi file **PDF**.
 
 ### 2. Lampiran Hasil Cek Plagiat yang Sudah Divalidasi
 
@@ -79,11 +86,11 @@ Langkah-langkah:
 
 ### 3. Hasil Pengecekan dari Perpustakaan
 
-Hasil pengecekan dari perpustakaan dapat diajukan melalui form pengecekan Turnitin dari perpustakaan.
+Hasil pengecekan dari perpustakaan diajukan melalui form pengecekan Turnitin dari perpustakaan.
 
 Langkah-langkah:
 
-1. Buka form pengajuan pengecekan Turnitin dari perpustakaan melalui link berikut:  
+1. Buka Form Pengajuan Pengecekan Turnitin Perpustakaan melalui link berikut:  
    [https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform](https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform)
 
 2. Isi form sesuai data yang diminta.
@@ -92,34 +99,32 @@ Langkah-langkah:
 
 4. Pastikan data dan file yang dikirim sudah benar sebelum submit form.
 
-5. Setelah form dikirim, tunggu hasil pengecekan dari perpustakaan.
+5. Setelah form dikirim, tunggu hasil pengecekan dari perpustakaan sekitar **1–4 hari kerja**.
 
-6. Hasil pengecekan biasanya dikirim sekitar **1–4 hari kerja** setelah submit form.
+6. Hasil pengecekan Turnitin dari perpustakaan akan dikirim melalui email.
 
-7. Setelah hasil pengecekan diterima, simpan dokumen hasil pengecekan tersebut.
+7. Cek inbox dan folder spam secara berkala karena hasil biasanya masuk ke folder spam.
 
-8. Pastikan dokumen hasil pengecekan tersedia dalam format **PDF**.
+8. Download lampiran **PDF penuh** hasil pengecekan Turnitin dari email tersebut.
+
+9. Simpan file PDF tersebut sebagai berkas hasil pengecekan plagiarisme dari perpustakaan.
 
 ## Generator Surat
 
-Dokumen ini direncanakan memiliki fitur generator untuk membuat **Surat Pernyataan Bebas dari Plagiat** pada sistem panduan.
+Dokumen ini memiliki fitur generator untuk membuat **Surat Pernyataan Bebas Plagiat**.
 
-Namun, template resmi atau format final surat pernyataan bebas plagiat belum diketahui. Oleh karena itu, generator perlu dibuat setelah format surat sudah tersedia atau sudah dikonfirmasi.
+Format generator sudah menyiapkan:
 
-Field yang kemungkinan dibutuhkan pada generator:
+- Judul surat.
+- Data mahasiswa.
+- Program studi otomatis **Manajemen Informatika**.
+- Tempat surat otomatis **Palembang**.
+- Isi pernyataan bebas plagiarisme.
+- Kotak placeholder foto di sisi kiri area tanda tangan.
+- Area materai dengan tulisan **Materai 10.000**.
+- Nama dan NIM mahasiswa pada bagian tanda tangan.
 
-- Nama
-- NIM
-- Program Studi
-- Fakultas
-- Judul Tugas Akhir
-- Persentase hasil cek plagiarisme atau Turnitin
-- Tempat dan tanggal surat
-
-Field default yang dapat digunakan:
-
-- Fakultas: **Ilmu Komputer**
-- Program Studi: **Manajemen Informatika**
+Setelah digenerate, surat tetap perlu dicetak, diberi materai, ditandatangani, dan ditempeli pasfoto warna ukuran **4x6**.
 
 ## Link Terkait
 
@@ -137,14 +142,14 @@ Field default yang dapat digunakan:
 - Lampiran hasil cek plagiat harus sesuai dengan nama mahasiswa.
 - Skor plagiarisme maksimal **20%**.
 - Lampiran hasil cek plagiat harus sudah divalidasi oleh admin dan Kaprodi KA.
-- Hasil pengecekan dari perpustakaan dilampirkan sebagai berkas tersendiri.
+- Hasil pengecekan plagiarisme dari perpustakaan dilampirkan sebagai berkas tersendiri dalam bentuk PDF penuh dari email.
 
 ## Catatan
 
-Panduan ini masih berstatus **draft** karena terdapat beberapa informasi yang belum diketahui secara lengkap, yaitu:
+Panduan ini masih berstatus **draft** karena baru bagian Surat Pernyataan Bebas Plagiat dan hasil pengecekan plagiarisme dari perpustakaan yang diperbarui.
 
-1. Template resmi Surat Pernyataan Bebas dari Plagiat belum tersedia.
-2. Bentuk lampiran hasil cek plagiat yang sudah divalidasi oleh admin dan Kaprodi KA belum diketahui secara pasti.
-3. Untuk hasil pengecekan dari perpustakaan, belum diketahui apakah yang perlu diunggah adalah seluruh file hasil pengecekan atau hanya bagian tertentu dari hasil pengecekan.
+Bentuk lampiran hasil cek plagiat yang sudah divalidasi oleh admin dan Kaprodi KA masih perlu dikonfirmasi lebih lanjut.
 
-Perlu diperhatikan bahwa pengajuan pengecekan Turnitin melalui perpustakaan hanya dapat dilakukan sebanyak **3 kali**. Pastikan dokumen yang dikirim sudah benar sebelum melakukan submit form.
+Pengajuan pengecekan Turnitin melalui perpustakaan hanya dapat dilakukan sebanyak **3 kali**. Pastikan dokumen yang dikirim sudah benar sebelum submit form.
+
+Hasil pengecekan Turnitin dari perpustakaan dikirim melalui email sebagai lampiran PDF penuh. Cek folder spam jika belum masuk di inbox.
