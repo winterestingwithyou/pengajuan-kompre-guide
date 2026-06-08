@@ -194,11 +194,11 @@ export function RequirementDetailDialog({
           ) : null}
         </div>
 
-        <DialogFooter className="sm:flex-wrap">
+        <DialogFooter className="min-w-0 items-stretch sm:items-center sm:flex-wrap">
           {externalLinks.map((link) => (
             <Button
               asChild
-              className="w-full sm:w-auto"
+              className="h-auto min-h-9 w-full min-w-0 justify-between whitespace-normal px-3 py-2 text-left sm:w-auto sm:max-w-full"
               key={`${link.label}-${link.url}`}
               title={link.description ?? link.label}
               variant="outline"
@@ -209,8 +209,10 @@ export function RequirementDetailDialog({
                 rel="noreferrer"
                 target="_blank"
               >
-                <span className="truncate">{link.label}</span>
-                <ExternalLink className="size-4" />
+                <span className="min-w-0 break-words leading-5">
+                  {link.label}
+                </span>
+                <ExternalLink className="size-4 shrink-0" />
               </a>
             </Button>
           ))}
