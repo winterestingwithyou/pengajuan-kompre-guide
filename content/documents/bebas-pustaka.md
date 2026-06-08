@@ -3,12 +3,22 @@ id: bebas-pustaka
 title: Surat Keterangan Bebas Pustaka
 category: Perpustakaan
 required: false
-status: draft
+status: ready
 sourceLabel: Perpustakaan Fasilkom dan Perpustakaan Pusat UNSRI
-sourceUrl: ""
 acceptedFileType: pdf
 maxFileSizeMb: 1
 maxFileCount: 1
+externalLinks:
+  - label: Form Bebas Pustaka Fasilkom
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSe-ekfPwy-LYf8FDnDDoQoXn1JhKbuA81xwKoN02vKjrGojeA/viewform"
+  - label: Chat Petugas Perpustakaan Fasilkom
+    url: "https://wa.me/6282184658686"
+  - label: Form Bebas Pustaka Perpustakaan Pusat UNSRI
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSfchI5xtuzZc2g_3jKYfLYtv_2_xEmtb_0ApCA7-g9uOy1BpQ/viewform"
+  - label: Repository UNSRI
+    url: "https://repository.unsri.ac.id"
+  - label: Template Surat Pernyataan Perpustakaan Pusat
+    url: "https://docs.google.com/document/d/1kO2MYY-038WRV7G-qn88a2doNTor7zYq/edit?usp=sharing&ouid=114205431352930171431&rtpof=true&sd=true"
 ---
 
 # Surat Keterangan Bebas Pustaka
@@ -26,37 +36,81 @@ Kedua surat tersebut perlu digabungkan menjadi **1 file PDF**.
 
 ## Cara Mendapatkan
 
-Surat Keterangan Bebas Pustaka didapatkan dengan menemui pihak perpustakaan untuk mengklaim atau meminta surat bebas pustaka.
+### Surat Bebas Pustaka Perpustakaan Fasilkom
 
-Langkah-langkah:
+1. Isi terlebih dahulu Form Bebas Pustaka Fasilkom melalui link berikut:  
+   [https://docs.google.com/forms/d/e/1FAIpQLSe-ekfPwy-LYf8FDnDDoQoXn1JhKbuA81xwKoN02vKjrGojeA/viewform](https://docs.google.com/forms/d/e/1FAIpQLSe-ekfPwy-LYf8FDnDDoQoXn1JhKbuA81xwKoN02vKjrGojeA/viewform)
 
-1. Datang ke **Perpustakaan Fasilkom**.
+2. Pastikan data yang kamu isi pada form sudah benar sebelum dikirim.
 
-2. Sampaikan bahwa kamu ingin mengurus atau meminta **Surat Keterangan Bebas Pustaka** untuk keperluan pengajuan kompre.
+3. Setelah mengisi form, ambil suratnya di **Perpustakaan Fasilkom Indralaya**.
 
-3. Ikuti arahan dari pihak Perpustakaan Fasilkom.
+4. Jika tidak memungkinkan mengambil di Indralaya, kamu dapat mengambil surat di kampus Palembang.
 
-4. Pastikan kamu mendapatkan surat keterangan yang menyatakan bahwa tidak ada lagi urusan atau peminjaman yang belum diselesaikan dengan Perpustakaan Fasilkom.
+5. Untuk pengambilan di Palembang, hubungi petugas Perpustakaan Fasilkom:
+   - Nama: **Bapak Hendri Yunizar**
+   - WhatsApp: **0821 8465 8686**
+   - Link chat: [https://wa.me/6282184658686](https://wa.me/6282184658686)
 
-5. Setelah itu, datang ke **Perpustakaan Pusat UNSRI**.
+6. Sampaikan bahwa kamu sudah mengisi form bebas pustaka dan ingin mengambil suratnya di kampus Palembang.
 
-6. Sampaikan bahwa kamu ingin mengurus atau meminta **Surat Keterangan Bebas Pustaka** untuk keperluan pengajuan kompre.
+7. Tunggu konfirmasi dari petugas mengenai apakah surat sudah dibuat dan kapan petugas bersedia menyerahkan surat tersebut.
 
-7. Ikuti arahan dari pihak Perpustakaan Pusat UNSRI.
+8. Datang pada waktu yang sudah disepakati untuk mengambil Surat Bebas Pustaka Fasilkom.
 
-8. Pastikan kamu mendapatkan surat keterangan yang menyatakan bahwa tidak ada lagi urusan atau peminjaman yang belum diselesaikan dengan Perpustakaan Pusat UNSRI.
+9. Setelah surat diterima, lakukan scan atau capture agar menjadi file digital yang jelas terbaca.
 
-9. Jika kedua surat sudah didapatkan dalam bentuk fisik, lakukan capture atau scan pada masing-masing surat.
+### Surat Bebas Pustaka Perpustakaan Pusat UNSRI
 
-10. Jika surat sudah tersedia dalam bentuk file digital, pastikan file tersebut dapat digabungkan ke dalam format PDF.
+1. Siapkan **Surat Keterangan/Bukti penyerahan Skripsi/Tesis/Disertasi tercetak ke UPT Perpustakaan UNSRI Indralaya** yang sudah dicap.
 
-11. Gabungkan surat bebas pustaka dari Perpustakaan Fasilkom dan Perpustakaan Pusat UNSRI menjadi **1 file PDF**.
+2. Siapkan link Repository Tugas Akhir yang sudah dipublish pada Repository UNSRI:  
+   [https://repository.unsri.ac.id](https://repository.unsri.ac.id)
 
-12. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
+3. Buat surat pernyataan menggunakan template berikut:  
+   [https://docs.google.com/document/d/1kO2MYY-038WRV7G-qn88a2doNTor7zYq/edit?usp=sharing&ouid=114205431352930171431&rtpof=true&sd=true](https://docs.google.com/document/d/1kO2MYY-038WRV7G-qn88a2doNTor7zYq/edit?usp=sharing&ouid=114205431352930171431&rtpof=true&sd=true)
+
+4. Cetak dan tanda tangani surat pernyataan tersebut.
+
+5. Scan surat pernyataan yang sudah ditandatangani.
+
+6. Jika seluruh syarat sudah siap, ajukan Surat Bebas Pustaka Perpustakaan Pusat UNSRI melalui form berikut:  
+   [https://docs.google.com/forms/d/e/1FAIpQLSfchI5xtuzZc2g_3jKYfLYtv_2_xEmtb_0ApCA7-g9uOy1BpQ/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfchI5xtuzZc2g_3jKYfLYtv_2_xEmtb_0ApCA7-g9uOy1BpQ/viewform)
+
+7. Setelah pengajuan dikirim, cek email secara berkala.
+
+8. Hasil verifikasi dan Surat Keterangan Bebas Pustaka dapat dicek atau didownload melalui email.
+
+9. Cek juga folder spam jika email belum terlihat di inbox.
+
+10. Segera download file bebas pustaka dari email karena file akan terhapus otomatis oleh sistem setelah **1 bulan**.
+
+### Penggabungan File
+
+1. Pastikan Surat Bebas Pustaka Fasilkom sudah tersedia.
+
+2. Pastikan Surat Bebas Pustaka Perpustakaan Pusat UNSRI sudah tersedia.
+
+3. Gabungkan kedua surat menjadi **1 file PDF**.
+
+4. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
 
 ## Link Terkait
 
-Belum ada link khusus yang dapat dicantumkan untuk dokumen ini.
+- Form Bebas Pustaka Fasilkom:  
+  [https://docs.google.com/forms/d/e/1FAIpQLSe-ekfPwy-LYf8FDnDDoQoXn1JhKbuA81xwKoN02vKjrGojeA/viewform](https://docs.google.com/forms/d/e/1FAIpQLSe-ekfPwy-LYf8FDnDDoQoXn1JhKbuA81xwKoN02vKjrGojeA/viewform)
+
+- WhatsApp Petugas Perpustakaan Fasilkom:  
+  [https://wa.me/6282184658686](https://wa.me/6282184658686)
+
+- Form Bebas Pustaka Perpustakaan Pusat UNSRI:  
+  [https://docs.google.com/forms/d/e/1FAIpQLSfchI5xtuzZc2g_3jKYfLYtv_2_xEmtb_0ApCA7-g9uOy1BpQ/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfchI5xtuzZc2g_3jKYfLYtv_2_xEmtb_0ApCA7-g9uOy1BpQ/viewform)
+
+- Repository UNSRI:  
+  [https://repository.unsri.ac.id](https://repository.unsri.ac.id)
+
+- Template Surat Pernyataan Perpustakaan Pusat:  
+  [https://docs.google.com/document/d/1kO2MYY-038WRV7G-qn88a2doNTor7zYq/edit?usp=sharing&ouid=114205431352930171431&rtpof=true&sd=true](https://docs.google.com/document/d/1kO2MYY-038WRV7G-qn88a2doNTor7zYq/edit?usp=sharing&ouid=114205431352930171431&rtpof=true&sd=true)
 
 ## Ketentuan File
 
@@ -71,6 +125,8 @@ Belum ada link khusus yang dapat dicantumkan untuk dokumen ini.
 
 ## Catatan
 
-Panduan ini masih berstatus **draft** karena langkah detail pengurusan surat bebas pustaka dari masing-masing perpustakaan belum diketahui secara lengkap.
+Untuk pengambilan Surat Bebas Pustaka Fasilkom di Palembang, hubungi Bapak Hendri Yunizar terlebih dahulu agar waktu pengambilan jelas.
 
-Jika ada persyaratan tambahan dari Perpustakaan Fasilkom atau Perpustakaan Pusat UNSRI, ikuti arahan terbaru dari pihak perpustakaan terkait.
+Hasil verifikasi dan Surat Keterangan Bebas Pustaka Perpustakaan Pusat UNSRI dikirimkan melalui email. Cek juga folder spam.
+
+Segera download file bebas pustaka dari email karena file akan terhapus otomatis oleh sistem setelah **1 bulan**.
