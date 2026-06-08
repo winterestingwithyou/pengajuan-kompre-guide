@@ -93,11 +93,13 @@ function signatureTable(values: SuratPernyataanBebasPlagiatValues) {
       new TableRow({
         children: [
           new TableCell({
+            borders: noBorder,
             width: { size: 2200, type: WidthType.DXA },
             margins: { top: 0, bottom: 0, left: 0, right: 0 },
-            verticalAlign: VerticalAlign.TOP,
+            verticalAlign: VerticalAlign.CENTER,
             children: [
               new Table({
+                alignment: AlignmentType.CENTER,
                 layout: TableLayoutType.FIXED,
                 width: { size: 1134, type: WidthType.DXA },
                 rows: [
