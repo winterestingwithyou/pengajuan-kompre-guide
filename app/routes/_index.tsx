@@ -21,7 +21,10 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { GOOGLE_FORM_URL } from "~/lib/constants";
-import { letterTemplates } from "~/features/letters/data/letter-templates";
+import {
+  getRequirementGeneratableLetters,
+  letterTemplates,
+} from "~/features/letters/data/letter-templates";
 import { kompreRequirements } from "~/features/requirements/data/kompre-requirements";
 
 export function meta({}: Route.MetaArgs) {
@@ -84,7 +87,7 @@ const featureCards = [
 
 export default function Index() {
   const generatedCount = kompreRequirements.filter(
-    (requirement) => requirement.canGenerate
+    (requirement) => getRequirementGeneratableLetters(requirement).length > 0
   ).length;
 
   return (

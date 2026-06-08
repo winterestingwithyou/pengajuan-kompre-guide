@@ -14,6 +14,7 @@ import {
   requirementCategoryLabels,
   type KompreRequirement,
 } from "~/features/requirements/data/kompre-requirements";
+import { getRequirementGeneratableLetters } from "~/features/letters/data/letter-templates";
 import { RequirementBadges } from "~/features/requirements/components/RequirementBadges";
 import { RequirementDetailDialog } from "~/features/requirements/components/RequirementDetailDialog";
 
@@ -22,6 +23,8 @@ export function RequirementCard({
 }: {
   requirement: KompreRequirement;
 }) {
+  const generatableLetters = getRequirementGeneratableLetters(requirement);
+
   return (
     <Card
       className="soft-panel rounded-lg transition-transform hover:-translate-y-0.5"
@@ -49,14 +52,21 @@ export function RequirementCard({
             Lihat Detail
           </Button>
         </RequirementDetailDialog>
-        {requirement.canGenerate && requirement.templateId && (
-          <Button asChild className="w-full sm:w-auto">
-            <Link to={`/generator/${requirement.templateId}`}>
-              <FileText className="size-4" />
-              Generate Surat
+        {generatableLetters.map((letter) => (
+          <Button
+            asChild
+            className="h-auto min-h-9 w-full min-w-0 whitespace-normal px-3 py-2 sm:w-auto"
+            key={letter.templateId}
+            title={letter.description ?? letter.label}
+          >
+            <Link to={`/generator/${letter.templateId}`}>
+              <FileText className="size-4 shrink-0" />
+              <span className="min-w-0 break-words leading-5">
+                {letter.label}
+              </span>
             </Link>
           </Button>
-        )}
+        ))}
       </CardFooter>
     </Card>
   );

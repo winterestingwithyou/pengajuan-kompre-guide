@@ -21,6 +21,7 @@ import {
   requirementCategoryLabels,
   type KompreRequirement,
 } from "~/features/requirements/data/kompre-requirements";
+import { getRequirementGeneratableLetters } from "~/features/letters/data/letter-templates";
 import { ChecklistFileLinkInput } from "~/features/checklist/components/ChecklistFileLinkInput";
 
 export function ChecklistItem({
@@ -39,6 +40,7 @@ export function ChecklistItem({
   const checked = item?.checked ?? false;
   const fileUrl = item?.fileUrl ?? "";
   const note = item?.note ?? "";
+  const generatableLetters = getRequirementGeneratableLetters(requirement);
 
   return (
     <Card
@@ -63,7 +65,7 @@ export function ChecklistItem({
             <Badge variant={checked ? "secondary" : "outline"}>
               {checked ? "Sudah ada" : "Belum ada"}
             </Badge>
-            {requirement.canGenerate && (
+            {generatableLetters.length > 0 && (
               <Badge variant="secondary">Bisa digenerate</Badge>
             )}
             <Badge className="max-w-full truncate" variant="outline">
@@ -71,13 +73,24 @@ export function ChecklistItem({
             </Badge>
           </div>
         </div>
-        {requirement.canGenerate && requirement.templateId && (
-          <Button asChild className="col-span-2 w-full sm:col-span-1 sm:w-auto">
-            <Link to={`/generator/${requirement.templateId}`}>
-              <FileText className="size-4" />
-              Generate Surat
-            </Link>
-          </Button>
+        {generatableLetters.length > 0 && (
+          <div className="col-span-2 flex min-w-0 flex-col gap-2 sm:col-span-1">
+            {generatableLetters.map((letter) => (
+              <Button
+                asChild
+                className="h-auto min-h-9 w-full min-w-0 whitespace-normal px-3 py-2 sm:w-auto"
+                key={letter.templateId}
+                title={letter.description ?? letter.label}
+              >
+                <Link to={`/generator/${letter.templateId}`}>
+                  <FileText className="size-4 shrink-0" />
+                  <span className="min-w-0 break-words leading-5">
+                    {letter.label}
+                  </span>
+                </Link>
+              </Button>
+            ))}
+          </div>
         )}
       </CardHeader>
       <CardContent className="space-y-5">

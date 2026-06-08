@@ -1,4 +1,5 @@
 import { Badge } from "~/components/ui/badge";
+import { getRequirementGeneratableLetters } from "~/features/letters/data/letter-templates";
 import type { KompreRequirement } from "~/features/requirements/data/kompre-requirements";
 
 export function RequirementBadges({
@@ -6,10 +7,12 @@ export function RequirementBadges({
 }: {
   requirement: KompreRequirement;
 }) {
+  const generatableLetters = getRequirementGeneratableLetters(requirement);
+
   return (
     <div className="flex min-w-0 flex-wrap gap-2">
       {requirement.isRequired && <Badge>Wajib</Badge>}
-      {requirement.canGenerate && (
+      {generatableLetters.length > 0 && (
         <Badge variant="secondary">Bisa Generate</Badge>
       )}
       {requirement.acceptedFileType === "pdf" && (

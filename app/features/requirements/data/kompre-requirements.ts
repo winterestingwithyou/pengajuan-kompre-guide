@@ -1,3 +1,5 @@
+import type { RequirementGeneratableLetter } from "~/features/letters/data/letter-templates";
+
 export type RequirementCategory =
   | "identitas"
   | "akademik"
@@ -26,7 +28,7 @@ export type RequirementDownloadableAsset = {
   fileName?: string;
 };
 
-export type KompreRequirement = {
+type KompreRequirementBase = {
   id: string;
   title: string;
   category: RequirementCategory;
@@ -36,8 +38,6 @@ export type KompreRequirement = {
   maxFileSizeMb?: number;
   maxFileCount?: number;
   isRequired: boolean;
-  canGenerate: boolean;
-  templateId?: string;
   externalLinks?: RequirementExternalLink[];
   downloadableAssets?: RequirementDownloadableAsset[];
   copyablePrompt?: {
@@ -48,6 +48,19 @@ export type KompreRequirement = {
   howToGet: string[];
   notes?: string[];
 };
+
+type KompreRequirementGeneratorConfig =
+  | {
+      canGenerate: true;
+      generatableLetters: RequirementGeneratableLetter[];
+    }
+  | {
+      canGenerate: false;
+      generatableLetters?: never;
+    };
+
+export type KompreRequirement = KompreRequirementBase &
+  KompreRequirementGeneratorConfig;
 
 export const requirementCategoryLabels: Record<RequirementCategory, string> = {
   identitas: "Identitas",
@@ -311,7 +324,14 @@ Ketentuan stabilo:
     maxFileCount: 1,
     isRequired: true,
     canGenerate: true,
-    templateId: "validasi-usept",
+    generatableLetters: [
+      {
+        label: "Generate Surat Validasi USEPT",
+        templateId: "validasi-usept",
+        description:
+          "Membuat surat validasi USEPT berdasarkan screenshot nilai USEPT dari SIMAK.",
+      },
+    ],
     externalLinks: [
       {
         label: "Login SIMAK UNSRI",
@@ -363,7 +383,14 @@ Ketentuan stabilo:
     maxFileCount: 1,
     isRequired: false,
     canGenerate: true,
-    templateId: "rekomendasi-ujian-proyek-akhir",
+    generatableLetters: [
+      {
+        label: "Generate Surat Rekomendasi",
+        templateId: "rekomendasi-ujian-proyek-akhir",
+        description:
+          "Membuat surat rekomendasi ujian proyek akhir untuk Pembimbing I dan Pembimbing II.",
+      },
+    ],
     guideStatus: "ready",
     howToGet: [
       "Buka fitur generator Surat Rekomendasi Ujian Proyek Akhir pada sistem panduan ini.",
@@ -671,7 +698,14 @@ Ketentuan stabilo:
     maxFileCount: 1,
     isRequired: false,
     canGenerate: true,
-    templateId: "kartu-konsultasi-tugas-akhir",
+    generatableLetters: [
+      {
+        label: "Generate Kartu Konsultasi",
+        templateId: "kartu-konsultasi-tugas-akhir",
+        description:
+          "Membuat kartu konsultasi tugas akhir untuk Pembimbing I dan Pembimbing II.",
+      },
+    ],
     externalLinks: [
       {
         label: "Login SIMAK UNSRI",
@@ -795,7 +829,14 @@ Ketentuan stabilo:
     maxFileCount: 5,
     isRequired: false,
     canGenerate: true,
-    templateId: "surat-pernyataan-bebas-plagiat",
+    generatableLetters: [
+      {
+        label: "Generate Surat Pernyataan Bebas Plagiat",
+        templateId: "surat-pernyataan-bebas-plagiat",
+        description:
+          "Membuat surat pernyataan bebas plagiat yang ditandatangani di atas materai dan dilengkapi pasfoto.",
+      },
+    ],
     externalLinks: [
       {
         label: "Buka Form Pengecekan Turnitin Perpustakaan",

@@ -18,6 +18,7 @@ import {
   requirementCategoryLabels,
   type KompreRequirement,
 } from "~/features/requirements/data/kompre-requirements";
+import { getRequirementGeneratableLetters } from "~/features/letters/data/letter-templates";
 import { RequirementBadges } from "~/features/requirements/components/RequirementBadges";
 
 function downloadAsset(url: string, fileName?: string) {
@@ -46,6 +47,7 @@ export function RequirementDetailDialog({
 }) {
   const externalLinks = requirement.externalLinks ?? [];
   const downloadableAssets = requirement.downloadableAssets ?? [];
+  const generatableLetters = getRequirementGeneratableLetters(requirement);
 
   async function copyPrompt() {
     if (!requirement.copyablePrompt) {
@@ -216,14 +218,23 @@ export function RequirementDetailDialog({
               </a>
             </Button>
           ))}
-          {requirement.canGenerate && requirement.templateId && (
-            <Button asChild className="w-full sm:w-auto">
-              <Link to={`/generator/${requirement.templateId}`}>
-                <FileText className="size-4" />
-                Generate Surat
+          {generatableLetters.map((letter) => (
+            <Button
+              asChild
+              className="h-auto min-h-9 w-full min-w-0 justify-between whitespace-normal px-3 py-2 text-left sm:w-auto sm:max-w-full"
+              key={letter.templateId}
+              title={letter.description ?? letter.label}
+            >
+              <Link to={`/generator/${letter.templateId}`}>
+                <span className="flex min-w-0 items-center gap-1.5">
+                  <FileText className="size-4 shrink-0" />
+                  <span className="min-w-0 break-words leading-5">
+                    {letter.label}
+                  </span>
+                </span>
               </Link>
             </Button>
-          )}
+          ))}
         </DialogFooter>
       </DialogContent>
     </Dialog>

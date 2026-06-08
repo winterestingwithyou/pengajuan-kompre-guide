@@ -5,6 +5,17 @@ export type LetterTemplate = {
   outputFileName: string;
 };
 
+export type RequirementGeneratableLetter = {
+  label: string;
+  templateId: string;
+  description?: string;
+};
+
+export type RequirementWithGeneratableLetters = {
+  canGenerate: boolean;
+  generatableLetters?: RequirementGeneratableLetter[];
+};
+
 export const letterTemplates: LetterTemplate[] = [
   {
     id: "kartu-konsultasi-tugas-akhir",
@@ -45,4 +56,14 @@ export const letterTemplates: LetterTemplate[] = [
 
 export function getLetterTemplate(templateId: string | undefined) {
   return letterTemplates.find((template) => template.id === templateId);
+}
+
+export function getRequirementGeneratableLetters(
+  requirement: RequirementWithGeneratableLetters
+): RequirementGeneratableLetter[] {
+  if (!requirement.canGenerate) {
+    return [];
+  }
+
+  return requirement.generatableLetters ?? [];
 }
