@@ -21,9 +21,6 @@ export const suratKeteranganBebasPlagiatSchema = z.object({
   screenshotTurnitinSimilarity: screenshotField(
     "Screenshot halaman similarity Turnitin"
   ),
-  hariTanggal: z.string().optional(),
-  bulan: z.string().min(3, "Bulan wajib diisi."),
-  tahun: z.string().regex(/^\d{4}$/, "Tahun harus 4 digit."),
 });
 
 export type SuratKeteranganBebasPlagiatValues = z.infer<

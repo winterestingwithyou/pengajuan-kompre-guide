@@ -122,7 +122,6 @@ export function LetterGeneratorForm({
     isRecommendationLetter ||
     isConsultationCard ||
     isPlagiarismLetter ||
-    isPlagiarismCertificate ||
     isDataUpdateLetter;
   const schema = isPlagiarismLetter
     ? suratPernyataanBebasPlagiatSchema
@@ -218,9 +217,6 @@ export function LetterGeneratorForm({
       const blob = await generateSuratKeteranganBebasPlagiat({
         nama: values.nama,
         nim: values.nim,
-        hariTanggal: values.hariTanggal,
-        bulan: values.bulan,
-        tahun: values.tahun,
         screenshots: {
           identitas: {
             data: identitasData,

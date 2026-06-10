@@ -12,6 +12,7 @@ import {
   TableRow,
   TextRun,
   UnderlineType,
+  VerticalAlignTable,
   WidthType,
 } from "docx";
 
@@ -47,6 +48,9 @@ const docText = {
 };
 
 const screenshotWidthPx = 454;
+const headerWidth = 9020;
+const logoWidthPx = 72;
+const logoHeightPx = 68;
 
 function textRun(text: string, options: Record<string, unknown> = {}) {
   return new TextRun({ text, ...docText, ...options });
@@ -65,6 +69,83 @@ function headerParagraph(text: string, size = 20, bold = false) {
     alignment: AlignmentType.CENTER,
     spacing: { after: 0 },
     children: [textRun(text, { size, bold })],
+  });
+}
+
+async function loadUnsriLogo() {
+  const response = await fetch("/unsri-logo.png");
+
+  if (!response.ok) {
+    throw new Error("Logo UNSRI tidak dapat dimuat.");
+  }
+
+  return response.arrayBuffer();
+}
+
+function headerTable(logoData: ArrayBuffer) {
+  return new Table({
+    borders: noBorder,
+    layout: TableLayoutType.FIXED,
+    width: { size: headerWidth, type: WidthType.DXA },
+    columnWidths: [1300, 6420, 1300],
+    rows: [
+      new TableRow({
+        children: [
+          new TableCell({
+            borders: noBorder,
+            verticalAlign: VerticalAlignTable.CENTER,
+            width: { size: 1300, type: WidthType.DXA },
+            margins: { top: 0, bottom: 0, left: 0, right: 0 },
+            children: [
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new ImageRun({
+                    type: "png",
+                    data: logoData,
+                    transformation: {
+                      width: logoWidthPx,
+                      height: logoHeightPx,
+                    },
+                    altText: {
+                      title: "Logo Universitas Sriwijaya",
+                      description: "Logo Universitas Sriwijaya pada header surat.",
+                      name: "Logo Universitas Sriwijaya",
+                    },
+                  }),
+                ],
+              }),
+            ],
+          }),
+          new TableCell({
+            borders: noBorder,
+            verticalAlign: VerticalAlignTable.CENTER,
+            width: { size: 6420, type: WidthType.DXA },
+            margins: { top: 0, bottom: 0, left: 0, right: 0 },
+            children: [
+              headerParagraph("KEMENTERIAN PENDIDIKAN TINGGI,", 18),
+              headerParagraph("SAINS, DAN TEKNOLOGI", 18),
+              headerParagraph("UNIVERSITAS SRIWIJAYA", 18),
+              headerParagraph("FAKULTAS ILMU KOMPUTER", 18, true),
+              headerParagraph("PROGRAM STUDI MANAJEMEN INFORMATIKA", 18, true),
+              headerParagraph(
+                "Kampus Unsri, Jalan Srijaya Negara Bukit Besar Palembang, Kode Pos : 30139",
+                14
+              ),
+              headerParagraph(
+                "Telepon (0711) 379249, Pos-el : humas@ilkom.unsri.ac.id",
+                14
+              ),
+            ],
+          }),
+          new TableCell({
+            borders: noBorder,
+            width: { size: 1300, type: WidthType.DXA },
+            children: [new Paragraph({ text: "" })],
+          }),
+        ],
+      }),
+    ],
   });
 }
 
@@ -144,6 +225,7 @@ function signatureCell(role: string, name: string, nip: string) {
       new Paragraph({ text: "" }),
       new Paragraph({ text: "" }),
       new Paragraph({ text: "" }),
+      new Paragraph({ text: "" }),
       new Paragraph({
         children: [
           textRun(name, {
@@ -183,7 +265,7 @@ function signatureTable() {
 export async function generateSuratKeteranganBebasPlagiat(
   values: SuratKeteranganBebasPlagiatGenerateValues
 ) {
-  const day = values.hariTanggal?.trim() || "     ";
+  const logoData = await loadUnsriLogo();
 
   const doc = new Document({
     sections: [
@@ -199,16 +281,7 @@ export async function generateSuratKeteranganBebasPlagiat(
           },
         },
         children: [
-          headerParagraph("KEMENTERIAN PENDIDIKAN TINGGI,", 18),
-          headerParagraph("SAINS, DAN TEKNOLOGI", 18),
-          headerParagraph("UNIVERSITAS SRIWIJAYA", 18),
-          headerParagraph("FAKULTAS ILMU KOMPUTER", 18, true),
-          headerParagraph("PROGRAM STUDI MANAJEMEN INFORMATIKA", 18, true),
-          headerParagraph(
-            "Kampus Unsri, Jalan Srijaya Negara Bukit Besar Palembang, Kode Pos : 30139",
-            14
-          ),
-          headerParagraph("Telepon (0711) 379249, Pos-el : humas@ilkom.unsri.ac.id", 14),
+          headerTable(logoData),
           new Paragraph({
             border: {
               bottom: {
@@ -240,10 +313,6 @@ export async function generateSuratKeteranganBebasPlagiat(
             values.screenshots.similarity,
             "Halaman similarity keseluruhan hasil Turnitin"
           ),
-          new Paragraph({
-            alignment: AlignmentType.RIGHT,
-            children: [textRun(`Palembang, ${day} ${values.bulan} ${values.tahun}`)],
-          }),
           signatureTable(),
         ],
       },
