@@ -18,12 +18,14 @@ import type { LetterTemplate } from "~/features/letters/data/letter-templates";
 import { kartuKonsultasiTugasAkhirSchema } from "~/features/letters/schemas/kartu-konsultasi-tugas-akhir.schema";
 import { lampiranPddiktiSchema } from "~/features/letters/schemas/lampiran-pddikti.schema";
 import { rekomendasiUjianProyekAkhirSchema } from "~/features/letters/schemas/rekomendasi-ujian-proyek-akhir.schema";
+import { suratKeteranganBebasPlagiatSchema } from "~/features/letters/schemas/surat-keterangan-bebas-plagiat.schema";
 import { suratPernyataanBebasPlagiatSchema } from "~/features/letters/schemas/surat-pernyataan-bebas-plagiat.schema";
 import { suratPemutakhiranDataSchema } from "~/features/letters/schemas/surat-pemutakhiran-data.schema";
 import { validasiUseptSchema } from "~/features/letters/schemas/validasi-usept.schema";
 import { generateKartuKonsultasiTugasAkhir } from "~/features/letters/templates/generate-kartu-konsultasi-tugas-akhir";
 import { generateLampiranPddikti } from "~/features/letters/templates/generate-lampiran-pddikti";
 import { generateRekomendasiUjianProyekAkhir } from "~/features/letters/templates/generate-rekomendasi-ujian-proyek-akhir";
+import { generateSuratKeteranganBebasPlagiat } from "~/features/letters/templates/generate-surat-keterangan-bebas-plagiat";
 import { generateSuratPernyataanBebasPlagiat } from "~/features/letters/templates/generate-surat-pernyataan-bebas-plagiat";
 import { generateSuratPemutakhiranData } from "~/features/letters/templates/generate-surat-pemutakhiran-data";
 import { generateValidasiUsept } from "~/features/letters/templates/generate-validasi-usept";
@@ -45,6 +47,8 @@ type GeneratorValues = {
   screenshotWali?: File;
   screenshotPerguruanTinggiAsal?: File;
   screenshotRiwayatPendidikan?: File;
+  screenshotTurnitinIdentitas?: File;
+  screenshotTurnitinSimilarity?: File;
   namaPembimbing1: string;
   nipPembimbing1: string;
   namaPembimbing2: string;
@@ -104,6 +108,8 @@ export function LetterGeneratorForm({
 }) {
   const isPlagiarismLetter =
     template.id === "surat-pernyataan-bebas-plagiat";
+  const isPlagiarismCertificate =
+    template.id === "surat-keterangan-bebas-plagiat";
   const isUseptLetter = template.id === "validasi-usept";
   const isPddiktiAttachment = template.id === "lampiran-pddikti";
   const isDataUpdateLetter =
@@ -116,9 +122,12 @@ export function LetterGeneratorForm({
     isRecommendationLetter ||
     isConsultationCard ||
     isPlagiarismLetter ||
+    isPlagiarismCertificate ||
     isDataUpdateLetter;
   const schema = isPlagiarismLetter
     ? suratPernyataanBebasPlagiatSchema
+    : isPlagiarismCertificate
+      ? suratKeteranganBebasPlagiatSchema
     : isPddiktiAttachment
       ? lampiranPddiktiSchema
     : isConsultationCard
@@ -147,6 +156,8 @@ export function LetterGeneratorForm({
       screenshotWali: undefined,
       screenshotPerguruanTinggiAsal: undefined,
       screenshotRiwayatPendidikan: undefined,
+      screenshotTurnitinIdentitas: undefined,
+      screenshotTurnitinSimilarity: undefined,
       namaPembimbing1: "",
       nipPembimbing1: "",
       namaPembimbing2: "",
@@ -176,6 +187,53 @@ export function LetterGeneratorForm({
           type: getImageType(values.screenshotUsept),
           width: imageSize.width,
           height: imageSize.height,
+        },
+      });
+
+      downloadBlob(blob, template.outputFileName);
+      toast.success("File surat berhasil dibuat.");
+      return;
+    }
+
+    if (isPlagiarismCertificate) {
+      if (
+        !values.screenshotTurnitinIdentitas ||
+        !values.screenshotTurnitinSimilarity
+      ) {
+        return;
+      }
+
+      const [
+        identitasData,
+        identitasSize,
+        similarityData,
+        similaritySize,
+      ] = await Promise.all([
+        values.screenshotTurnitinIdentitas.arrayBuffer(),
+        getImageSize(values.screenshotTurnitinIdentitas),
+        values.screenshotTurnitinSimilarity.arrayBuffer(),
+        getImageSize(values.screenshotTurnitinSimilarity),
+      ]);
+
+      const blob = await generateSuratKeteranganBebasPlagiat({
+        nama: values.nama,
+        nim: values.nim,
+        hariTanggal: values.hariTanggal,
+        bulan: values.bulan,
+        tahun: values.tahun,
+        screenshots: {
+          identitas: {
+            data: identitasData,
+            type: getImageType(values.screenshotTurnitinIdentitas),
+            width: identitasSize.width,
+            height: identitasSize.height,
+          },
+          similarity: {
+            data: similarityData,
+            type: getImageType(values.screenshotTurnitinSimilarity),
+            width: similaritySize.width,
+            height: similaritySize.height,
+          },
         },
       });
 
@@ -407,6 +465,8 @@ export function LetterGeneratorForm({
         <AlertTitle>
           {isUseptLetter
             ? "Generator Surat Validasi USEPT"
+            : isPlagiarismCertificate
+              ? "Generator Surat Keterangan Bebas Plagiat"
             : isConsultationCard
               ? "Generator Kartu Konsultasi Tugas Akhir"
             : isPddiktiAttachment
@@ -422,6 +482,8 @@ export function LetterGeneratorForm({
         <AlertDescription>
           {isUseptLetter
             ? "Screenshot USEPT hanya dibaca di browser untuk dimasukkan ke DOCX. Setelah diunduh, cetak surat dan minta validasi admin program studi serta koordinator program studi."
+            : isPlagiarismCertificate
+              ? "Generator ini membuat lampiran hasil cek plagiat dari dua halaman Turnitin: halaman identitas/judul TA dan halaman persentase similarity keseluruhan. Setelah dicetak, surat perlu ditandatangani admin program studi dan koordinator program studi."
             : isConsultationCard
               ? "Generator ini membuat dua halaman kartu konsultasi untuk Pembimbing I dan Pembimbing II. Screenshot asistensi hanya dibaca di browser untuk dimasukkan ke DOCX."
             : isPddiktiAttachment
@@ -482,6 +544,7 @@ export function LetterGeneratorForm({
           !isPddiktiAttachment &&
           !isDataUpdateLetter &&
           !usesAdvisorFields &&
+          !isPlagiarismCertificate &&
           !isPlagiarismLetter && (
           <Controller
             control={form.control}
@@ -775,6 +838,68 @@ export function LetterGeneratorForm({
                 )}
               />
             ))}
+          </div>
+        )}
+
+        {isPlagiarismCertificate && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Controller
+              control={form.control}
+              name="screenshotTurnitinIdentitas"
+              render={({ field: { name, onBlur, onChange, ref }, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={name}>
+                    Screenshot Halaman Identitas Turnitin
+                  </FieldLabel>
+                  <Input
+                    accept="image/png,image/jpeg"
+                    aria-invalid={fieldState.invalid}
+                    id={name}
+                    name={name}
+                    onBlur={onBlur}
+                    onChange={(event) => onChange(event.target.files?.[0])}
+                    ref={ref}
+                    type="file"
+                  />
+                  <FieldDescription>
+                    Gunakan halaman pertama PDF Turnitin dari perpustakaan yang
+                    menampilkan nama mahasiswa dan judul TA.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+
+            <Controller
+              control={form.control}
+              name="screenshotTurnitinSimilarity"
+              render={({ field: { name, onBlur, onChange, ref }, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={name}>
+                    Screenshot Halaman Similarity Turnitin
+                  </FieldLabel>
+                  <Input
+                    accept="image/png,image/jpeg"
+                    aria-invalid={fieldState.invalid}
+                    id={name}
+                    name={name}
+                    onBlur={onBlur}
+                    onChange={(event) => onChange(event.target.files?.[0])}
+                    ref={ref}
+                    type="file"
+                  />
+                  <FieldDescription>
+                    Gunakan halaman kedua atau halaman yang menampilkan
+                    persentase similarity keseluruhan.
+                  </FieldDescription>
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
           </div>
         )}
 

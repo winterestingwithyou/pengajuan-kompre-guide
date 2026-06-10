@@ -53,6 +53,13 @@ export const letterTemplates: LetterTemplate[] = [
     outputFileName: "surat-pernyataan-bebas-plagiat.docx",
   },
   {
+    id: "surat-keterangan-bebas-plagiat",
+    title: "Surat Keterangan Bebas Plagiat",
+    description:
+      "Generator lampiran hasil cek plagiat berdasarkan dua halaman penting dari hasil Turnitin perpustakaan.",
+    outputFileName: "surat-keterangan-bebas-plagiat.docx",
+  },
+  {
     id: "surat-pernyataan-pemutakhiran-data",
     title: "Surat Pernyataan Pemutakhiran Data",
     description:

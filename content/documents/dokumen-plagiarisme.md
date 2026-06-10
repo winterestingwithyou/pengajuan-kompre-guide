@@ -9,7 +9,11 @@ acceptedFileType: pdf
 maxFileSizeMb: 10
 maxFileCount: 5
 canGenerate: true
-templateId: surat-pernyataan-bebas-plagiat
+generatableLetters:
+  - label: Generate Surat Pernyataan Bebas Plagiat
+    templateId: surat-pernyataan-bebas-plagiat
+  - label: Generate Surat Keterangan Bebas Plagiat
+    templateId: surat-keterangan-bebas-plagiat
 externalLinks:
   - label: Form Pengecekan Turnitin Perpustakaan
     url: "https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform"
@@ -24,12 +28,12 @@ Dokumen bebas plagiat dan hasil pengecekan plagiat digunakan sebagai bukti bahwa
 Berdasarkan arahan admin, dokumen ini terdiri dari beberapa berkas yang perlu diunggah secara terpisah sesuai poin yang diminta, yaitu:
 
 1. Surat pernyataan bebas dari plagiat yang ditandatangani di atas materai **10.000** dan dilengkapi pasfoto warna ukuran **4x6**.
-2. Lampiran hasil cek plagiat sesuai nama mahasiswa, dengan skor plagiarisme maksimal **20%**, yang telah divalidasi oleh admin dan Kaprodi KA.
+2. Surat Keterangan Bebas Plagiat berdasarkan hasil Turnitin perpustakaan, yang ditandatangani oleh admin program studi dan koordinator program studi.
 3. Hasil pengecekan plagiarisme dari perpustakaan.
 
 ## Cara Mendapatkan
 
-Dokumen ini terdiri dari beberapa bagian. Panduan ini baru memperbarui bagian **Surat Pernyataan Bebas Plagiat** dan **Hasil Pengecekan Plagiarisme dari Perpustakaan**.
+Dokumen ini terdiri dari beberapa bagian: **Surat Pernyataan Bebas Plagiat**, **Surat Keterangan Bebas Plagiat**, dan **Hasil Pengecekan Plagiarisme dari Perpustakaan**.
 
 ### 1. Surat Pernyataan Bebas dari Plagiat
 
@@ -64,25 +68,37 @@ Langkah-langkah:
 
 10. Ubah dokumen menjadi file **PDF**.
 
-### 2. Lampiran Hasil Cek Plagiat yang Sudah Divalidasi
+### 2. Surat Keterangan Bebas Plagiat
 
-Lampiran hasil cek plagiat merupakan dokumen hasil pengecekan plagiarisme yang sesuai dengan nama mahasiswa.
+Surat Keterangan Bebas Plagiat dibuat berdasarkan hasil pengecekan Turnitin dari perpustakaan.
 
-Dokumen ini harus menunjukkan skor plagiarisme maksimal **20%** dan sudah divalidasi oleh admin serta Kaprodi KA.
+Surat ini perlu ditandatangani oleh **admin program studi** dan **koordinator program studi**. Setelah ditandatangani, surat discan dan dijadikan PDF.
 
 Langkah-langkah:
 
-1. Siapkan hasil cek plagiarisme yang sesuai dengan nama mahasiswa.
+1. Pastikan kamu sudah memiliki PDF hasil Turnitin dari perpustakaan.
 
-2. Pastikan skor plagiarisme tidak lebih dari **20%**.
+2. Siapkan gambar dari halaman pertama PDF hasil Turnitin yang menampilkan nama mahasiswa dan judul Tugas Akhir.
 
-3. Temui admin untuk meminta validasi pada hasil cek plagiarisme.
+3. Siapkan gambar dari halaman yang menampilkan persentase similarity keseluruhan.
 
-4. Setelah itu, pastikan dokumen juga divalidasi oleh Kaprodi KA.
+4. Gambar dapat dibuat dengan screenshot atau dengan mengubah halaman PDF tersebut menjadi gambar.
 
-5. Jika dokumen sudah divalidasi, lakukan capture atau scan jika dokumen berbentuk fisik.
+5. Buka generator **Surat Keterangan Bebas Plagiat** pada sistem panduan ini.
 
-6. Ubah dokumen menjadi file **PDF**.
+6. Isi nama, NIM, tanggal surat, dan upload kedua gambar hasil Turnitin tersebut.
+
+7. Generate dan download surat dalam format **DOCX**.
+
+8. Periksa kembali isi surat dan pastikan kedua gambar hasil Turnitin terlihat jelas.
+
+9. Cetak atau print surat tersebut.
+
+10. Minta tanda tangan admin program studi dan koordinator program studi.
+
+11. Setelah ditandatangani, scan surat tersebut.
+
+12. Ubah hasil scan menjadi file **PDF**.
 
 ### 3. Hasil Pengecekan dari Perpustakaan
 
@@ -111,7 +127,10 @@ Langkah-langkah:
 
 ## Generator Surat
 
-Dokumen ini memiliki fitur generator untuk membuat **Surat Pernyataan Bebas Plagiat**.
+Dokumen ini memiliki fitur generator untuk membuat:
+
+1. **Surat Pernyataan Bebas Plagiat**
+2. **Surat Keterangan Bebas Plagiat**
 
 Format generator sudah menyiapkan:
 
@@ -126,6 +145,18 @@ Format generator sudah menyiapkan:
 
 Setelah digenerate, surat tetap perlu dicetak, diberi materai, ditandatangani, dan ditempeli pasfoto warna ukuran **4x6**.
 
+Format generator Surat Keterangan Bebas Plagiat sudah menyiapkan:
+
+- Judul surat.
+- Data mahasiswa.
+- Program studi otomatis **Manajemen Informatika**.
+- Fakultas otomatis **Ilmu Komputer**.
+- Area gambar halaman identitas/judul TA dari hasil Turnitin.
+- Area gambar halaman similarity keseluruhan dari hasil Turnitin.
+- Bagian tanda tangan admin program studi dan koordinator program studi.
+
+Setelah digenerate, Surat Keterangan Bebas Plagiat perlu dicetak, ditandatangani oleh admin program studi dan koordinator program studi, lalu discan menjadi PDF.
+
 ## Link Terkait
 
 - Form Pengajuan Pengecekan Turnitin Perpustakaan:  
@@ -139,16 +170,17 @@ Setelah digenerate, surat tetap perlu dicetak, diberi materai, ditandatangani, d
 - Dokumen diunggah secara terpisah sesuai poin yang diminta.
 - Surat pernyataan bebas plagiat harus ditandatangani di atas materai **10.000**.
 - Surat pernyataan bebas plagiat perlu dilengkapi pasfoto warna ukuran **4x6**.
-- Lampiran hasil cek plagiat harus sesuai dengan nama mahasiswa.
-- Skor plagiarisme maksimal **20%**.
-- Lampiran hasil cek plagiat harus sudah divalidasi oleh admin dan Kaprodi KA.
+- Surat Keterangan Bebas Plagiat dibuat berdasarkan hasil Turnitin perpustakaan.
+- Surat Keterangan Bebas Plagiat perlu ditandatangani admin program studi dan koordinator program studi.
+- Gambar pertama untuk Surat Keterangan Bebas Plagiat harus menampilkan nama mahasiswa dan judul TA.
+- Gambar kedua untuk Surat Keterangan Bebas Plagiat harus menampilkan persentase similarity keseluruhan.
 - Hasil pengecekan plagiarisme dari perpustakaan dilampirkan sebagai berkas tersendiri dalam bentuk PDF penuh dari email.
 
 ## Catatan
 
-Panduan ini masih berstatus **draft** karena baru bagian Surat Pernyataan Bebas Plagiat dan hasil pengecekan plagiarisme dari perpustakaan yang diperbarui.
+Panduan ini masih berstatus **draft** karena bagian lain dari dokumen bebas plagiarisme masih dapat disesuaikan jika ada arahan terbaru.
 
-Bentuk lampiran hasil cek plagiat yang sudah divalidasi oleh admin dan Kaprodi KA masih perlu dikonfirmasi lebih lanjut.
+Pastikan gambar hasil Turnitin yang digunakan pada Surat Keterangan Bebas Plagiat terlihat jelas sebelum dicetak.
 
 Pengajuan pengecekan Turnitin melalui perpustakaan hanya dapat dilakukan sebanyak **3 kali**. Pastikan dokumen yang dikirim sudah benar sebelum submit form.
 

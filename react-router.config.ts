@@ -15,6 +15,7 @@ export default {
       "/generator/validasi-usept",
       "/generator/lampiran-pddikti",
       "/generator/surat-pernyataan-bebas-plagiat",
+      "/generator/surat-keterangan-bebas-plagiat",
       "/generator/surat-pernyataan-pemutakhiran-data",
     ],
     concurrency: 2,

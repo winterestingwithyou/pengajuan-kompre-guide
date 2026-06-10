@@ -841,6 +841,12 @@ Ketentuan stabilo:
         description:
           "Membuat surat pernyataan bebas plagiat yang ditandatangani di atas materai dan dilengkapi pasfoto.",
       },
+      {
+        label: "Generate Surat Keterangan Bebas Plagiat",
+        templateId: "surat-keterangan-bebas-plagiat",
+        description:
+          "Membuat lampiran hasil cek plagiat dari dua halaman penting hasil Turnitin perpustakaan.",
+      },
     ],
     externalLinks: [
       {
@@ -859,11 +865,6 @@ Ketentuan stabilo:
       "Tanda tangani surat di atas materai.",
       "Tempelkan pasfoto warna ukuran 4x6 pada kotak placeholder foto yang tersedia di sisi kiri area tanda tangan.",
       "Jika surat, materai, tanda tangan, dan pasfoto sudah siap, lakukan capture atau scan jika diperlukan lalu ubah menjadi file PDF.",
-      "Siapkan hasil cek plagiarisme yang sesuai dengan nama mahasiswa.",
-      "Pastikan skor plagiarisme tidak lebih dari 20%.",
-      "Temui admin untuk meminta validasi pada hasil cek plagiarisme.",
-      "Pastikan dokumen juga divalidasi oleh Kaprodi KA.",
-      "Jika dokumen hasil cek plagiarisme sudah divalidasi dan berbentuk fisik, lakukan capture atau scan lalu ubah menjadi file PDF.",
       "Untuk hasil pengecekan dari perpustakaan, buka [Form Pengecekan Turnitin Perpustakaan](https://docs.google.com/forms/d/e/1FAIpQLSdjNv7LI9Nxt2y0dd_XS-v9mCECykLu51Bioi2ZaaV6mSV-jQ/viewform).",
       "Isi form sesuai data yang diminta dan upload atau lampirkan dokumen yang diminta pada form tersebut.",
       "Pastikan data dan file yang dikirim sudah benar sebelum submit form.",
@@ -871,13 +872,22 @@ Ketentuan stabilo:
       "Hasil pengecekan Turnitin dari perpustakaan akan dikirim melalui email, biasanya masuk ke folder spam.",
       "Cek inbox dan folder spam email secara berkala.",
       "Download lampiran PDF penuh hasil pengecekan Turnitin dari email tersebut.",
+      "Siapkan dua gambar dari PDF hasil Turnitin perpustakaan: halaman pertama yang menampilkan nama mahasiswa dan judul TA, serta halaman yang menampilkan persentase similarity keseluruhan.",
+      "Gambar dapat dibuat dari screenshot atau dari halaman PDF yang dikonversi menjadi gambar.",
+      "Buka generator Surat Keterangan Bebas Plagiat pada sistem panduan ini.",
+      "Isi nama, NIM, tanggal surat, lalu upload kedua gambar hasil Turnitin tersebut.",
+      "Generate dan download Surat Keterangan Bebas Plagiat dalam format DOCX.",
+      "Cetak surat tersebut dan minta tanda tangan admin program studi serta koordinator program studi.",
+      "Setelah ditandatangani, scan surat tersebut dan ubah menjadi PDF.",
       "Pastikan setiap dokumen tersedia dalam format PDF dan diunggah terpisah sesuai poin yang diminta.",
     ],
     notes: [
       "Panduan ini masih berstatus draft karena baru bagian Surat Pernyataan Bebas Plagiat dan hasil pengecekan plagiarisme dari perpustakaan yang diperbarui.",
       "Upload terpisah menjadi beberapa berkas sesuai poin yang diminta.",
       "Termasuk surat pernyataan bebas plagiat di atas materai 10.000 dan pasfoto warna ukuran 4x6.",
-      "Termasuk lampiran hasil cek plagiat dengan skor maksimal 20% yang telah divalidasi oleh admin dan Kaprodi KA.",
+      "Termasuk Surat Keterangan Bebas Plagiat yang dibuat dari hasil Turnitin perpustakaan dan ditandatangani admin program studi serta koordinator program studi.",
+      "Screenshot pertama untuk Surat Keterangan Bebas Plagiat adalah halaman hasil Turnitin yang menampilkan nama mahasiswa dan judul TA.",
+      "Screenshot kedua untuk Surat Keterangan Bebas Plagiat adalah halaman hasil Turnitin yang menampilkan persentase similarity keseluruhan.",
       "Hasil pengecekan plagiarisme dari perpustakaan dikirim melalui email sebagai lampiran PDF penuh. Cek folder spam jika belum masuk di inbox.",
       "Pengajuan pengecekan Turnitin melalui perpustakaan hanya dapat dilakukan sebanyak 3 kali.",
     ],
