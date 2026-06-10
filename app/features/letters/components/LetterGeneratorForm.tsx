@@ -38,6 +38,13 @@ type GeneratorValues = {
   screenshotPddikti?: File;
   screenshotKonsultasi1?: File;
   screenshotKonsultasi2?: File;
+  screenshotDataDiri?: File;
+  screenshotAkademik?: File;
+  screenshotAlamat?: File;
+  screenshotOrangTua?: File;
+  screenshotWali?: File;
+  screenshotPerguruanTinggiAsal?: File;
+  screenshotRiwayatPendidikan?: File;
   namaPembimbing1: string;
   nipPembimbing1: string;
   namaPembimbing2: string;
@@ -80,6 +87,16 @@ function getImageType(file: File): "png" | "jpg" {
   return file.type === "image/png" ? "png" : "jpg";
 }
 
+const dataUpdateScreenshotFields = [
+  ["screenshotDataDiri", "Screenshot Data Diri"],
+  ["screenshotAkademik", "Screenshot Akademik"],
+  ["screenshotAlamat", "Screenshot Alamat"],
+  ["screenshotOrangTua", "Screenshot Orang Tua"],
+  ["screenshotWali", "Screenshot Wali"],
+  ["screenshotPerguruanTinggiAsal", "Screenshot Perguruan Tinggi Asal"],
+  ["screenshotRiwayatPendidikan", "Screenshot Riwayat Pendidikan"],
+] as const;
+
 export function LetterGeneratorForm({
   template,
 }: {
@@ -89,12 +106,17 @@ export function LetterGeneratorForm({
     template.id === "surat-pernyataan-bebas-plagiat";
   const isUseptLetter = template.id === "validasi-usept";
   const isPddiktiAttachment = template.id === "lampiran-pddikti";
+  const isDataUpdateLetter =
+    template.id === "surat-pernyataan-pemutakhiran-data";
   const isRecommendationLetter =
     template.id === "rekomendasi-ujian-proyek-akhir";
   const isConsultationCard = template.id === "kartu-konsultasi-tugas-akhir";
   const usesAdvisorFields = isRecommendationLetter || isConsultationCard;
   const usesSplitDateFields =
-    isRecommendationLetter || isConsultationCard || isPlagiarismLetter;
+    isRecommendationLetter ||
+    isConsultationCard ||
+    isPlagiarismLetter ||
+    isDataUpdateLetter;
   const schema = isPlagiarismLetter
     ? suratPernyataanBebasPlagiatSchema
     : isPddiktiAttachment
@@ -118,6 +140,13 @@ export function LetterGeneratorForm({
       screenshotPddikti: undefined,
       screenshotKonsultasi1: undefined,
       screenshotKonsultasi2: undefined,
+      screenshotDataDiri: undefined,
+      screenshotAkademik: undefined,
+      screenshotAlamat: undefined,
+      screenshotOrangTua: undefined,
+      screenshotWali: undefined,
+      screenshotPerguruanTinggiAsal: undefined,
+      screenshotRiwayatPendidikan: undefined,
       namaPembimbing1: "",
       nipPembimbing1: "",
       namaPembimbing2: "",
@@ -177,6 +206,118 @@ export function LetterGeneratorForm({
 
       downloadBlob(blob, template.outputFileName);
       toast.success("File lampiran berhasil dibuat.");
+      return;
+    }
+
+    if (isDataUpdateLetter) {
+      const screenshotFiles = {
+        dataDiri: values.screenshotDataDiri,
+        akademik: values.screenshotAkademik,
+        alamat: values.screenshotAlamat,
+        orangTua: values.screenshotOrangTua,
+        wali: values.screenshotWali,
+        perguruanTinggiAsal: values.screenshotPerguruanTinggiAsal,
+        riwayatPendidikan: values.screenshotRiwayatPendidikan,
+      };
+
+      if (
+        !screenshotFiles.dataDiri ||
+        !screenshotFiles.akademik ||
+        !screenshotFiles.alamat ||
+        !screenshotFiles.orangTua ||
+        !screenshotFiles.wali ||
+        !screenshotFiles.perguruanTinggiAsal ||
+        !screenshotFiles.riwayatPendidikan
+      ) {
+        return;
+      }
+
+      const [
+        dataDiriData,
+        dataDiriSize,
+        akademikData,
+        akademikSize,
+        alamatData,
+        alamatSize,
+        orangTuaData,
+        orangTuaSize,
+        waliData,
+        waliSize,
+        perguruanTinggiAsalData,
+        perguruanTinggiAsalSize,
+        riwayatPendidikanData,
+        riwayatPendidikanSize,
+      ] = await Promise.all([
+        screenshotFiles.dataDiri.arrayBuffer(),
+        getImageSize(screenshotFiles.dataDiri),
+        screenshotFiles.akademik.arrayBuffer(),
+        getImageSize(screenshotFiles.akademik),
+        screenshotFiles.alamat.arrayBuffer(),
+        getImageSize(screenshotFiles.alamat),
+        screenshotFiles.orangTua.arrayBuffer(),
+        getImageSize(screenshotFiles.orangTua),
+        screenshotFiles.wali.arrayBuffer(),
+        getImageSize(screenshotFiles.wali),
+        screenshotFiles.perguruanTinggiAsal.arrayBuffer(),
+        getImageSize(screenshotFiles.perguruanTinggiAsal),
+        screenshotFiles.riwayatPendidikan.arrayBuffer(),
+        getImageSize(screenshotFiles.riwayatPendidikan),
+      ]);
+
+      const blob = await generateSuratPemutakhiranData({
+        nama: values.nama,
+        nim: values.nim,
+        hariTanggal: values.hariTanggal,
+        bulan: values.bulan,
+        tahun: values.tahun,
+        screenshots: {
+          dataDiri: {
+            data: dataDiriData,
+            type: getImageType(screenshotFiles.dataDiri),
+            width: dataDiriSize.width,
+            height: dataDiriSize.height,
+          },
+          akademik: {
+            data: akademikData,
+            type: getImageType(screenshotFiles.akademik),
+            width: akademikSize.width,
+            height: akademikSize.height,
+          },
+          alamat: {
+            data: alamatData,
+            type: getImageType(screenshotFiles.alamat),
+            width: alamatSize.width,
+            height: alamatSize.height,
+          },
+          orangTua: {
+            data: orangTuaData,
+            type: getImageType(screenshotFiles.orangTua),
+            width: orangTuaSize.width,
+            height: orangTuaSize.height,
+          },
+          wali: {
+            data: waliData,
+            type: getImageType(screenshotFiles.wali),
+            width: waliSize.width,
+            height: waliSize.height,
+          },
+          perguruanTinggiAsal: {
+            data: perguruanTinggiAsalData,
+            type: getImageType(screenshotFiles.perguruanTinggiAsal),
+            width: perguruanTinggiAsalSize.width,
+            height: perguruanTinggiAsalSize.height,
+          },
+          riwayatPendidikan: {
+            data: riwayatPendidikanData,
+            type: getImageType(screenshotFiles.riwayatPendidikan),
+            width: riwayatPendidikanSize.width,
+            height: riwayatPendidikanSize.height,
+          },
+        },
+      });
+
+      downloadBlob(blob, template.outputFileName);
+      toast.success("File surat berhasil dibuat.");
       return;
     }
 
@@ -245,18 +386,19 @@ export function LetterGeneratorForm({
       return;
     }
 
-    const blob = isPlagiarismLetter
-      ? await generateSuratPernyataanBebasPlagiat({
-          nama: values.nama,
-          nim: values.nim,
-          hariTanggal: values.hariTanggal,
-          bulan: values.bulan,
-          tahun: values.tahun,
-        })
-      : await generateSuratPemutakhiranData(values);
+    if (isPlagiarismLetter) {
+      const blob = await generateSuratPernyataanBebasPlagiat({
+        nama: values.nama,
+        nim: values.nim,
+        hariTanggal: values.hariTanggal,
+        bulan: values.bulan,
+        tahun: values.tahun,
+      });
+      downloadBlob(blob, template.outputFileName);
+      toast.success("File surat berhasil dibuat.");
+    }
 
-    downloadBlob(blob, template.outputFileName);
-    toast.success("File surat berhasil dibuat.");
+    return;
   }
 
   return (
@@ -269,6 +411,8 @@ export function LetterGeneratorForm({
               ? "Generator Kartu Konsultasi Tugas Akhir"
             : isPddiktiAttachment
               ? "Generator Lampiran PDDIKTI"
+            : isDataUpdateLetter
+              ? "Generator Surat Pemutakhiran Data"
             : isRecommendationLetter
               ? "Generator Surat Rekomendasi Ujian Proyek Akhir"
             : isPlagiarismLetter
@@ -282,6 +426,8 @@ export function LetterGeneratorForm({
               ? "Generator ini membuat dua halaman kartu konsultasi untuk Pembimbing I dan Pembimbing II. Screenshot asistensi hanya dibaca di browser untuk dimasukkan ke DOCX."
             : isPddiktiAttachment
               ? "Generator ini membuat lampiran PDDIKTI dari nama, NIM, dan screenshot data PDDIKTI. Dokumen tidak perlu divalidasi, dicetak, atau ditandatangani; cukup ubah hasil DOCX ke PDF sebelum dikumpulkan."
+            : isDataUpdateLetter
+              ? "Generator ini membuat surat pemutakhiran data beserta 7 screenshot menu Biodata SIMAK. Setelah diunduh, rapikan kembali dokumen jika perlu, cetak, tanda tangani pribadi tanpa materai, lalu scan menjadi PDF."
             : isRecommendationLetter
               ? "Generator ini membuat dua halaman surat untuk Pembimbing I dan Pembimbing II. Pastikan nama dosen pembimbing sudah menyertakan gelar."
             : isPlagiarismLetter
@@ -334,6 +480,7 @@ export function LetterGeneratorForm({
 
         {!isUseptLetter &&
           !isPddiktiAttachment &&
+          !isDataUpdateLetter &&
           !usesAdvisorFields &&
           !isPlagiarismLetter && (
           <Controller
@@ -591,6 +738,43 @@ export function LetterGeneratorForm({
                 </Field>
               )}
             />
+          </div>
+        )}
+
+        {isDataUpdateLetter && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {dataUpdateScreenshotFields.map(([name, label]) => (
+              <Controller
+                control={form.control}
+                key={name}
+                name={name}
+                render={({
+                  field: { name, onBlur, onChange, ref },
+                  fieldState,
+                }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor={name}>{label}</FieldLabel>
+                    <Input
+                      accept="image/png,image/jpeg"
+                      aria-invalid={fieldState.invalid}
+                      id={name}
+                      name={name}
+                      onBlur={onBlur}
+                      onChange={(event) => onChange(event.target.files?.[0])}
+                      ref={ref}
+                      type="file"
+                    />
+                    <FieldDescription>
+                      Gunakan screenshot menu Biodata SIMAK bagian{" "}
+                      {label.replace("Screenshot ", "")}.
+                    </FieldDescription>
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            ))}
           </div>
         )}
 

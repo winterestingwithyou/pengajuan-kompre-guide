@@ -52,13 +52,13 @@ export const letterTemplates: LetterTemplate[] = [
       "Generator surat pernyataan bebas plagiat yang dapat digunakan sebagai salah satu dokumen pengajuan kompre D3 Manajemen Informatika Unsri.",
     outputFileName: "surat-pernyataan-bebas-plagiat.docx",
   },
-// {
-//   id: "surat-pernyataan-pemutakhiran-data",
-//   title: "Surat Pernyataan Pemutakhiran Data",
-//   description:
-//     "Generator surat pernyataan telah melakukan pemutakhiran data untuk kebutuhan kompre D3 Manajemen Informatika Unsri.",
-//   outputFileName: "surat-pernyataan-pemutakhiran-data.docx",
-// },
+  {
+    id: "surat-pernyataan-pemutakhiran-data",
+    title: "Surat Pernyataan Pemutakhiran Data",
+    description:
+      "Generator surat pernyataan pemutakhiran data beserta screenshot menu Biodata SIMAK untuk kebutuhan kompre D3 Manajemen Informatika Unsri.",
+    outputFileName: "surat-pernyataan-pemutakhiran-data.docx",
+  },
 ];
 
 export function getLetterTemplate(templateId: string | undefined) {
