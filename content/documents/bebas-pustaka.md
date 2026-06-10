@@ -4,7 +4,7 @@ title: Surat Keterangan Bebas Pustaka
 category: Perpustakaan
 required: false
 status: ready
-sourceLabel: Perpustakaan Fasilkom dan Perpustakaan Pusat UNSRI
+sourceLabel: Perpustakaan Fasilkom
 acceptedFileType: pdf
 maxFileSizeMb: 1
 maxFileCount: 1
@@ -27,12 +27,9 @@ externalLinks:
 
 Surat Keterangan Bebas Pustaka digunakan sebagai bukti bahwa mahasiswa tidak memiliki urusan, tanggungan, atau peminjaman yang belum diselesaikan dengan pihak perpustakaan.
 
-Dokumen ini diperlukan dari dua pihak perpustakaan, yaitu:
+Untuk upload pada form pengajuan kompre, surat yang wajib dikumpulkan pada syarat ini adalah **Surat Bebas Pustaka Perpustakaan Fasilkom**.
 
-1. Perpustakaan Fasilkom.
-2. Perpustakaan Pusat UNSRI.
-
-Kedua surat tersebut perlu digabungkan menjadi **1 file PDF**.
+Panduan Surat Bebas Pustaka Perpustakaan Pusat UNSRI tetap disertakan karena surat tersebut dibutuhkan pada tahap berikutnya, tetapi tidak wajib diupload pada form kompre.
 
 ## Cara Mendapatkan
 
@@ -60,7 +57,13 @@ Kedua surat tersebut perlu digabungkan menjadi **1 file PDF**.
 
 9. Setelah surat diterima, lakukan scan atau capture agar menjadi file digital yang jelas terbaca.
 
+10. Untuk upload pada form pengajuan kompre, gunakan file Surat Bebas Pustaka Fasilkom saja.
+
+11. Pastikan file berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
+
 ### Surat Bebas Pustaka Perpustakaan Pusat UNSRI
+
+Bagian ini adalah panduan tambahan. Surat Bebas Pustaka Perpustakaan Pusat UNSRI tidak wajib diupload pada form kompre, tetapi tetap perlu disiapkan karena dibutuhkan pada tahap berikutnya.
 
 1. Siapkan **Surat Keterangan/Bukti penyerahan Skripsi/Tesis/Disertasi tercetak ke UPT Perpustakaan UNSRI Indralaya** yang sudah dicap.
 
@@ -85,16 +88,6 @@ Kedua surat tersebut perlu digabungkan menjadi **1 file PDF**.
 
 10. Segera download file bebas pustaka dari email karena file akan terhapus otomatis oleh sistem setelah **1 bulan**.
 
-### Penggabungan File
-
-1. Pastikan Surat Bebas Pustaka Fasilkom sudah tersedia.
-
-2. Pastikan Surat Bebas Pustaka Perpustakaan Pusat UNSRI sudah tersedia.
-
-3. Gabungkan kedua surat menjadi **1 file PDF**.
-
-4. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
-
 ## Link Terkait
 
 - Form Bebas Pustaka Fasilkom:  
@@ -117,9 +110,8 @@ Kedua surat tersebut perlu digabungkan menjadi **1 file PDF**.
 - Format file akhir: **PDF**
 - Maksimal ukuran file: **1 MB**
 - Jumlah file: **1 file**
-- Dokumen harus berisi surat bebas pustaka dari Perpustakaan Fasilkom.
-- Dokumen harus berisi surat bebas pustaka dari Perpustakaan Pusat UNSRI.
-- Kedua surat digabungkan menjadi satu file PDF.
+- Dokumen yang wajib diupload pada form kompre adalah Surat Bebas Pustaka dari Perpustakaan Fasilkom.
+- Surat Bebas Pustaka dari Perpustakaan Pusat UNSRI tidak wajib diupload pada form kompre, tetapi tetap dibutuhkan pada tahap berikutnya.
 - Jika surat berbentuk fisik, lakukan capture atau scan terlebih dahulu.
 - Hasil capture atau scan harus terlihat jelas dan mudah dibaca.
 
