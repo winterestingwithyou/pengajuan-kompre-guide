@@ -953,7 +953,7 @@ export function LetterGeneratorForm({
               </Field>
             )}
           />
-        ) : !usesSplitDateFields ? (
+        ) : !usesSplitDateFields && !isPlagiarismCertificate ? (
           <Controller
             control={form.control}
             name="tempatTanggal"
