@@ -78,11 +78,11 @@ export function ChecklistItem({
             {generatableLetters.map((letter) => (
               <Button
                 asChild
-                className="h-auto min-h-9 w-full min-w-0 whitespace-normal px-3 py-2 sm:w-auto"
+                className="h-auto min-h-9 w-full min-w-0 max-w-full shrink whitespace-normal px-3 py-2 sm:w-auto"
                 key={letter.templateId}
                 title={letter.description ?? letter.label}
               >
-                <Link to={`/generator/${letter.templateId}`}>
+                <Link className="max-w-full" to={`/generator/${letter.templateId}`}>
                   <FileText className="size-4 shrink-0" />
                   <span className="min-w-0 break-words leading-5">
                     {letter.label}

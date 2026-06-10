@@ -46,20 +46,23 @@ export function RequirementCard({
         </p>
         <RequirementBadges requirement={requirement} />
       </CardContent>
-      <CardFooter className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
+      <CardFooter className="flex min-w-0 flex-col items-stretch gap-2 sm:flex-row sm:flex-wrap sm:items-center">
         <RequirementDetailDialog requirement={requirement}>
-          <Button className="glass-button w-full sm:w-auto" variant="outline">
+          <Button
+            className="glass-button w-full min-w-0 shrink sm:w-auto"
+            variant="outline"
+          >
             Lihat Detail
           </Button>
         </RequirementDetailDialog>
         {generatableLetters.map((letter) => (
           <Button
             asChild
-            className="h-auto min-h-9 w-full min-w-0 whitespace-normal px-3 py-2 sm:w-auto"
+            className="h-auto min-h-9 w-full min-w-0 max-w-full shrink whitespace-normal px-3 py-2 sm:w-auto"
             key={letter.templateId}
             title={letter.description ?? letter.label}
           >
-            <Link to={`/generator/${letter.templateId}`}>
+            <Link className="max-w-full" to={`/generator/${letter.templateId}`}>
               <FileText className="size-4 shrink-0" />
               <span className="min-w-0 break-words leading-5">
                 {letter.label}
