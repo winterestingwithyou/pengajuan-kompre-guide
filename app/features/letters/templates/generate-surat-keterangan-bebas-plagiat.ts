@@ -191,9 +191,9 @@ export async function generateSuratKeteranganBebasPlagiat(
         properties: {
           page: {
             margin: {
-              top: 900,
+              top: 1440,
               right: 1440,
-              bottom: 900,
+              bottom: 1440,
               left: 1440,
             },
           },

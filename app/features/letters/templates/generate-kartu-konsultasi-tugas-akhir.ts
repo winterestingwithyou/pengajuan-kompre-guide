@@ -45,7 +45,7 @@ const docText = {
   color: "000000",
 };
 
-const pageContentWidthPx = 698;
+const pageContentWidthPx = 602;
 
 function cell(text: string, width: number) {
   return new TableCell({
@@ -227,10 +227,10 @@ export async function generateKartuKonsultasiTugasAkhir(
         properties: {
           page: {
             margin: {
-              top: 720,
-              right: 720,
-              bottom: 720,
-              left: 720,
+              top: 1440,
+              right: 1440,
+              bottom: 1440,
+              left: 1440,
             },
           },
         },

@@ -173,9 +173,9 @@ export async function generateSuratPernyataanBebasPlagiat(
           page: {
             margin: {
               top: 1440,
-              right: 1080,
-              bottom: 720,
-              left: 1080,
+              right: 1440,
+              bottom: 1440,
+              left: 1440,
             },
           },
         },

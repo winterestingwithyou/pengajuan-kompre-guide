@@ -186,10 +186,10 @@ export async function generateRekomendasiUjianProyekAkhir(
         properties: {
           page: {
             margin: {
-              top: 720,
-              right: 720,
-              bottom: 720,
-              left: 720,
+              top: 1440,
+              right: 1440,
+              bottom: 1440,
+              left: 1440,
             },
           },
         },
