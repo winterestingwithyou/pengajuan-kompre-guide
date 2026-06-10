@@ -3,7 +3,7 @@ id: bebas-pinjam-alat-laboratorium
 title: Surat Keterangan Bebas Pinjam alat laboratorium komputer
 category: Laboratorium
 required: false
-status: draft
+status: ready
 sourceLabel: SIMLAB Fasilkom UNSRI
 acceptedFileType: pdf
 maxFileSizeMb: 10
@@ -58,11 +58,20 @@ Langkah-langkah:
 
 10. Klik **Ajukan Surat Bebas** untuk mengirim pengajuan.
 
-11. Tunggu proses dari pihak laboratorium atau ikuti instruksi lanjutan yang muncul pada SIMLAB.
+11. Tunggu proses verifikasi dari pihak laboratorium sekitar **1 hari kerja**.
 
-12. Jika surat sudah selesai dan dapat diunduh, simpan hasilnya untuk kebutuhan pengajuan kompre.
+12. Setelah itu, cek kembali pengajuan pada menu Surat Bebas SIMLAB:  
+   [https://simlab.ilkom.unsri.ac.id/clearance-requests](https://simlab.ilkom.unsri.ac.id/clearance-requests)
 
-13. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **10 MB**.
+13. Pastikan status pengajuan sudah **disetujui**.
+
+14. Jika pengajuan belum disetujui atau terdapat permintaan revisi/perbaikan, lakukan perbaikan sesuai catatan dari admin laboratorium.
+
+15. Jika pengajuan sudah disetujui, download **Surat Bebas Pinjam Laboratorium** dari SIMLAB.
+
+16. Surat yang diunduh dari SIMLAB sudah berbentuk **PDF** dan bisa langsung dikumpulkan untuk pengajuan kompre.
+
+17. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **10 MB**.
 
 ## Link Terkait
 
@@ -90,8 +99,10 @@ Langkah-langkah:
 
 ## Catatan
 
-Panduan ini masih berstatus **draft** karena bentuk surat hasil keluaran dari SIMLAB belum diketahui secara pasti.
+Proses verifikasi biasanya membutuhkan waktu sekitar **1 hari kerja**.
 
-Belum diketahui apakah hasil akhir dari SIMLAB langsung berbentuk PDF atau perlu langkah tambahan setelah pengajuan disetujui.
+Jika ada permintaan revisi atau perbaikan, ikuti catatan dari admin laboratorium pada SIMLAB.
 
-Jika hasil surat dari SIMLAB diberikan dalam format selain PDF, ikuti instruksi lanjutan dari pihak laboratorium atau ubah hasilnya ke PDF sebelum diunggah ke form kompre.
+Surat yang sudah disetujui dapat diunduh dari SIMLAB dalam format **PDF**.
+
+PDF hasil download dari SIMLAB bisa langsung dikumpulkan untuk pengajuan kompre.
