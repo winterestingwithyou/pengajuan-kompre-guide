@@ -224,7 +224,7 @@ export async function generateSuratKeteranganBebasPlagiat(
             alignment: AlignmentType.CENTER,
             spacing: { after: 360, line: 360 },
             children: [
-              textRun("SURAT KETERANGAN BEBAS PLAGIAT", {
+              textRun("LAMPIRAN HASIL CEK PLAGIAT", {
                 bold: true,
                 size: 32,
               }),

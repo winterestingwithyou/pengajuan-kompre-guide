@@ -184,7 +184,7 @@ export async function generateSuratPernyataanBebasPlagiat(
             alignment: AlignmentType.CENTER,
             spacing: { after: 360 },
             children: [
-              textRun("SURAT PERNYATAAN", {
+              textRun("SURAT PERNYATAAN BEBAS PLAGIAT", {
                 bold: true,
                 size: 30,
               }),

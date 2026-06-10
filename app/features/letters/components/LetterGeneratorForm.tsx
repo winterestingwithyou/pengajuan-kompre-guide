@@ -109,7 +109,7 @@ export function LetterGeneratorForm({
   const isPlagiarismLetter =
     template.id === "surat-pernyataan-bebas-plagiat";
   const isPlagiarismCertificate =
-    template.id === "surat-keterangan-bebas-plagiat";
+    template.id === "lampiran-hasil-cek-plagiat";
   const isUseptLetter = template.id === "validasi-usept";
   const isPddiktiAttachment = template.id === "lampiran-pddikti";
   const isDataUpdateLetter =
@@ -466,7 +466,7 @@ export function LetterGeneratorForm({
           {isUseptLetter
             ? "Generator Surat Validasi USEPT"
             : isPlagiarismCertificate
-              ? "Generator Surat Keterangan Bebas Plagiat"
+              ? "Generator Lampiran Hasil Cek Plagiat"
             : isConsultationCard
               ? "Generator Kartu Konsultasi Tugas Akhir"
             : isPddiktiAttachment
@@ -483,7 +483,7 @@ export function LetterGeneratorForm({
           {isUseptLetter
             ? "Screenshot USEPT hanya dibaca di browser untuk dimasukkan ke DOCX. Setelah diunduh, cetak surat dan minta validasi admin program studi serta koordinator program studi."
             : isPlagiarismCertificate
-              ? "Generator ini membuat lampiran hasil cek plagiat dari dua halaman Turnitin: halaman identitas/judul TA dan halaman persentase similarity keseluruhan. Setelah dicetak, surat perlu ditandatangani admin program studi dan koordinator program studi."
+              ? "Generator ini membuat Lampiran Hasil Cek Plagiat dari dua halaman Turnitin: halaman identitas/judul TA dan halaman persentase similarity keseluruhan. Setelah dicetak, lampiran perlu ditandatangani admin program studi dan koordinator program studi."
             : isConsultationCard
               ? "Generator ini membuat dua halaman kartu konsultasi untuk Pembimbing I dan Pembimbing II. Screenshot asistensi hanya dibaca di browser untuk dimasukkan ke DOCX."
             : isPddiktiAttachment
