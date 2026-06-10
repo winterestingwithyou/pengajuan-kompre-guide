@@ -18,6 +18,13 @@ export type RequirementWithGeneratableLetters = {
 
 export const letterTemplates: LetterTemplate[] = [
   {
+    id: "lampiran-pddikti",
+    title: "Lampiran PDDIKTI",
+    description:
+      "Generator lampiran PDDIKTI berisi data mahasiswa dan screenshot PDDIKTI untuk kebutuhan kompre D3 Manajemen Informatika Unsri.",
+    outputFileName: "lampiran-pddikti.docx",
+  },
+  {
     id: "kartu-konsultasi-tugas-akhir",
     title: "Kartu Konsultasi Tugas Akhir",
     description:

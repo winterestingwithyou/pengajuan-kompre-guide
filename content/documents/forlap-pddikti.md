@@ -1,61 +1,91 @@
 ---
 id: forlap-pddikti
-title: Capture data Forlap PDDIKTI yang sudah divalidasi oleh BAPSI
+title: Lampiran PDDIKTI
 category: Data Akademik
 required: false
-status: draft
-sourceLabel: PDDIKTI / BAPSI / KPA UNSRI Bukit Palembang
+status: ready
+sourceLabel: PDDIKTI / Generator lampiran
 sourceUrl: ""
 acceptedFileType: pdf
 maxFileSizeMb: 1
 maxFileCount: 1
+canGenerate: true
+generatableLetters:
+  - label: Generate Lampiran PDDIKTI
+    templateId: lampiran-pddikti
 ---
 
-# Capture Data Forlap PDDIKTI yang Sudah Divalidasi oleh BAPSI
+# Lampiran PDDIKTI
 
 ## Kegunaan
 
-Capture data Forlap PDDIKTI digunakan sebagai bukti bahwa data akademik mahasiswa pada PDDIKTI sudah sesuai dan telah divalidasi oleh pihak BAPSI atau KPA UNSRI Bukit Palembang.
+Lampiran PDDIKTI digunakan sebagai bukti bahwa data akademik mahasiswa pada PDDIKTI sudah sesuai.
 
-Dokumen yang dikumpulkan berupa hasil capture atau screenshot data PDDIKTI yang sudah divalidasi, kemudian diubah menjadi file PDF.
+Dokumen yang dikumpulkan berupa lampiran berisi data mahasiswa dan screenshot PDDIKTI, kemudian diubah menjadi file PDF.
+
+Lampiran ini **tidak perlu divalidasi oleh KPA/BAPSI**, tidak perlu dicetak, tidak perlu ditandatangani, dan tidak perlu diberi cap.
 
 ## Cara Mendapatkan
 
-Dokumen ini diperoleh dari hasil capture atau screenshot data mahasiswa pada PDDIKTI yang telah divalidasi oleh BAPSI atau KPA UNSRI Bukit Palembang.
+Dokumen ini dibuat melalui generator Lampiran PDDIKTI pada sistem panduan ini.
 
 Langkah-langkah:
 
-1. Pastikan data mahasiswa pada PDDIKTI sudah sesuai.
+1. Buka halaman PDDIKTI yang menampilkan data mahasiswa.
 
-2. Lakukan proses validasi data PDDIKTI melalui pihak **BAPSI** atau **KPA UNSRI Bukit Palembang**.
+   [https://pddikti.kemdiktisaintek.go.id](https://pddikti.kemdiktisaintek.go.id)
 
-3. Setelah data dinyatakan valid, buka halaman data PDDIKTI yang menampilkan informasi mahasiswa.
+2. Cari data mahasiswa berdasarkan NIM atau nama.
 
-4. Lakukan capture atau screenshot pada halaman PDDIKTI tersebut.
+3. Pastikan data mahasiswa yang tampil sudah sesuai.
+
+4. Lakukan screenshot pada halaman PDDIKTI tersebut.
 
 5. Pastikan hasil capture atau screenshot menampilkan data mahasiswa dengan jelas.
 
-6. Pastikan data yang ditampilkan merupakan data yang sudah divalidasi oleh BAPSI atau KPA UNSRI Bukit Palembang.
+6. Buka generator **Lampiran PDDIKTI** pada sistem panduan ini.
 
-7. Ubah hasil capture atau screenshot tersebut menjadi file **PDF**.
+7. Isi nama, NIM, dan upload screenshot PDDIKTI.
 
-8. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
+8. Generate dan download lampiran dalam format **DOCX**.
+
+9. Periksa kembali isi lampiran dan pastikan screenshot terbaca jelas.
+
+10. Ubah file **DOCX** tersebut menjadi **PDF**.
+
+11. Kumpulkan file PDF lampiran PDDIKTI.
+
+12. Pastikan file akhir berformat **PDF** dan ukuran file tidak lebih dari **1 MB**.
+
+## Generator Surat
+
+Dokumen ini memiliki fitur generator untuk membuat **Lampiran PDDIKTI**.
+
+Field yang perlu diisi:
+
+- Nama
+- NIM
+- Screenshot PDDIKTI
+
+Fakultas otomatis menggunakan **Ilmu Komputer** dan program studi otomatis menggunakan **Manajemen Informatika**.
 
 ## Link Terkait
 
-Belum ada link khusus yang dicantumkan untuk dokumen ini.
+- PDDIKTI: [https://pddikti.kemdiktisaintek.go.id](https://pddikti.kemdiktisaintek.go.id)
 
 ## Ketentuan File
 
 - Format file akhir: **PDF**
 - Maksimal ukuran file: **1 MB**
 - Jumlah file: **1 file**
-- Dokumen berupa capture atau screenshot data PDDIKTI.
-- Data PDDIKTI harus sudah divalidasi oleh BAPSI atau KPA UNSRI Bukit Palembang.
+- Dokumen berupa lampiran PDDIKTI yang dibuat dari generator.
 - Hasil capture atau screenshot harus terlihat jelas dan mudah dibaca.
+- Dokumen tidak perlu dicetak.
+- Dokumen tidak perlu ditandatangani.
+- Dokumen tidak perlu divalidasi oleh KPA/BAPSI.
 
 ## Catatan
 
-Panduan ini masih berstatus **draft** karena detail teknis proses validasi melalui BAPSI atau KPA UNSRI Bukit Palembang dapat disesuaikan kembali jika ada informasi tambahan.
+Generator hanya membaca screenshot secara lokal di browser untuk dimasukkan ke DOCX. File screenshot tidak diupload atau disimpan ke server.
 
-Pastikan data pada hasil capture atau screenshot terlihat jelas sebelum diubah menjadi PDF.
+Setelah DOCX dibuat, ubah menjadi PDF sebelum dikumpulkan.

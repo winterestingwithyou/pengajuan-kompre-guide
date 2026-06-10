@@ -13,6 +13,7 @@ export default {
       "/generator/kartu-konsultasi-tugas-akhir",
       "/generator/rekomendasi-ujian-proyek-akhir",
       "/generator/validasi-usept",
+      "/generator/lampiran-pddikti",
       "/generator/surat-pernyataan-bebas-plagiat",
       "/generator/surat-pernyataan-pemutakhiran-data",
     ],

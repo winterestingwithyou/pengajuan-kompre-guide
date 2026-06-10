@@ -16,11 +16,13 @@ import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import type { LetterTemplate } from "~/features/letters/data/letter-templates";
 import { kartuKonsultasiTugasAkhirSchema } from "~/features/letters/schemas/kartu-konsultasi-tugas-akhir.schema";
+import { lampiranPddiktiSchema } from "~/features/letters/schemas/lampiran-pddikti.schema";
 import { rekomendasiUjianProyekAkhirSchema } from "~/features/letters/schemas/rekomendasi-ujian-proyek-akhir.schema";
 import { suratPernyataanBebasPlagiatSchema } from "~/features/letters/schemas/surat-pernyataan-bebas-plagiat.schema";
 import { suratPemutakhiranDataSchema } from "~/features/letters/schemas/surat-pemutakhiran-data.schema";
 import { validasiUseptSchema } from "~/features/letters/schemas/validasi-usept.schema";
 import { generateKartuKonsultasiTugasAkhir } from "~/features/letters/templates/generate-kartu-konsultasi-tugas-akhir";
+import { generateLampiranPddikti } from "~/features/letters/templates/generate-lampiran-pddikti";
 import { generateRekomendasiUjianProyekAkhir } from "~/features/letters/templates/generate-rekomendasi-ujian-proyek-akhir";
 import { generateSuratPernyataanBebasPlagiat } from "~/features/letters/templates/generate-surat-pernyataan-bebas-plagiat";
 import { generateSuratPemutakhiranData } from "~/features/letters/templates/generate-surat-pemutakhiran-data";
@@ -33,6 +35,7 @@ type GeneratorValues = {
   judulTugasAkhir: string;
   tempatTanggal: string;
   screenshotUsept?: File;
+  screenshotPddikti?: File;
   screenshotKonsultasi1?: File;
   screenshotKonsultasi2?: File;
   namaPembimbing1: string;
@@ -85,6 +88,7 @@ export function LetterGeneratorForm({
   const isPlagiarismLetter =
     template.id === "surat-pernyataan-bebas-plagiat";
   const isUseptLetter = template.id === "validasi-usept";
+  const isPddiktiAttachment = template.id === "lampiran-pddikti";
   const isRecommendationLetter =
     template.id === "rekomendasi-ujian-proyek-akhir";
   const isConsultationCard = template.id === "kartu-konsultasi-tugas-akhir";
@@ -93,6 +97,8 @@ export function LetterGeneratorForm({
     isRecommendationLetter || isConsultationCard || isPlagiarismLetter;
   const schema = isPlagiarismLetter
     ? suratPernyataanBebasPlagiatSchema
+    : isPddiktiAttachment
+      ? lampiranPddiktiSchema
     : isConsultationCard
       ? kartuKonsultasiTugasAkhirSchema
     : isRecommendationLetter
@@ -109,6 +115,7 @@ export function LetterGeneratorForm({
       judulTugasAkhir: "",
       tempatTanggal: "",
       screenshotUsept: undefined,
+      screenshotPddikti: undefined,
       screenshotKonsultasi1: undefined,
       screenshotKonsultasi2: undefined,
       namaPembimbing1: "",
@@ -145,6 +152,31 @@ export function LetterGeneratorForm({
 
       downloadBlob(blob, template.outputFileName);
       toast.success("File surat berhasil dibuat.");
+      return;
+    }
+
+    if (isPddiktiAttachment) {
+      if (!values.screenshotPddikti) {
+        return;
+      }
+
+      const [screenshotData, imageSize] = await Promise.all([
+        values.screenshotPddikti.arrayBuffer(),
+        getImageSize(values.screenshotPddikti),
+      ]);
+      const blob = await generateLampiranPddikti({
+        nama: values.nama,
+        nim: values.nim,
+        screenshot: {
+          data: screenshotData,
+          type: getImageType(values.screenshotPddikti),
+          width: imageSize.width,
+          height: imageSize.height,
+        },
+      });
+
+      downloadBlob(blob, template.outputFileName);
+      toast.success("File lampiran berhasil dibuat.");
       return;
     }
 
@@ -235,6 +267,8 @@ export function LetterGeneratorForm({
             ? "Generator Surat Validasi USEPT"
             : isConsultationCard
               ? "Generator Kartu Konsultasi Tugas Akhir"
+            : isPddiktiAttachment
+              ? "Generator Lampiran PDDIKTI"
             : isRecommendationLetter
               ? "Generator Surat Rekomendasi Ujian Proyek Akhir"
             : isPlagiarismLetter
@@ -246,6 +280,8 @@ export function LetterGeneratorForm({
             ? "Screenshot USEPT hanya dibaca di browser untuk dimasukkan ke DOCX. Setelah diunduh, cetak surat dan minta validasi admin program studi serta koordinator program studi."
             : isConsultationCard
               ? "Generator ini membuat dua halaman kartu konsultasi untuk Pembimbing I dan Pembimbing II. Screenshot asistensi hanya dibaca di browser untuk dimasukkan ke DOCX."
+            : isPddiktiAttachment
+              ? "Generator ini membuat lampiran PDDIKTI dari nama, NIM, dan screenshot data PDDIKTI. Dokumen tidak perlu divalidasi, dicetak, atau ditandatangani; cukup ubah hasil DOCX ke PDF sebelum dikumpulkan."
             : isRecommendationLetter
               ? "Generator ini membuat dua halaman surat untuk Pembimbing I dan Pembimbing II. Pastikan nama dosen pembimbing sudah menyertakan gelar."
             : isPlagiarismLetter
@@ -296,7 +332,10 @@ export function LetterGeneratorForm({
           )}
         />
 
-        {!isUseptLetter && !usesAdvisorFields && !isPlagiarismLetter && (
+        {!isUseptLetter &&
+          !isPddiktiAttachment &&
+          !usesAdvisorFields &&
+          !isPlagiarismLetter && (
           <Controller
             control={form.control}
             name="programStudi"
@@ -575,6 +614,33 @@ export function LetterGeneratorForm({
                 <FieldDescription>
                   Gunakan screenshot halaman Nilai USEPT dari SIMAK yang
                   menampilkan nama, NIM, tanggal ujian, skor, dan status lulus.
+                </FieldDescription>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+        ) : isPddiktiAttachment ? (
+          <Controller
+            control={form.control}
+            name="screenshotPddikti"
+            render={({ field: { name, onBlur, onChange, ref }, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={name}>Screenshot PDDIKTI</FieldLabel>
+                <Input
+                  accept="image/png,image/jpeg"
+                  aria-invalid={fieldState.invalid}
+                  id={name}
+                  name={name}
+                  onBlur={onBlur}
+                  onChange={(event) => onChange(event.target.files?.[0])}
+                  ref={ref}
+                  type="file"
+                />
+                <FieldDescription>
+                  Gunakan screenshot halaman PDDIKTI yang menampilkan data
+                  mahasiswa dengan jelas.
                 </FieldDescription>
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
